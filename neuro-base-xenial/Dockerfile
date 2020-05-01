@@ -26,6 +26,8 @@ RUN set -x \
 	&& rm -rf "$GNUPGHOME" \
 	&& apt-key list | grep neurodebian
 
+RUN apt-get install -y apt-transport-https
+
 RUN { \
 	echo 'deb http://neuro.debian.net/debian xenial main'; \
 	echo 'deb http://neuro.debian.net/debian data main'; \
@@ -45,7 +47,7 @@ RUN set -x \
 	
 
 	
-RUN apt-get update && apt-get install -y wget jq vim && apt-get install -y ca-certificates && apt-get install -y apt-transport-https
+RUN apt-get update && apt-get install -y wget jq vim && apt-get install -y ca-certificates
 
 RUN wget -O- http://neuro.debian.net/lists/xenial.us-tn.full | tee /etc/apt/sources.list.d/neurodebian.sources.list
 RUN apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
