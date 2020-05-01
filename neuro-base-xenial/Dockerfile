@@ -95,7 +95,7 @@ RUN ./configure ${CONFIGURE_OPTIONS} && \
     make install
 
 ## Install afni, fsl (and dependencies)
-##RUN apt-get install -y \
-##	libgsl2 \
-##	afni \
-##	fsl 
+RUN apt-get install -y \
+	libgsl2 \
+	afni \
+	fsl 
