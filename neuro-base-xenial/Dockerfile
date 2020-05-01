@@ -65,8 +65,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
     libjpeg-dev \
     libcairo2-dev \   
-    libcurl4-openssl-dev \
-    libcurl4-gnutls-dev \
     libssl-dev \ 
     libxml2-dev \
     libudunits2-dev \
