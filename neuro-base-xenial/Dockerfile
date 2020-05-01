@@ -1,5 +1,3 @@
-# From https://github.com/neurodebian/dockerfiles/blob/master/dockerfiles/xenial/Dockerfile
-# Build #: +1
 FROM ubuntu:xenial
 
 # https://bugs.debian.org/830696 (apt uses gpgv by default in newer releases, rather than gpg)
@@ -43,28 +41,63 @@ RUN set -x \
 	&& ln -s /usr/bin/eatmydata /usr/local/bin/apt-get \
 	&& rm -rf /var/lib/apt/lists/*
 	
-
-	
 RUN apt-get update && apt-get install -y wget jq vim && apt-get install -y ca-certificates && apt-get install -y apt-transport-https
 
-RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/' >> /etc/apt/sources.list
+ENV R_VERSION_MAJOR=4
+ENV R_VERSION_MINOR=0
+ENV R_VERSION_PATCH=0
+ENV CONFIGURE_OPTIONS="--with-cairo --with-jpeglib --enable-R-shlib --with-blas --with-lapack"
+ENV RENV_VERSION 0.9.3
 
 RUN wget -O- http://neuro.debian.net/lists/xenial.us-tn.full | tee /etc/apt/sources.list.d/neurodebian.sources.list
 RUN apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
 
 RUN apt-get update
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    apt-utils\
+    gfortran \
+    git \
+    g++ \
+    libreadline-dev \
+    libx11-dev \
+    libxt-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libcairo2-dev \   
+    libcurl4-openssl-dev \
+    libcurl4-gnutls-dev \
+    libssl-dev \ 
+    libxml2-dev \
+    libudunits2-dev \
+    libgdal-dev \
+    libbz2-dev \
+    libzstd-dev \
+    liblzma-dev \
+    libpcre2-dev \
+    locales \
+    screen \
+    texinfo \
+    texlive \
+    texlive-fonts-extra \
+    vim \
+    wget \
+    xvfb \
+&& rm -rf /var/lib/apt/lists/*
+
+## Install R
+RUN wget https://cran.rstudio.com/src/base/R-${R_VERSION_MAJOR}/R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz && \
+    tar zxvf R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz && \
+    rm R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz
+
+WORKDIR /R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}
+
+RUN ./configure ${CONFIGURE_OPTIONS} && \ 
+    make && \
+    make install
+
 ## Install afni, fsl (and dependencies)
 ##RUN apt-get install -y \
 ##	libgsl2 \
 ##	afni \
 ##	fsl 
-
-## Install R
-##RUN apt-get install -y r-base
-
-## Install devtools (and dependencies)
-RUN apt-get install -y \
-	libcurl4-gnutls-dev \
-	libxml2-dev \
-	libssl-dev
