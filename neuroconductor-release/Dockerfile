@@ -45,7 +45,7 @@ RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("malf
 RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurohcp")'
 
 ## Phase 4
-##RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsRCore")'
+RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsRCore")'
 
 ## Phase 5
 ##RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsR")'
