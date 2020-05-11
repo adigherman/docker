@@ -102,8 +102,8 @@ RUN curl -fsSL https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-
  && rm cmake.tar.gz
  
 # git - Upgrade to a more modern version
-RUN apt-get update \ 
-    apt-get install -y python-software-properties software-properties-common && \
+RUN apt-get update
+RUN apt-get install -y python-software-properties software-properties-common && \
     add-apt-repository ppa:git-core/ppa -y && \
     apt-get update && \
     apt-get install -y git
