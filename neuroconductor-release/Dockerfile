@@ -3,6 +3,12 @@ FROM adigherman/neuro-base-xenial
 ## Set default CRAN repo
 RUN echo 'options(repos = c(CRAN = "https://cran.rstudio.com/"), download.file.method = "libcurl")' >> /usr/local/lib/R/etc/Rprofile.site
 
+
+## Install more useful stuff
+RUN R -e 'install.packages("devtools", repos="http://cran.rstudio.com/")'
+RUN R -e 'install.packages("rmarkdown", repos="http://cran.rstudio.com/")'
+RUN R -e 'install.packages("tidyverse", repos="http://cran.rstudio.com/")'
+
 ## Install Neuroconductor Packages
 RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("gifti")'
 RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.base")'
