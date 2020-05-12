@@ -1,54 +1,20 @@
-FROM ubuntu:xenial
+ARG BASE_IMAGE=rstudio/r-base
+FROM ${BASE_IMAGE}:xenial
 
 LABEL org.label-schema.license="GPL-2.0" \
       org.label-schema.vcs-url="https://github.com/adigherman/docker/tree/master/neuro-base-rocker-xenial" \
       org.label-schema.vendor="Neuroconductor Rocker Xenial Base Image" \
       maintainer="Adi Gherman <adig@jhu.edu>"
-      
-## Set a default user. Available via runtime flag `--user docker` 
-## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
-## User should also have & own a home directory (for rstudio or linked volumes to work properly). 
-RUN useradd docker \
-	&& mkdir /home/docker \
-	&& chown docker:docker /home/docker \
-	&& addgroup docker staff
 
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-		software-properties-common \
-                ed \
-		less \
-		locales \
-		vim-tiny \
-		wget \
-		ca-certificates \
-        && add-apt-repository --enable-source --yes "ppa:marutter/rrutter3.5" \
-	&& add-apt-repository --enable-source --yes "ppa:marutter/c2d4u3.5" 
+ARG R_VERSION=4.0.0
+ARG OS_IDENTIFIER=ubuntu-1604
 
-## Configure default locale, see https://github.com/rocker-org/rocker/issues/19
-RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
-	&& locale-gen en_US.utf8 \
-	&& /usr/sbin/update-locale LANG=en_US.UTF-8
-
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-
-ENV R_BASE_VERSION 4.0.0
-
-# Now install R and littler, and create a link for littler in /usr/local/bin
-# Default CRAN repo is now set by R itself, and littler knows about it too
-# r-cran-docopt is not currently in c2d4u so we install from source
-RUN apt-get update \
-	&& apt-get install -t experimental -y --no-install-recommends \
-		littler \
-    r-cran-littler \
-		r-base=${R_BASE_VERSION}-* \
-		r-base-dev=${R_BASE_VERSION}-* \
-		r-recommended=${R_BASE_VERSION}-* \
-	&& ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r \
-	&& ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
-	&& ln -s /usr/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
-	&& ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r \
-	&& install.r docopt \
-	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
-	&& rm -rf /var/lib/apt/lists/*
+# Install R
+RUN wget https://cdn.rstudio.com/r/${OS_IDENTIFIER}/pkgs/r-${R_VERSION}_1_amd64.deb && \
+    apt-get update -qq && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -f -y ./r-${R_VERSION}_1_amd64.deb && \
+    ln -s /opt/R/${R_VERSION}/bin/R /usr/bin/R && \
+    ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/bin/Rscript && \
+    ln -s /opt/R/${R_VERSION}/lib/R /usr/lib/R && \
+    rm r-${R_VERSION}_1_amd64.deb && \
+    rm -rf /var/lib/apt/lists/*
