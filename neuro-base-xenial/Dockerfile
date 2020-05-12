@@ -1,5 +1,10 @@
 FROM ubuntu:xenial
 
+LABEL org.label-schema.license="GPL-2.0" \
+      org.label-schema.vcs-url="https://github.com/adigherman/docker/tree/master/neuro-base-xenial" \
+      org.label-schema.vendor="Neuroconductor Xenial Base Image" \
+      maintainer="Adi Gherman <adig@jhu.edu>"
+
 # https://bugs.debian.org/830696 (apt uses gpgv by default in newer releases, rather than gpg)
 RUN set -x \
 	&& apt-get update \
@@ -88,6 +93,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-dev \
     python3-setuptools \
     unzip \
+    libcurl4-gnutls-dev \
+    python-pip \
+    python-virtualenv \
 && rm -rf /var/lib/apt/lists/*
 
 # xenial installs cmake 3.5.1. We need a newer version (3.17).
