@@ -5,7 +5,7 @@ LABEL org.label-schema.license="GPL-2.0" \
       org.label-schema.vendor="Neuroconductor Xenial Base Image" \
       maintainer="Adi Gherman <adig@jhu.edu>"
 
-# https://bugs.debian.org/830696 (apt uses gpgv by default in newer releases, rather than gpg)
+# https://bugs.debian.org/830696 (apt uses gpgv by default in newer releases, rather than gpg) 
 RUN set -x \
 	&& apt-get update \
 	&& { \
