@@ -3,112 +3,120 @@ FROM adigherman/neuro-base-xenial
 ## Set default CRAN repo
 RUN echo 'options(repos = c(CRAN = "https://cran.rstudio.com/"), download.file.method = "libcurl")' >> /usr/local/lib/R/etc/Rprofile.site
 
+ENV RGL_USE_NULL=TRUE
 
-## Install more useful stuff
-RUN R -e 'install.packages("devtools", repos="http://cran.rstudio.com/")'
-RUN R -e 'install.packages("rmarkdown", repos="http://cran.rstudio.com/")'
-RUN R -e 'install.packages("tidyverse", repos="http://cran.rstudio.com/")'
+## here's some commands to install R packages, I would add at least these
+RUN R -e 'install.packages("devtools", repos="http://cran.rstudio.com/")' \
+  && R -e 'install.packages("rmarkdown", repos="http://cran.rstudio.com/")' \
+  && R -e 'install.packages("tidyverse", repos="http://cran.rstudio.com/")'
+
+## Install limma
+RUN R -e 'BiocManager::install("limma")'
+
+## Install alleviateR for rtapas
+RUN R -e 'remotes::install_github("avalcarcel9/aliviateR")'
 
 ## Install Neuroconductor Packages
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("gifti")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.base")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("waveslim")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ROpenCVLite")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RNifti")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.mricloud")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("nitrcbot")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcm2niir")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("DensParcorr")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcmtk")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("cfma")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("I2C2")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggseg")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.mt")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("fmriqa")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("divest")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.nifti")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("stapler")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("Rvision")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.asl")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.det2")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.t1")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.t2")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.flair")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.fmri")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.vaso")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.dti")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.smri")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("Rxnat")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ITKR")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("MriCloudR")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("MRIcloudT1volumetrics")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("malf.templates")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurohcp")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsRCore")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsR")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RNiftyReg")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("fmri")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("msmri")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("EveTemplate")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("MNITemplate")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("sublime")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("brainR ")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.dicom")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("WhiteStripe")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("cifti")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("voxel")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.asl")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggBrain")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurovault")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("sri24")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("gganatogram")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("spant")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurobase")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcemriS4")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("cap")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("flexconn")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("papayar")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("itksnapr")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("rcamino")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggneuro")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("papayaWidget")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("afnir")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.pet")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dti")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurocInstall")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("spm12r")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("brainKCCA")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("freesurfer")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("fslr")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RAVEL")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oasis")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcmsort")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("pain21")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("robex")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("extrantsr")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ichseg")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("lungct")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("smri.process")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("bftools")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("penn115")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("LINDA")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("LESYMAP")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mni")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("eegUtils")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("nsrr")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("pbj")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("aal")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("radtools")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RAVELData")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("medals")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggsegExtra")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("rtapas")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mimosa")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurocStats")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RIA")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("alvin")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("aws")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("NiftiArray")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("qMRI")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mmand")'
-RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("clever")'
+RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("gifti")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.base")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("waveslim")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ROpenCVLite")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RNifti")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.mricloud")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("nitrcbot")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcm2niir")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("DensParcorr")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcmtk")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("cfma")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("I2C2")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggseg")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.mt")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("fmriqa")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("divest")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.nifti")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("stapler")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("Rvision")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.asl")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.det2")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.t1")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.t2")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.flair")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.fmri")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.vaso")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.dti")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("kirby21.smri")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("Rxnat")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ITKR")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("MriCloudR")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("MRIcloudT1volumetrics")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("malf.templates")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurohcp")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsRCore")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ANTsR")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RNiftyReg")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("fmri")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("msmri")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("EveTemplate")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("MNITemplate")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("sublime")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("brainR ")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.dicom")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("WhiteStripe")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("cifti")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("voxel")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.asl")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggBrain")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurovault")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("sri24")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("gganatogram")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("spant")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurobase")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcemriS4")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("cap")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("flexconn")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("papayar")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("itksnapr")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("rcamino")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggneuro")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("papayaWidget")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("afnir")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oro.pet")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dti")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurocInstall")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("spm12r")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("brainKCCA")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("freesurfer")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("fslr")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RAVEL")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("oasis")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("dcmsort")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("pain21")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("robex")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("extrantsr")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ichseg")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("lungct")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("smri.process")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("bftools")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("penn115")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("LINDA")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("LESYMAP")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mni")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("eegUtils")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("nsrr")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("pbj")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("aal")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("radtools")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RAVELData")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("medals")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("ggsegExtra")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("rtapas")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mimosa")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("neurocStats")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("RIA")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("alvin")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("aws")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("NiftiArray")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("qMRI")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mmand")' \
+  && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("clever")'
+
