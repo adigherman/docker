@@ -11,7 +11,7 @@ RUN R -e 'install.packages("devtools", repos="http://cran.rstudio.com/")' \
   && R -e 'install.packages("tidyverse", repos="http://cran.rstudio.com/")'
 
 ## Install limma
-RUN R -e 'BiocManager::install("limma")'
+RUN R -e 'install.packages("BiocManager"); BiocManager::install("limma")'
 
 ## Install alleviateR for rtapas
 RUN R -e 'remotes::install_github("avalcarcel9/aliviateR")'
@@ -119,4 +119,3 @@ RUN R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("gift
   && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("qMRI")' \
   && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("mmand")' \
   && R -e 'source("https://neuroconductor.org/neurocLite.R"); neuro_install("clever")'
-
