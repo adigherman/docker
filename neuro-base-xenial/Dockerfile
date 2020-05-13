@@ -96,6 +96,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcurl4-gnutls-dev \
     python-pip \
     python-virtualenv \
+    libgsl-dev \
+    libcgal-dev \
+    libglu1-mesa-dev \
+    libglu1-mesa-dev \
+    libtiff5-dev \
 && rm -rf /var/lib/apt/lists/*
 
 # xenial installs cmake 3.5.1. We need a newer version (3.17).
