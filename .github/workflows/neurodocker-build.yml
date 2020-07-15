@@ -6,13 +6,7 @@ jobs:
   github:
     runs-on: ubuntu-16.04    
     steps:
-      - uses: actions/checkout@v1
-
-      - name: Login to github registry
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - uses: actions/checkout@v2
       
       - name: Setup Python 3
         uses: actions/setup-python@v2
@@ -22,6 +16,12 @@ jobs:
       - run: |
           ls -l
           python my_script.py
+
+      - name: Login to github registry
+        uses: actions-hub/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       
       - name: Install neurodocker
         if: success()
