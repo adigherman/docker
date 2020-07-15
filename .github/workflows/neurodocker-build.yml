@@ -23,7 +23,7 @@ jobs:
       - name: Install neurodocker
         if: success()
         run: |
-          python -m pip install neurodocker
+          python3 -m pip install neurodocker
           neurodocker --help
         shell: bash
         
