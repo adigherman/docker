@@ -24,7 +24,7 @@ jobs:
         if: success()
         run: |
           python -m pip install neurodocker
-          df -h
+          ls -l 
+          pwd
         shell: bash
         
-      
