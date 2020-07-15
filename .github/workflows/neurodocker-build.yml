@@ -13,7 +13,14 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-
+      
+      - name: Install neurodocker
+        if: success()
+        run: |
+          pip install neurodocker
+          neurodocker --help
+        shell: bash
+        
       - name: Build xenial image
         if: success()
         run: docker run --rm repronim/neurodocker:0.7.0 generate docker \
