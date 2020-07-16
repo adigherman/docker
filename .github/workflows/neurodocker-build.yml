@@ -4,7 +4,8 @@ on: [push]
 
 jobs:
   github:
-    runs-on: ubuntu-16.04    
+    runs-on: ubuntu-16.04   1
+    if: "contains(github.event.head_commit.message, 'neurodocker')"
     steps:
       - uses: actions/checkout@v2
       
@@ -26,20 +27,11 @@ jobs:
           python -m pip install neurodocker
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          df -h
         shell: bash
-        
-#      - name: Build xenial image
-#        if: success()
-#        run: |
-#          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
-#          docker build -t adigherman/neurodocker:xenial - < docker_custom
 
       - name: Build xenial image
         if: success()
         run: |
-          cd /
-          pwd
           docker run --rm repronim/neurodocker:0.7.0 generate docker \
           --pkg-manager apt \
           --base ubuntu:xenial \
