@@ -20,18 +20,18 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       
-#      - name: Install neurodocker
-#        if: success()
-#        run: |
-#          python -m pip install neurodocker
-#          df -h
-#        shell: bash
-        
-      - name: Build xenial image
+      - name: Install neurodocker
         if: success()
         run: |
-          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
-          docker build -t adigherman/neurodocker:xenial - < docker_custom
+#          python -m pip install neurodocker
+          df -h
+        shell: bash
+        
+#      - name: Build xenial image
+#        if: success()
+#        run: |
+#          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
+#          docker build -t adigherman/neurodocker:xenial - < docker_custom
 
         
 #      - name: Push to docker hub
