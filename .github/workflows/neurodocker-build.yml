@@ -20,12 +20,12 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       
-      - name: Install neurodocker
-        if: success()
-        run: |
-          python -m pip install neurodocker
-          df -h
-        shell: bash
+#      - name: Install neurodocker
+#        if: success()
+#        run: |
+#          python -m pip install neurodocker
+#          df -h
+#        shell: bash
         
       - name: Build xenial image
         if: success()
