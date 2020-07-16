@@ -25,7 +25,7 @@ jobs:
         run: |
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          python -m pip install neurodocker
+          python3 -m pip install neurodocker
           df -h
         shell: bash
         
