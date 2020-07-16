@@ -35,9 +35,9 @@ jobs:
           docker run --rm repronim/neurodocker:0.7.0 generate docker \
           --pkg-manager apt \
           --base ubuntu:xenial \
-          --ants version=2.3.1 \
-          --fsl version=6.0.3 \
-          --afni version=latest \
+          --ants version=2.3.1 method=binaries\
+          --fsl version=6.0.3 method=binaries \
+          --afni version=latest method=binaries \
           | docker build -t adigherman/neurodocker:xenial -
         
       - name: Push to docker hub
