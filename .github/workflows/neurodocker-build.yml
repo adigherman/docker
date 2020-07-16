@@ -28,12 +28,20 @@ jobs:
           df -h
         shell: bash
         
+#      - name: Build xenial image
+#        if: success()
+#        run: |
+#          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
+#          docker build -t adigherman/neurodocker:xenial - < docker_custom
       - name: Build xenial image
         if: success()
-        run: |
-          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
-          docker build -t adigherman/neurodocker:xenial - < docker_custom
-
+        run: docker run --rm repronim/neurodocker:0.7.0 generate docker \
+              --pkg-manager apt \
+              --base ubuntu:xenial \
+              --fsl version=6.0.3 \
+              --ants version=2.3.1 \
+              --afni version=latest \
+              | docker build -t adigherman/neurodocker:xenial -
         
       - name: Push to docker hub
         if: success()
