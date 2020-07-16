@@ -32,6 +32,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
           docker build -t adigherman/neurodocker:xenial - < docker_custom
+
         
 #      - name: Push to docker hub
 #        if: success()
