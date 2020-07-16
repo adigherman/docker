@@ -121,9 +121,9 @@ RUN apt-get update -qq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo "Downloading FSL ..." \
-    | wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -O fslinstaller.py \
-    | python fslinstaller.py \
-    | ls -l
+    && wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -O fslinstaller.py \
+    && python fslinstaller.py \
+    && ls -l
 
 RUN echo '{ \
     \n  "pkg_manager": "apt", \
