@@ -29,7 +29,9 @@ jobs:
         
       - name: Build xenial image
         if: success()
-        run: docker build https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -t adigherman/neurodocker:xenial -
+        run: |
+          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom
+          docker build -t adigherman/neurodocker:xenial - < docker_custom
         
       - name: Push to docker hub
         if: success()
