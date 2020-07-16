@@ -83,8 +83,8 @@ wget \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
 && echo "Downloading FSL ..." \
-&& wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py \
-&& python fslinstaller.py
+| wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py \
+| python fslinstaller.py
 
 ENV AFNI_PLUGINPATH="/opt/afni-latest" \
 PATH="/opt/afni-latest:$PATH"
