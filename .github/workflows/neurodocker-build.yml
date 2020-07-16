@@ -25,6 +25,7 @@ jobs:
         run: |
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          python -m pip install neurodocker
           df -h
         shell: bash
         
@@ -35,13 +36,16 @@ jobs:
 #          docker build -t adigherman/neurodocker:xenial - < docker_custom
       - name: Build xenial image
         if: success()
-        run: docker run --rm repronim/neurodocker:0.7.0 generate docker \
-              --pkg-manager apt \
-              --base ubuntu:xenial \
-              --fsl version=6.0.3 \
-              --ants version=2.3.1 \
-              --afni version=latest \
-              | docker build -t adigherman/neurodocker:xenial -
+        run: |
+          cd /
+          pwd
+          docker run --rm repronim/neurodocker:0.7.0 generate docker \
+          --pkg-manager apt \
+          --base ubuntu:xenial \
+          --ants version=2.3.1 method=binaries \
+          --fsl version=6.0.3 method=binaries \
+          --afni version=latest method=binaries \
+          | docker build -t adigherman/neurodocker:xenial -
         
       - name: Push to docker hub
         if: success()
