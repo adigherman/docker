@@ -1,0 +1,34 @@
+name: Build Neuroconductor xenial base image from adigherman/neurodocker:xenial
+
+on: [push]
+
+jobs:
+  github:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to github registry
+        uses: actions-hub/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+      - name: Install neurodocker
+        if: success()
+        run: |
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        shell: bash
+
+      - name: Build neuroconductor xenial image
+        if: success()
+        run: |
+          wget https://raw.githubusercontent.com/adigherman/docker/master/neuro-base-xenial/Dockerfile -O Dockerfile 
+          docker build -t adigherman/neuro-base-xenial:latest - < Dockerfile
+        
+      - name: Push to docker hub
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: push adigherman/neuro-base-xenial:latest
