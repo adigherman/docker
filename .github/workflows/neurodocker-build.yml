@@ -23,9 +23,9 @@ jobs:
       - name: Install neurodocker
         if: success()
         run: |
+          python -m pip install neurodocker
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          python3 -m pip install neurodocker
           df -h
         shell: bash
         
@@ -34,6 +34,7 @@ jobs:
 #        run: |
 #          wget https://raw.githubusercontent.com/adigherman/docker/master/docker_custom -O docker_custom 
 #          docker build -t adigherman/neurodocker:xenial - < docker_custom
+
       - name: Build xenial image
         if: success()
         run: |
