@@ -120,8 +120,8 @@ RUN apt-get update -qq \
            wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && echo "Downloading FSL ..." 
-    | wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -O fslinstaller.py 
+    && echo "Downloading FSL ..." \
+    | wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -O fslinstaller.py \
     | python3 fslinstaller.py
 
 RUN echo '{ \
