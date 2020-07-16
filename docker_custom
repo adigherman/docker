@@ -122,7 +122,7 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/apt/lists/* \
     && echo "Downloading FSL ..." \
     && wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -O fslinstaller.py \
-    && python fslinstaller.py --quiet --dest=/usr/local -E \
+    && python fslinstaller.py --quiet --dest=/usr/local/fsl -E \
     && ls -l
 
 RUN echo '{ \
