@@ -1,6 +1,2969 @@
+Last login: Tue Jul 14 09:46:17 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Adis-Office-iMac:docker adi$ docker image
+
+Usage:	docker image COMMAND
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run 'docker image COMMAND --help' for more information on a command.
+Adis-Office-iMac:docker adi$ docker images
+REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
+terf/neuro-base-xenial                     latest              e19937f49ede        10 days ago         22.7GB
+terf/neurodocker                           xenial              99f0507764b8        10 days ago         20.3GB
+adigherman/neuroconductor-release-latest   latest              5287e273ddfb        7 weeks ago         8.48GB
+neuroconductor-release-latest              latest              5287e273ddfb        7 weeks ago         8.48GB
+adigherman/neuroconductor-release-latest   <none>              c3c0e6c65e3d        2 months ago        8.25GB
+<none>                                     <none>              2108ab6086ac        2 months ago        5.23GB
+adigherman/neuro-base-xenial               latest              e0e39b779f0e        2 months ago        4.93GB
+adigherman/neuro-base-rocker-xenial        latest              372d8b569d06        2 months ago        964MB
+<none>                                     <none>              deee2dfdb94d        2 months ago        7.5GB
+adigherman/neuro-base-rocker-xenial        <none>              cb303ec8557a        2 months ago        629MB
+adigherman/neuroconductor-release-latest   <none>              ce3578f7022e        2 months ago        7.48GB
+adigherman/neuro-base-xenial               <none>              47d7a9d6c250        2 months ago        4.41GB
+Adis-Office-iMac:docker adi$ history | grep run
+  219  docker run travisci/ci-opal
+  220  docker run ci-opal
+  221  docker run travisci/ci-opal
+  222  docker run --help
+  223  docker run travisci/ci-opal
+  227  docker run travisci/ci-opal
+  228  docker run travisci/ci-opal:packer-1576243490-60d50014
+  265  docker run adigherman/neuroc-docker
+  267  docker run adigherman/neuroc-docker:neuroc-stable
+  268  docker run -it adigherman/neuroc-docker:neuroc-stable /bin/bash
+  270  docker run -it adigherman/neuroc-docker:neuroc-stable /bin/bash
+  272  docker run -it adigherman/neuro-base-xenial /bin/bash
+  274  docker run -it adigherman/neuro-base-xenial /bin/bash
+  276  docker run -it adigherman/neuro-base-xenial /bin/bash
+  278  docker run -it adigherman/neuro-base-xenial /bin/bash
+  280  docker run -it adigherman/neuro-base-xenial /bin/bash
+  282  docker run -it adigherman/neuro-base-xenial /bin/bash
+  284  docker run -it adigherman/neuro-base-xenial /bin/bash
+  286  docker run -it adigherman/neuro-base-xenial /bin/bash
+  288  docker run -it adigherman/neuroconductor-release /bin/bash
+  290  docker run -it adigherman/neuroconductor-release /bin/bash
+  291  docker run -it adigherman/neuroconductor-release /bin/bash
+  309  docker system prune
+  328  docker run -it neuroconductor-release-latest /bin/bash
+  343  docker run -it adigherman/neuroconductor-release-latest /bin/bash
+  346  docker run -it adigherman/neuroconductor-release-latest /bin/bash
+  348  docker run -it adigherman/neuroconductor-release-latest /bin/bash
+  350  docker run -it adigherman/neuroconductor-release-latest /bin/bash
+  380  docker run -it adigherman/neuroconductor-release-latest /bin/bash
+  499  docker run -it adigherman/neuroconductor-release-latest /bin/bash
+  502  history | grep run
+Adis-Office-iMac:docker adi$ docker run -it adigherman/neuro-base-xenial /bin/bash
+root@10d8f9956c6a:/# cd /opt/
+root@10d8f9956c6a:/opt# ls -l 
+total 0
+root@10d8f9956c6a:/opt# locate fsl
+bash: locate: command not found
+root@10d8f9956c6a:/opt# ls -l /usr/
+total 40
+drwxr-xr-x 1 root root 4096 May 13 15:17 bin
+drwxr-xr-x 3 root root 4096 Mar 20 10:39 doc
+drwxr-xr-x 2 root root 4096 Apr 12  2016 games
+drwxr-xr-x 1 root root 4096 May 13 15:17 include
+drwxr-xr-x 1 root root 4096 May 13 14:14 lib
+drwxr-xr-x 1 root root 4096 May 13 14:16 local
+drwxr-xr-x 4 root root 4096 Mar 20 10:39 man
+drwxr-xr-x 1 root root 4096 May 13 14:14 sbin
+drwxr-xr-x 1 root root 4096 May 13 15:17 share
+drwxr-xr-x 2 root root 4096 Apr 12  2016 src
+root@10d8f9956c6a:/opt# ls -l /usr/lib/
+total 96184
+drwxr-xr-x 2 root root     4096 Jun 21  2018 X11
+drwxr-xr-x 6 root root     4096 May 13 14:14 afni
+drwxr-xr-x 1 root root     4096 Mar 26 18:06 apt
+drwxr-xr-x 2 root root     4096 Apr 12  2016 binfmt.d
+drwxr-xr-x 2 root root     4096 May 13 14:10 blt2.5
+drwxr-xr-x 2 root root     4096 May 13 13:37 compat-ld
+drwxr-xr-x 1 root root     4096 May 13 13:37 dpkg
+drwxr-xr-x 3 root root     4096 May 13 13:36 emacsen-common
+drwxr-xr-x 3 root root     4096 May 13 14:10 fsl
+drwxr-xr-x 1 root root     4096 Apr 15  2016 gcc
+drwxr-xr-x 1 root root     4096 May 13 13:44 git-core
+drwxr-xr-x 2 root root     4096 Mar 26 18:06 gnupg
+drwxr-xr-x 2 root root     4096 May 13 13:37 gold-ld
+drwxr-xr-x 2 root root     4096 Mar 26 18:05 insserv
+drwxr-xr-x 2 root root     4096 May 13 13:37 lapack
+drwxr-xr-x 2 root root     4096 May 13 13:37 ldscripts
+-rw-r--r-- 1 root root  1472808 Nov 25  2015 libBLT.2.5.so.8.6
+-rw-r--r-- 1 root root   316248 Nov 25  2015 libBLTlite.2.5.so.8.6
+lrwxrwxrwx 1 root root       18 Apr  5  2016 libCosmo.so.5.10 -> libCosmo.so.5.10.1
+-rw-r--r-- 1 root root   196464 Apr  5  2016 libCosmo.so.5.10.1
+lrwxrwxrwx 1 root root       19 Apr  5  2016 libLSDyna.so.5.10 -> libLSDyna.so.5.10.1
+-rw-r--r-- 1 root root    55896 Apr  5  2016 libLSDyna.so.5.10.1
+lrwxrwxrwx 1 root root       17 Apr  5  2016 libQVTK.so.5.10 -> libQVTK.so.5.10.1
+-rw-r--r-- 1 root root   477960 Apr  5  2016 libQVTK.so.5.10.1
+lrwxrwxrwx 1 root root       17 Apr  5  2016 libVPIC.so.5.10 -> libVPIC.so.5.10.1
+-rw-r--r-- 1 root root   176072 Apr  5  2016 libVPIC.so.5.10.1
+lrwxrwxrwx 1 root root       23 Feb 16  2016 libarmadillo.so.6 -> libarmadillo.so.6.500.5
+-rw-r--r-- 1 root root    31952 Feb 16  2016 libarmadillo.so.6.500.5
+lrwxrwxrwx 1 root root       18 Feb  6  2016 libarpack.so.2 -> libarpack.so.2.0.0
+-rw-r--r-- 1 root root   306576 Feb  6  2016 libarpack.so.2.0.0
+drwxr-xr-x 2 root root     4096 May 13 13:36 libblas
+lrwxrwxrwx 1 root root       30 May 13 13:41 libblas.so.3 -> /etc/alternatives/libblas.so.3
+-rw-r--r-- 1 root root  1113164 May  6  2015 libdfalt.a
+-rw-r--r-- 1 root root      918 May  6  2015 libdfalt.la
+lrwxrwxrwx 1 root root       17 May  6  2015 libdfalt.so -> libdfalt.so.0.0.0
+lrwxrwxrwx 1 root root       17 May  6  2015 libdfalt.so.0 -> libdfalt.so.0.0.0
+-rw-r--r-- 1 root root   512928 May  6  2015 libdfalt.so.0.0.0
+-rw-r--r-- 1 root root 28170718 Apr  5  2016 libgdal.a
+lrwxrwxrwx 1 root root       17 Apr  5  2016 libgdal.so -> libgdal.so.1.18.3
+lrwxrwxrwx 1 root root       17 Apr  5  2016 libgdal.so.1 -> libgdal.so.1.18.3
+-rw-r--r-- 1 root root 12521680 Apr  5  2016 libgdal.so.1.18.3
+lrwxrwxrwx 1 root root       16 Jul 18  2015 libgdc.so.0 -> libgdc.so.0.11.5
+-rw-r--r-- 1 root root    84480 Jul 18  2015 libgdc.so.0.11.5
+lrwxrwxrwx 1 root root       19 Jan 25  2018 libgiftiio.so.0 -> libgiftiio.so.0.0.0
+-rw-r--r-- 1 root root   153632 Jan 25  2018 libgiftiio.so.0.0.0
+lrwxrwxrwx 1 root root       17 Jan 15  2015 libgl2ps.so.0 -> libgl2ps.so.0.0.0
+-rw-r--r-- 1 root root    76576 Jan 15  2015 libgl2ps.so.0.0.0
+lrwxrwxrwx 1 root root       19 Feb 15  2016 libibverbs.so.1 -> libibverbs.so.1.0.0
+-rw-r--r-- 1 root root    60272 Feb 15  2016 libibverbs.so.1.0.0
+lrwxrwxrwx 1 root root       32 May 13 13:41 liblapack.so.3 -> /etc/alternatives/liblapack.so.3
+lrwxrwxrwx 1 root root       25 Feb 25  2016 libmca_common_sm.so.4 -> libmca_common_sm.so.4.0.4
+lrwxrwxrwx 1 root root       37 Feb 25  2016 libmca_common_sm.so.4.0.4 -> openmpi/lib/libmca_common_sm.so.4.0.4
+lrwxrwxrwx 1 root root       28 Feb 25  2016 libmca_common_verbs.so.7 -> libmca_common_verbs.so.7.0.0
+lrwxrwxrwx 1 root root       40 Feb 25  2016 libmca_common_verbs.so.7.0.0 -> openmpi/lib/libmca_common_verbs.so.7.0.0
+-rw-r--r-- 1 root root   245500 May  6  2015 libmfhdfalt.a
+-rw-r--r-- 1 root root      939 May  6  2015 libmfhdfalt.la
+lrwxrwxrwx 1 root root       20 May  6  2015 libmfhdfalt.so -> libmfhdfalt.so.0.0.0
+lrwxrwxrwx 1 root root       20 May  6  2015 libmfhdfalt.so.0 -> libmfhdfalt.so.0.0.0
+-rw-r--r-- 1 root root   146672 May  6  2015 libmfhdfalt.so.0.0.0
+lrwxrwxrwx 1 root root       16 Feb 25  2016 libmpi.so.12 -> libmpi.so.12.0.2
+lrwxrwxrwx 1 root root       28 Feb 25  2016 libmpi.so.12.0.2 -> openmpi/lib/libmpi.so.12.0.2
+lrwxrwxrwx 1 root root       19 Feb 25  2016 libmpi_cxx.so.1 -> libmpi_cxx.so.1.1.3
+lrwxrwxrwx 1 root root       31 Feb 25  2016 libmpi_cxx.so.1.1.3 -> openmpi/lib/libmpi_cxx.so.1.1.3
+lrwxrwxrwx 1 root root       22 Feb 25  2016 libmpi_mpifh.so.12 -> libmpi_mpifh.so.12.0.0
+lrwxrwxrwx 1 root root       34 Feb 25  2016 libmpi_mpifh.so.12.0.0 -> openmpi/lib/libmpi_mpifh.so.12.0.0
+lrwxrwxrwx 1 root root       33 Feb 25  2016 libmpi_usempi_ignore_tkr.so.6 -> libmpi_usempi_ignore_tkr.so.6.1.0
+lrwxrwxrwx 1 root root       45 Feb 25  2016 libmpi_usempi_ignore_tkr.so.6.1.0 -> openmpi/lib/libmpi_usempi_ignore_tkr.so.6.1.0
+lrwxrwxrwx 1 root root       26 Feb 25  2016 libmpi_usempif08.so.11 -> libmpi_usempif08.so.11.1.0
+lrwxrwxrwx 1 root root       38 Feb 25  2016 libmpi_usempif08.so.11.1.0 -> openmpi/lib/libmpi_usempif08.so.11.1.0
+lrwxrwxrwx 1 root root       17 Jan 30  2016 libnetpbm.so.10 -> libnetpbm.so.10.0
+-rw-r--r-- 1 root root   146360 Jan 30  2016 libnetpbm.so.10.0
+lrwxrwxrwx 1 root root       19 Nov  7  2009 libnewmat.so.10 -> libnewmat.so.10.0.0
+-rw-r--r-- 1 root root   354640 Nov  7  2009 libnewmat.so.10.0.0
+lrwxrwxrwx 1 root root       20 Oct 25  2014 libnifticdf.so.2 -> libnifticdf.so.2.0.0
+-rw-r--r-- 1 root root   110064 Oct 25  2014 libnifticdf.so.2.0.0
+lrwxrwxrwx 1 root root       19 Oct 25  2014 libniftiio.so.2 -> libniftiio.so.2.0.0
+-rw-r--r-- 1 root root   137592 Oct 25  2014 libniftiio.so.2.0.0
+lrwxrwxrwx 1 root root       14 Jun  1  2015 libogdi.so.3 -> libogdi.so.3.2
+-rw-r--r-- 1 root root   135320 Jun  1  2015 libogdi.so.3.2
+lrwxrwxrwx 1 root root       21 Feb 25  2016 libompitrace.so.0 -> libompitrace.so.0.0.0
+lrwxrwxrwx 1 root root       33 Feb 25  2016 libompitrace.so.0.0.0 -> openmpi/lib/libompitrace.so.0.0.0
+lrwxrwxrwx 1 root root       21 Feb 25  2016 libopen-pal.so.13 -> libopen-pal.so.13.0.2
+lrwxrwxrwx 1 root root       33 Feb 25  2016 libopen-pal.so.13.0.2 -> openmpi/lib/libopen-pal.so.13.0.2
+lrwxrwxrwx 1 root root       21 Feb 25  2016 libopen-rte.so.12 -> libopen-rte.so.12.0.2
+lrwxrwxrwx 1 root root       33 Feb 25  2016 libopen-rte.so.12.0.2 -> openmpi/lib/libopen-rte.so.12.0.2
+lrwxrwxrwx 1 root root       19 May 23  2013 libqwt-qt4.so.5 -> libqwt-qt4.so.5.2.3
+lrwxrwxrwx 1 root root       19 May 23  2013 libqwt-qt4.so.5.2 -> libqwt-qt4.so.5.2.3
+-rw-r--r-- 1 root root   811504 May 23  2013 libqwt-qt4.so.5.2.3
+lrwxrwxrwx 1 root root       14 Oct 24  2015 libsvm.so.3 -> libsvm.so.3.12
+-rw-r--r-- 1 root root    76360 Oct 24  2015 libsvm.so.3.12
+lrwxrwxrwx 1 root root       13 Jun  1  2015 libvpf.so.3 -> libvpf.so.3.2
+-rw-r--r-- 1 root root   179992 Jun  1  2015 libvpf.so.3.2
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkCharts.so.5.10 -> libvtkCharts.so.5.10.1
+-rw-r--r-- 1 root root  1069328 Apr  5  2016 libvtkCharts.so.5.10.1
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkCommon.so.5.10 -> libvtkCommon.so.5.10.1
+-rw-r--r-- 1 root root  3811400 Apr  5  2016 libvtkCommon.so.5.10.1
+lrwxrwxrwx 1 root root       27 Apr  5  2016 libvtkDICOMParser.so.5.10 -> libvtkDICOMParser.so.5.10.1
+-rw-r--r-- 1 root root   125984 Apr  5  2016 libvtkDICOMParser.so.5.10.1
+lrwxrwxrwx 1 root root       25 Apr  5  2016 libvtkFiltering.so.5.10 -> libvtkFiltering.so.5.10.1
+-rw-r--r-- 1 root root  4296360 Apr  5  2016 libvtkFiltering.so.5.10.1
+lrwxrwxrwx 1 root root       32 Apr  5  2016 libvtkGenericFiltering.so.5.10 -> libvtkGenericFiltering.so.5.10.1
+-rw-r--r-- 1 root root   179656 Apr  5  2016 libvtkGenericFiltering.so.5.10.1
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkGeovis.so.5.10 -> libvtkGeovis.so.5.10.1
+-rw-r--r-- 1 root root   439240 Apr  5  2016 libvtkGeovis.so.5.10.1
+lrwxrwxrwx 1 root root       24 Apr  5  2016 libvtkGraphics.so.5.10 -> libvtkGraphics.so.5.10.1
+-rw-r--r-- 1 root root  8083672 Apr  5  2016 libvtkGraphics.so.5.10.1
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkHybrid.so.5.10 -> libvtkHybrid.so.5.10.1
+-rw-r--r-- 1 root root  2607200 Apr  5  2016 libvtkHybrid.so.5.10.1
+lrwxrwxrwx 1 root root       18 Apr  5  2016 libvtkIO.so.5.10 -> libvtkIO.so.5.10.1
+-rw-r--r-- 1 root root  5739064 Apr  5  2016 libvtkIO.so.5.10.1
+lrwxrwxrwx 1 root root       23 Apr  5  2016 libvtkImaging.so.5.10 -> libvtkImaging.so.5.10.1
+-rw-r--r-- 1 root root  4519496 Apr  5  2016 libvtkImaging.so.5.10.1
+lrwxrwxrwx 1 root root       23 Apr  5  2016 libvtkInfovis.so.5.10 -> libvtkInfovis.so.5.10.1
+-rw-r--r-- 1 root root  2588408 Apr  5  2016 libvtkInfovis.so.5.10.1
+lrwxrwxrwx 1 root root       24 Apr  5  2016 libvtkParallel.so.5.10 -> libvtkParallel.so.5.10.1
+-rw-r--r-- 1 root root  2043848 Apr  5  2016 libvtkParallel.so.5.10.1
+lrwxrwxrwx 1 root root       23 Apr  5  2016 libvtkQtChart.so.5.10 -> libvtkQtChart.so.5.10.1
+-rw-r--r-- 1 root root   893792 Apr  5  2016 libvtkQtChart.so.5.10.1
+lrwxrwxrwx 1 root root       25 Apr  5  2016 libvtkRendering.so.5.10 -> libvtkRendering.so.5.10.1
+-rw-r--r-- 1 root root  4976856 Apr  5  2016 libvtkRendering.so.5.10.1
+lrwxrwxrwx 1 root root       21 Apr  5  2016 libvtkViews.so.5.10 -> libvtkViews.so.5.10.1
+-rw-r--r-- 1 root root   624232 Apr  5  2016 libvtkViews.so.5.10.1
+lrwxrwxrwx 1 root root       31 Apr  5  2016 libvtkVolumeRendering.so.5.10 -> libvtkVolumeRendering.so.5.10.1
+-rw-r--r-- 1 root root  4142760 Apr  5  2016 libvtkVolumeRendering.so.5.10.1
+lrwxrwxrwx 1 root root       23 Apr  5  2016 libvtkWidgets.so.5.10 -> libvtkWidgets.so.5.10.1
+-rw-r--r-- 1 root root  2073848 Apr  5  2016 libvtkWidgets.so.5.10.1
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkalglib.so.5.10 -> libvtkalglib.so.5.10.1
+-rw-r--r-- 1 root root   145696 Apr  5  2016 libvtkalglib.so.5.10.1
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkexoIIc.so.5.10 -> libvtkexoIIc.so.5.10.1
+-rw-r--r-- 1 root root   293584 Apr  5  2016 libvtkexoIIc.so.5.10.1
+lrwxrwxrwx 1 root root       20 Apr  5  2016 libvtkftgl.so.5.10 -> libvtkftgl.so.5.10.1
+-rw-r--r-- 1 root root    43544 Apr  5  2016 libvtkftgl.so.5.10.1
+lrwxrwxrwx 1 root root       22 Apr  5  2016 libvtkmetaio.so.5.10 -> libvtkmetaio.so.5.10.1
+-rw-r--r-- 1 root root   658528 Apr  5  2016 libvtkmetaio.so.5.10.1
+lrwxrwxrwx 1 root root       21 Apr  5  2016 libvtkproj4.so.5.10 -> libvtkproj4.so.5.10.1
+-rw-r--r-- 1 root root   312320 Apr  5  2016 libvtkproj4.so.5.10.1
+lrwxrwxrwx 1 root root       19 Apr  5  2016 libvtksys.so.5.10 -> libvtksys.so.5.10.1
+-rw-r--r-- 1 root root   257560 Apr  5  2016 libvtksys.so.5.10.1
+lrwxrwxrwx 1 root root       23 Apr  5  2016 libvtkverdict.so.5.10 -> libvtkverdict.so.5.10.1
+-rw-r--r-- 1 root root   206904 Apr  5  2016 libvtkverdict.so.5.10.1
+lrwxrwxrwx 1 root root       15 Oct 25  2014 libznz.so.2 -> libznz.so.2.0.0
+-rw-r--r-- 1 root root    14560 Oct 25  2014 libznz.so.2.0.0
+drwxr-xr-x 3 root root     4096 Apr 14  2016 locale
+drwxr-xr-x 1 root root     4096 May 13 13:34 mime
+drwxr-xr-x 2 root root     4096 Apr 12  2016 modules-load.d
+drwxr-xr-x 2 root root     4096 Apr  5  2016 odbc
+drwxr-xr-x 2 root root     4096 May 13 13:38 ogdi
+drwxr-xr-x 3 root root     4096 May 13 14:13 openmpi
+-rw-r--r-- 1 root root      298 Sep 30  2019 os-release
+-rw-r--r-- 1 root root       17 Apr  6  2016 pkg-config.multiarch
+drwxr-xr-x 2 root root     4096 May 13 13:40 pkgconfig
+drwxr-xr-x 2 root root     4096 May 13 14:14 python-tz
+drwxr-xr-x 1 root root     4096 May 13 14:13 python2.7
+drwxr-xr-x 1 root root     4096 Nov 10  2015 python3
+drwxr-xr-x 1 root root     4096 May 13 13:36 python3.5
+drwxr-xr-x 2 root root     4096 Jan 28 11:32 sasl2
+drwxr-xr-x 2 root root     4096 May 13 13:44 software-properties
+drwxr-xr-x 3 root root     4096 May 13 13:34 ssl
+drwxr-xr-x 1 root root     4096 May 13 13:44 systemd
+drwxr-xr-x 2 root root     4096 Nov 10  2015 tar
+drwxr-xr-x 2 root root     4096 May 13 13:38 tcl8.6
+drwxr-xr-x 3 root root     4096 May 13 13:38 tcltk
+drwxr-xr-x 2 root root     4096 May 13 13:38 texinfo
+drwxr-xr-x 2 root root     4096 May 13 13:40 tk8.6
+drwxr-xr-x 1 root root     4096 May 13 13:38 tmpfiles.d
+drwxr-xr-x 2 root root     4096 May 13 13:38 valgrind
+drwxr-xr-x 1 root root     4096 May 13 15:17 x86_64-linux-gnu
+drwxr-xr-x 2 root root     4096 May 13 13:40 xorg
+root@10d8f9956c6a:/opt# cd /usr/lib/
+root@10d8f9956c6a:/usr/lib# du -sh *
+4.0K	X11
+51M	afni
+636K	apt
+4.0K	binfmt.d
+208K	blt2.5
+4.0K	compat-ld
+48K	dpkg
+32K	emacsen-common
+32M	fsl
+104M	gcc
+25M	git-core
+276K	gnupg
+4.0K	gold-ld
+60K	insserv
+6.0M	lapack
+1.1M	ldscripts
+1.5M	libBLT.2.5.so.8.6
+312K	libBLTlite.2.5.so.8.6
+0	libCosmo.so.5.10
+192K	libCosmo.so.5.10.1
+0	libLSDyna.so.5.10
+56K	libLSDyna.so.5.10.1
+0	libQVTK.so.5.10
+468K	libQVTK.so.5.10.1
+0	libVPIC.so.5.10
+172K	libVPIC.so.5.10.1
+0	libarmadillo.so.6
+32K	libarmadillo.so.6.500.5
+0	libarpack.so.2
+300K	libarpack.so.2.0.0
+448K	libblas
+0	libblas.so.3
+1.1M	libdfalt.a
+4.0K	libdfalt.la
+0	libdfalt.so
+0	libdfalt.so.0
+504K	libdfalt.so.0.0.0
+27M	libgdal.a
+0	libgdal.so
+0	libgdal.so.1
+12M	libgdal.so.1.18.3
+0	libgdc.so.0
+84K	libgdc.so.0.11.5
+0	libgiftiio.so.0
+152K	libgiftiio.so.0.0.0
+0	libgl2ps.so.0
+76K	libgl2ps.so.0.0.0
+0	libibverbs.so.1
+60K	libibverbs.so.1.0.0
+0	liblapack.so.3
+0	libmca_common_sm.so.4
+0	libmca_common_sm.so.4.0.4
+0	libmca_common_verbs.so.7
+0	libmca_common_verbs.so.7.0.0
+240K	libmfhdfalt.a
+4.0K	libmfhdfalt.la
+0	libmfhdfalt.so
+0	libmfhdfalt.so.0
+144K	libmfhdfalt.so.0.0.0
+0	libmpi.so.12
+0	libmpi.so.12.0.2
+0	libmpi_cxx.so.1
+0	libmpi_cxx.so.1.1.3
+0	libmpi_mpifh.so.12
+0	libmpi_mpifh.so.12.0.0
+0	libmpi_usempi_ignore_tkr.so.6
+0	libmpi_usempi_ignore_tkr.so.6.1.0
+0	libmpi_usempif08.so.11
+0	libmpi_usempif08.so.11.1.0
+0	libnetpbm.so.10
+144K	libnetpbm.so.10.0
+0	libnewmat.so.10
+348K	libnewmat.so.10.0.0
+0	libnifticdf.so.2
+108K	libnifticdf.so.2.0.0
+0	libniftiio.so.2
+136K	libniftiio.so.2.0.0
+0	libogdi.so.3
+136K	libogdi.so.3.2
+0	libompitrace.so.0
+0	libompitrace.so.0.0.0
+0	libopen-pal.so.13
+0	libopen-pal.so.13.0.2
+0	libopen-rte.so.12
+0	libopen-rte.so.12.0.2
+0	libqwt-qt4.so.5
+0	libqwt-qt4.so.5.2
+796K	libqwt-qt4.so.5.2.3
+0	libsvm.so.3
+76K	libsvm.so.3.12
+0	libvpf.so.3
+176K	libvpf.so.3.2
+0	libvtkCharts.so.5.10
+1.1M	libvtkCharts.so.5.10.1
+0	libvtkCommon.so.5.10
+3.7M	libvtkCommon.so.5.10.1
+0	libvtkDICOMParser.so.5.10
+124K	libvtkDICOMParser.so.5.10.1
+0	libvtkFiltering.so.5.10
+4.1M	libvtkFiltering.so.5.10.1
+0	libvtkGenericFiltering.so.5.10
+176K	libvtkGenericFiltering.so.5.10.1
+0	libvtkGeovis.so.5.10
+432K	libvtkGeovis.so.5.10.1
+0	libvtkGraphics.so.5.10
+7.8M	libvtkGraphics.so.5.10.1
+0	libvtkHybrid.so.5.10
+2.5M	libvtkHybrid.so.5.10.1
+0	libvtkIO.so.5.10
+5.5M	libvtkIO.so.5.10.1
+0	libvtkImaging.so.5.10
+4.4M	libvtkImaging.so.5.10.1
+0	libvtkInfovis.so.5.10
+2.5M	libvtkInfovis.so.5.10.1
+0	libvtkParallel.so.5.10
+2.0M	libvtkParallel.so.5.10.1
+0	libvtkQtChart.so.5.10
+876K	libvtkQtChart.so.5.10.1
+0	libvtkRendering.so.5.10
+4.8M	libvtkRendering.so.5.10.1
+0	libvtkViews.so.5.10
+612K	libvtkViews.so.5.10.1
+0	libvtkVolumeRendering.so.5.10
+4.0M	libvtkVolumeRendering.so.5.10.1
+0	libvtkWidgets.so.5.10
+2.0M	libvtkWidgets.so.5.10.1
+0	libvtkalglib.so.5.10
+144K	libvtkalglib.so.5.10.1
+0	libvtkexoIIc.so.5.10
+288K	libvtkexoIIc.so.5.10.1
+0	libvtkftgl.so.5.10
+44K	libvtkftgl.so.5.10.1
+0	libvtkmetaio.so.5.10
+644K	libvtkmetaio.so.5.10.1
+0	libvtkproj4.so.5.10
+308K	libvtkproj4.so.5.10.1
+0	libvtksys.so.5.10
+252K	libvtksys.so.5.10.1
+0	libvtkverdict.so.5.10
+204K	libvtkverdict.so.5.10.1
+0	libznz.so.2
+16K	libznz.so.2.0.0
+1.7M	locale
+44K	mime
+4.0K	modules-load.d
+4.0K	odbc
+372K	ogdi
+6.4M	openmpi
+4.0K	os-release
+4.0K	pkg-config.multiarch
+8.0K	pkgconfig
+12K	python-tz
+256M	python2.7
+4.4M	python3
+75M	python3.5
+4.0K	sasl2
+8.0K	software-properties
+48K	ssl
+336K	systemd
+4.0K	tar
+12K	tcl8.6
+16K	tcltk
+196K	texinfo
+8.0K	tk8.6
+48K	tmpfiles.d
+24K	valgrind
+619M	x86_64-linux-gnu
+32K	xorg
+root@10d8f9956c6a:/usr/lib# cd fsl/
+root@10d8f9956c6a:/usr/lib/fsl# ls -l 
+total 12
+drwxr-xr-x 2 root root 12288 May 13 14:13 5.0
+root@10d8f9956c6a:/usr/lib/fsl# ls -l /usr/share/d
+ls: cannot access '/usr/share/d': No such file or directory
+root@10d8f9956c6a:/usr/lib/fsl# ls -l /usr/share/d
+ls: cannot access '/usr/share/d': No such file or directory
+root@10d8f9956c6a:/usr/lib/fsl# ls -l /usr/
+total 40
+drwxr-xr-x 1 root root 4096 May 13 15:17 bin
+drwxr-xr-x 3 root root 4096 Mar 20 10:39 doc
+drwxr-xr-x 2 root root 4096 Apr 12  2016 games
+drwxr-xr-x 1 root root 4096 May 13 15:17 include
+drwxr-xr-x 1 root root 4096 May 13 14:14 lib
+drwxr-xr-x 1 root root 4096 May 13 14:16 local
+drwxr-xr-x 4 root root 4096 Mar 20 10:39 man
+drwxr-xr-x 1 root root 4096 May 13 14:14 sbin
+drwxr-xr-x 1 root root 4096 May 13 15:17 share
+drwxr-xr-x 2 root root 4096 Apr 12  2016 src
+root@10d8f9956c6a:/usr/lib/fsl# ls -l /usr/share/
+total 460
+drwxr-xr-x  1 root root  4096 May 13 14:10 X11
+drwxr-xr-x  1 root root  4096 Mar 20 10:39 aclocal
+drwxr-xr-x  2 root root  4096 Mar 26 18:05 adduser
+drwxr-xr-x  7 root root  4096 May 13 14:14 afni
+drwxr-xr-x  7 root root  4096 May 13 14:10 alsa
+drwxr-xr-x  1 root root  4096 May 13 14:14 applications
+drwxr-xr-x  1 root root  4096 Apr 12  2016 apport
+drwxr-xr-x  3 root root  4096 May 13 13:37 apps
+drwxr-xr-x  2 root root  4096 May 13 13:37 avahi
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 base-files
+drwxr-xr-x  2 root root  4096 Mar 26 18:05 base-passwd
+drwxr-xr-x  1 root root  4096 Apr 13  2016 bash-completion
+drwxr-xr-x  2 root root  4096 May 13 13:36 binfmts
+drwxr-xr-x  1 root root  4096 May 13 14:14 bug
+drwxr-xr-x  3 root root  4096 May 13 13:34 ca-certificates
+drwxr-xr-x  9 root root  4096 Mar 20 10:39 cmake-3.17
+drwxr-xr-x  8 root root  4096 May 13 13:36 cmake-3.5
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 common-licenses
+drwxr-xr-x 13 root root  4096 May 13 14:10 data
+drwxr-xr-x  1 root root  4096 Apr 12  2016 dbus-1
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 debconf
+drwxr-xr-x  3 root root  4096 May 13 13:36 debhelper
+drwxr-xr-x  2 root root  4096 Mar 26 18:05 debianutils
+drwxr-xr-x  4 root root  4096 May 13 13:36 dh-python
+drwxr-xr-x  2 root root  4096 Apr 12  2016 dict
+drwxr-xr-x  2 root root  4096 May 13 13:44 distro-info
+drwxr-xr-x  1 root root 12288 May 13 14:14 doc
+drwxr-xr-x  1 root root  4096 May 13 14:14 doc-base
+drwxr-xr-x  1 root root  4096 May 13 13:37 dpkg
+drwxr-xr-x  1 root root  4096 May 13 13:36 emacs
+drwxr-xr-x  2 root root  4096 May 13 13:37 et
+drwxr-xr-x  2 root root  4096 May 13 14:10 ffmpeg
+drwxr-xr-x  3 root root  4096 May 13 13:34 file
+drwxr-xr-x  1 root root  4096 May 13 13:39 fonts
+drwxr-xr-x  6 root root  4096 May 13 13:37 fonts-font-awesome
+drwxr-xr-x  4 root root  4096 May 13 14:10 fsl
+drwxr-xr-x  3 root root  4096 Mar 26 18:06 gcc-5
+drwxr-xr-x  3 root root  4096 May 13 13:38 gdal
+drwxr-xr-x  3 root root  4096 Mar 26 18:06 gdb
+drwxr-xr-x  4 root root  4096 May 13 13:41 ghostscript
+drwxr-xr-x  1 root root  4096 May 13 13:37 git-core
+drwxr-xr-x  1 root root  4096 May 13 13:44 gitweb
+drwxr-xr-x  5 root root  4096 May 13 13:37 glib-2.0
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 gnupg
+drwxr-xr-x  4 root root  4096 May 13 13:37 i18n
+drwxr-xr-x  1 root root  4096 Mar 20 10:39 icons
+drwxr-xr-x  3 root root  4096 May 13 13:38 icu
+drwxr-xr-x  1 root root  4096 May 13 14:10 info
+drwxr-xr-x  3 root root  4096 May 13 14:10 initramfs-tools
+drwxr-xr-x  2 root root  4096 Mar 26 18:05 insserv
+drwxr-xr-x  5 root root  4096 May 13 14:13 javascript
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 keyrings
+drwxr-xr-x  2 root root  4096 May 13 14:10 libaudio2
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 libc-bin
+drwxr-xr-x  2 root root  4096 May 13 13:37 libdrm
+drwxr-xr-x  2 root root  4096 Oct  2  2015 libsensors4
+drwxr-xr-x  2 root root  4096 May 13 14:10 libthai
+drwxr-xr-x  4 root root  4096 May 13 13:38 libtool
+drwxr-xr-x  3 root root  4096 May 13 15:17 licenses
+drwxr-xr-x  1 root root  4096 Apr 13  2016 lintian
+drwxr-xr-x  1 root root  4096 May 13 14:10 locale
+drwxr-xr-x  2 root root  4096 May 13 13:37 locales
+drwxr-xr-x  1 root root  4096 Mar 26 18:06 man
+drwxr-xr-x  3 root root  4096 May 13 14:14 matlab
+drwxr-xr-x  6 root root  4096 May 13 14:14 matplotlib
+drwxr-xr-x  1 root root  4096 May 13 14:14 menu
+drwxr-xr-x  1 root root  4096 May 13 14:14 mime
+drwxr-xr-x  1 root root  4096 May 13 13:34 misc
+drwxr-xr-x  2 root root  4096 May 13 13:38 mysql-common
+drwxr-xr-x  2 root root  4096 May 13 14:14 netpbm
+drwxr-xr-x  2 root root  4096 May 13 14:14 numpy
+drwxr-xr-x  3 root root  4096 May 13 14:10 octave
+drwxr-xr-x  3 root root  4096 May 13 14:10 openal
+drwxr-xr-x  4 root root  4096 May 13 15:17 opencv4
+drwxr-xr-x  3 root root  4096 May 13 14:14 openmpi
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 pam
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 pam-configs
+drwxr-xr-x  3 root root  4096 May 13 13:36 perl
+drwxr-xr-x  1 root root  4096 May 13 13:44 perl5
+drwxr-xr-x  1 root root  4096 May 13 14:13 pixmaps
+-rwxr-xr-x  1 root root  2111 Apr  6  2016 pkg-config-crosswrapper
+-rwxr-xr-x  1 root root  1620 Apr  6  2016 pkg-config-dpkghook
+drwxr-xr-x  1 root root  4096 May 13 14:10 pkgconfig
+drwxr-xr-x  1 root root  4096 Apr 12  2016 polkit-1
+drwxr-xr-x  6 root root  4096 May 13 13:36 poppler
+drwxr-xr-x  2 root root  4096 May 13 13:38 popularity-contest
+drwxr-xr-x  2 root root  4096 May 13 13:38 proj
+drwxr-xr-x  1 root root  4096 May 13 14:14 pyshared
+drwxr-xr-x  1 root root  4096 May 13 14:14 python
+drwxr-xr-x  3 root root  4096 May 13 13:44 python-apt
+drwxr-xr-x  2 root root  4096 May 13 13:38 python-wheels
+drwxr-xr-x  5 root root  4096 May 13 13:36 python3
+drwxr-xr-x  3 root root  4096 May 13 14:13 qt4
+drwxr-xr-x  2 root root  4096 May 13 14:13 qtchooser
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 readline
+drwxr-xr-x  3 root root  4096 May 13 13:38 screen
+drwxr-xr-x  3 root root  4096 May 13 13:37 sgml
+drwxr-xr-x  2 root root  4096 Mar 26 18:06 systemd
+drwxr-xr-x  2 root root  4096 Mar 26 18:05 sysv-rc
+drwxr-xr-x  2 root root  4096 Mar 26 18:05 tabset
+drwxr-xr-x  4 root root  4096 May 13 13:38 tcltk
+drwxr-xr-x  2 root root  4096 Feb 19  2016 terminfo
+drwxr-xr-x  2 root root  4096 May 13 13:38 tex-common
+drwxr-xr-x  7 root root  4096 May 13 13:38 texinfo
+drwxr-xr-x  7 root root  4096 May 13 13:39 texlive
+drwxr-xr-x  4 root root  4096 May 13 13:38 texmf
+drwxr-xr-x  5 root root  4096 May 13 14:10 themes
+drwxr-xr-x  2 root root  4096 May 13 13:44 unattended-upgrades
+drwxr-xr-x  5 root root  4096 May 13 13:34 vim
+drwxr-xr-x  2 root root  4096 May 13 14:10 wslu
+drwxr-xr-x  1 root root  4096 May 13 14:10 xml
+drwxr-xr-x 21 root root  4096 May 13 13:37 zoneinfo
+drwxr-xr-x  1 root root  4096 Apr 12  2016 zsh
+root@10d8f9956c6a:/usr/lib/fsl# ls -l /usr/share/data/
+total 44
+drwxr-xr-x 3 root root 4096 May 13 14:10 bangor-cerebellar-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 forstmann-subthalamic-nucleus-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 fsl-mni152-templates
+drwxr-xr-x 6 root root 4096 May 13 14:10 fsl-resting-connectivity-parcellation-atlases
+drwxr-xr-x 3 root root 4096 May 13 14:14 harvard-oxford-atlases
+drwxr-xr-x 3 root root 4096 May 13 14:10 jhu-dti-whitematter-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 juelich-histological-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 mni-structural-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 oxford-striatal-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 oxford-thalamic-connectivity-atlas
+drwxr-xr-x 3 root root 4096 May 13 14:10 talairach-daemon-atlas
+root@10d8f9956c6a:/usr/lib/fsl# cd /usr/share/
+root@10d8f9956c6a:/usr/share# du -sh *
+5.6M	X11
+252K	aclocal
+8.0K	adduser
+119M	afni
+664K	alsa
+32K	applications
+28K	apport
+12K	apps
+12K	avahi
+48K	base-files
+12K	base-passwd
+516K	bash-completion
+12K	binfmts
+444K	bug
+608K	ca-certificates
+16M	cmake-3.17
+11M	cmake-3.5
+208K	common-licenses
+112M	data
+44K	dbus-1
+28K	debconf
+44K	debhelper
+8.0K	debianutils
+472K	dh-python
+4.0K	dict
+12K	distro-info
+70M	doc
+64K	doc-base
+40K	dpkg
+56K	emacs
+20K	et
+24K	ffmpeg
+3.8M	file
+82M	fonts
+324K	fonts-font-awesome
+1.2G	fsl
+104K	gcc-5
+2.4M	gdal
+24K	gdb
+7.6M	ghostscript
+140K	git-core
+324K	gitweb
+464K	glib-2.0
+16K	gnupg
+13M	i18n
+1.6M	icons
+48K	icu
+1020K	info
+12K	initramfs-tools
+40K	insserv
+3.0M	javascript
+24K	keyrings
+8.0K	libaudio2
+8.0K	libc-bin
+12K	libdrm
+4.0K	libsensors4
+560K	libthai
+852K	libtool
+112K	licenses
+676K	lintian
+33M	locale
+12K	locales
+17M	man
+12K	matlab
+5.5M	matplotlib
+48K	menu
+5.2M	mime
+4.0K	misc
+8.0K	mysql-common
+20K	netpbm
+8.0K	numpy
+12K	octave
+120K	openal
+9.7M	opencv4
+504K	openmpi
+44K	pam
+12K	pam-configs
+20M	perl
+2.8M	perl5
+68K	pixmaps
+4.0K	pkg-config-crosswrapper
+4.0K	pkg-config-dpkghook
+76K	pkgconfig
+264K	polkit-1
+12M	poppler
+20K	popularity-contest
+15M	proj
+44K	pyshared
+272K	python
+164K	python-apt
+1.2M	python-wheels
+148K	python3
+4.8M	qt4
+8.0K	qtchooser
+8.0K	readline
+324K	screen
+84K	sgml
+16K	systemd
+8.0K	sysv-rc
+20K	tabset
+3.6M	tcltk
+4.0K	terminfo
+8.0K	tex-common
+5.3M	texinfo
+803M	texlive
+448K	texmf
+40K	themes
+36K	unattended-upgrades
+30M	vim
+124K	wslu
+1.8M	xml
+3.4M	zoneinfo
+108K	zsh
+root@10d8f9956c6a:/usr/share# cd ..
+root@10d8f9956c6a:/usr# du -sh *
+173M	bin
+35M	doc
+4.0K	games
+217M	include
+1.3G	lib
+237M	local
+2.3M	man
+2.0M	sbin
+2.6G	share
+4.0K	src
+root@10d8f9956c6a:/usr# locate
+bash: locate: command not found
+root@10d8f9956c6a:/usr# apt-get install locate 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  locate
+0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.
+Need to get 51.1 kB of archives.
+After this operation, 177 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/universe amd64 locate amd64 4.6.0+git+20160126-2 [51.1 kB]
+Fetched 51.1 kB in 0s (159 kB/s) 
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76, <> line 1.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package locate.
+(Reading database ... 108133 files and directories currently installed.)
+Preparing to unpack .../locate_4.6.0+git+20160126-2_amd64.deb ...
+Unpacking locate (4.6.0+git+20160126-2) ...
+Setting up locate (4.6.0+git+20160126-2) ...
+root@10d8f9956c6a:/usr# updatedb
+root@10d8f9956c6a:/usr# locate fsl
+/etc/fsl
+/etc/fsl/5.0
+/etc/fsl/5.0/feat.tcl
+/etc/fsl/5.0/fsl.sh
+/etc/fsl/fsl.sh
+/usr/bin/fsl5.0-AnatomicalAverage
+/usr/bin/fsl5.0-ApplyXFM
+/usr/bin/fsl5.0-Asl
+/usr/bin/fsl5.0-Bet
+/usr/bin/fsl5.0-ConcatXFM
+/usr/bin/fsl5.0-Fast
+/usr/bin/fsl5.0-Fdt
+/usr/bin/fsl5.0-Feat
+/usr/bin/fsl5.0-Featquery
+/usr/bin/fsl5.0-Flirt
+/usr/bin/fsl5.0-Fsl_prepare_fieldmap
+/usr/bin/fsl5.0-Glm
+/usr/bin/fsl5.0-InvertXFM
+/usr/bin/fsl5.0-Make_flobs
+/usr/bin/fsl5.0-Melodic
+/usr/bin/fsl5.0-Nudge
+/usr/bin/fsl5.0-Pnm
+/usr/bin/fsl5.0-Possum
+/usr/bin/fsl5.0-Renderhighres
+/usr/bin/fsl5.0-Renderstats
+/usr/bin/fsl5.0-Susan
+/usr/bin/fsl5.0-Text2Vest
+/usr/bin/fsl5.0-Vest2Text
+/usr/bin/fsl5.0-aff2rigid
+/usr/bin/fsl5.0-applytopup
+/usr/bin/fsl5.0-applywarp
+/usr/bin/fsl5.0-applyxfm4D
+/usr/bin/fsl5.0-asl_calib
+/usr/bin/fsl5.0-asl_file
+/usr/bin/fsl5.0-asl_mfree
+/usr/bin/fsl5.0-asl_preproc
+/usr/bin/fsl5.0-asl_reg
+/usr/bin/fsl5.0-autoaq
+/usr/bin/fsl5.0-avscale
+/usr/bin/fsl5.0-avw2fsl
+/usr/bin/fsl5.0-b0calc
+/usr/bin/fsl5.0-basil
+/usr/bin/fsl5.0-basil_var
+/usr/bin/fsl5.0-baycest
+/usr/bin/fsl5.0-bedpost
+/usr/bin/fsl5.0-bedpostx
+/usr/bin/fsl5.0-bedpostx_datacheck
+/usr/bin/fsl5.0-bedpostx_postproc.sh
+/usr/bin/fsl5.0-bedpostx_preproc.sh
+/usr/bin/fsl5.0-bedpostx_single_slice.sh
+/usr/bin/fsl5.0-bet
+/usr/bin/fsl5.0-bet2
+/usr/bin/fsl5.0-betsurf
+/usr/bin/fsl5.0-calc_grad_perc_dev
+/usr/bin/fsl5.0-ccops
+/usr/bin/fsl5.0-checkFEAT
+/usr/bin/fsl5.0-cluster
+/usr/bin/fsl5.0-cluster2html
+/usr/bin/fsl5.0-concat_bvars
+/usr/bin/fsl5.0-connectedcomp
+/usr/bin/fsl5.0-contrast_mgr
+/usr/bin/fsl5.0-convert_xfm
+/usr/bin/fsl5.0-convertwarp
+/usr/bin/fsl5.0-create_lut
+/usr/bin/fsl5.0-cutoffcalc
+/usr/bin/fsl5.0-design_ttest2
+/usr/bin/fsl5.0-distancemap
+/usr/bin/fsl5.0-drawmesh
+/usr/bin/fsl5.0-dtifit
+/usr/bin/fsl5.0-dtigen
+/usr/bin/fsl5.0-dual_regression
+/usr/bin/fsl5.0-easythresh
+/usr/bin/fsl5.0-eddy_combine
+/usr/bin/fsl5.0-eddy_correct
+/usr/bin/fsl5.0-epi_reg
+/usr/bin/fsl5.0-estnoise
+/usr/bin/fsl5.0-extractfidparams
+/usr/bin/fsl5.0-extracttxt
+/usr/bin/fsl5.0-fabber
+/usr/bin/fsl5.0-fabber_var
+/usr/bin/fsl5.0-fast
+/usr/bin/fsl5.0-fdr
+/usr/bin/fsl5.0-fdt_rotate_bvecs
+/usr/bin/fsl5.0-feat
+/usr/bin/fsl5.0-feat_gm_prepare
+/usr/bin/fsl5.0-feat_model
+/usr/bin/fsl5.0-featquery
+/usr/bin/fsl5.0-featregapply
+/usr/bin/fsl5.0-film_gls
+/usr/bin/fsl5.0-filmbabe
+/usr/bin/fsl5.0-filmbabescript
+/usr/bin/fsl5.0-find_the_biggest
+/usr/bin/fsl5.0-first
+/usr/bin/fsl5.0-first3Dview
+/usr/bin/fsl5.0-first_boundary_corr
+/usr/bin/fsl5.0-first_flirt
+/usr/bin/fsl5.0-first_mult_bcorr
+/usr/bin/fsl5.0-first_roi_slicesdir
+/usr/bin/fsl5.0-first_utils
+/usr/bin/fsl5.0-flameo
+/usr/bin/fsl5.0-flirt
+/usr/bin/fsl5.0-flirt_average
+/usr/bin/fsl5.0-fnirt
+/usr/bin/fsl5.0-fnirtfileutils
+/usr/bin/fsl5.0-fsl
+/usr/bin/fsl5.0-fsl2ascii
+/usr/bin/fsl5.0-fslFixText
+/usr/bin/fsl5.0-fsl_abspath
+/usr/bin/fsl5.0-fsl_anat
+/usr/bin/fsl5.0-fsl_boxplot
+/usr/bin/fsl5.0-fsl_glm
+/usr/bin/fsl5.0-fsl_gui
+/usr/bin/fsl5.0-fsl_histogram
+/usr/bin/fsl5.0-fsl_motion_outliers
+/usr/bin/fsl5.0-fsl_mvlm
+/usr/bin/fsl5.0-fsl_prepare_fieldmap
+/usr/bin/fsl5.0-fsl_reg
+/usr/bin/fsl5.0-fsl_regfilt
+/usr/bin/fsl5.0-fsl_sbca
+/usr/bin/fsl5.0-fsl_schurprod
+/usr/bin/fsl5.0-fsl_sub
+/usr/bin/fsl5.0-fsl_tsplot
+/usr/bin/fsl5.0-fsladd
+/usr/bin/fsl5.0-fslanimate
+/usr/bin/fsl5.0-fslascii2img
+/usr/bin/fsl5.0-fslcc
+/usr/bin/fsl5.0-fslchfiletype
+/usr/bin/fsl5.0-fslchfiletype_exe
+/usr/bin/fsl5.0-fslchpixdim
+/usr/bin/fsl5.0-fslcomplex
+/usr/bin/fsl5.0-fslcorrecthd
+/usr/bin/fsl5.0-fslcpgeom
+/usr/bin/fsl5.0-fslcreatehd
+/usr/bin/fsl5.0-fslecho
+/usr/bin/fsl5.0-fsledithd
+/usr/bin/fsl5.0-fslerrorreport
+/usr/bin/fsl5.0-fslfft
+/usr/bin/fsl5.0-fslhd
+/usr/bin/fsl5.0-fslinfo
+/usr/bin/fsl5.0-fslinterleave
+/usr/bin/fsl5.0-fslmaths
+/usr/bin/fsl5.0-fslmeants
+/usr/bin/fsl5.0-fslmerge
+/usr/bin/fsl5.0-fslmodhd
+/usr/bin/fsl5.0-fslnvols
+/usr/bin/fsl5.0-fslorient
+/usr/bin/fsl5.0-fslpspec
+/usr/bin/fsl5.0-fslreorient2std
+/usr/bin/fsl5.0-fslroi
+/usr/bin/fsl5.0-fslselectvols
+/usr/bin/fsl5.0-fslsize
+/usr/bin/fsl5.0-fslslice
+/usr/bin/fsl5.0-fslsmoothfill
+/usr/bin/fsl5.0-fslsplit
+/usr/bin/fsl5.0-fslstats
+/usr/bin/fsl5.0-fslsurfacemaths
+/usr/bin/fsl5.0-fslswapdim
+/usr/bin/fsl5.0-fslswapdim_exe
+/usr/bin/fsl5.0-fslval
+/usr/bin/fsl5.0-fslvbm_1_bet
+/usr/bin/fsl5.0-fslvbm_2_template
+/usr/bin/fsl5.0-fslvbm_3_proc
+/usr/bin/fsl5.0-ftoz
+/usr/bin/fsl5.0-fugue
+/usr/bin/fsl5.0-generateConfounds
+/usr/bin/fsl5.0-generate_b0
+/usr/bin/fsl5.0-generate_b0calc
+/usr/bin/fsl5.0-generate_brain
+/usr/bin/fsl5.0-gps
+/usr/bin/fsl5.0-halfcosbasis
+/usr/bin/fsl5.0-hist2prob
+/usr/bin/fsl5.0-imcp
+/usr/bin/fsl5.0-img2imgcoord
+/usr/bin/fsl5.0-img2stdcoord
+/usr/bin/fsl5.0-imglob
+/usr/bin/fsl5.0-imln
+/usr/bin/fsl5.0-immv
+/usr/bin/fsl5.0-imrm
+/usr/bin/fsl5.0-imtest
+/usr/bin/fsl5.0-invfeatreg
+/usr/bin/fsl5.0-invwarp
+/usr/bin/fsl5.0-invwarp_exe
+/usr/bin/fsl5.0-label2surf
+/usr/bin/fsl5.0-lesion_filling
+/usr/bin/fsl5.0-mainfeatreg
+/usr/bin/fsl5.0-make_dyadic_vectors
+/usr/bin/fsl5.0-makerot
+/usr/bin/fsl5.0-maskdyads
+/usr/bin/fsl5.0-match_smoothing
+/usr/bin/fsl5.0-mccutup
+/usr/bin/fsl5.0-mcflirt
+/usr/bin/fsl5.0-mean
+/usr/bin/fsl5.0-medianfilter
+/usr/bin/fsl5.0-melodic
+/usr/bin/fsl5.0-midtrans
+/usr/bin/fsl5.0-mm
+/usr/bin/fsl5.0-morph_kernel
+/usr/bin/fsl5.0-mp_diffpow.sh
+/usr/bin/fsl5.0-mvntool
+/usr/bin/fsl5.0-new_invwarp
+/usr/bin/fsl5.0-old_betall
+/usr/bin/fsl5.0-overlay
+/usr/bin/fsl5.0-oxford_asl
+/usr/bin/fsl5.0-pairreg
+/usr/bin/fsl5.0-perfusion_subtract
+/usr/bin/fsl5.0-pngappend
+/usr/bin/fsl5.0-pnm_evs
+/usr/bin/fsl5.0-pnm_stage1
+/usr/bin/fsl5.0-pointflirt
+/usr/bin/fsl5.0-popp
+/usr/bin/fsl5.0-possum
+/usr/bin/fsl5.0-possumX
+/usr/bin/fsl5.0-possumX_postproc.sh
+/usr/bin/fsl5.0-possum_matrix
+/usr/bin/fsl5.0-possum_sum
+/usr/bin/fsl5.0-prelude
+/usr/bin/fsl5.0-prewhiten
+/usr/bin/fsl5.0-probtrack
+/usr/bin/fsl5.0-probtrackx
+/usr/bin/fsl5.0-probtrackx2
+/usr/bin/fsl5.0-proj_thresh
+/usr/bin/fsl5.0-ptoz
+/usr/bin/fsl5.0-pulse
+/usr/bin/fsl5.0-pvmfit
+/usr/bin/fsl5.0-qboot
+/usr/bin/fsl5.0-qboot_parallel
+/usr/bin/fsl5.0-qboot_postproc.sh
+/usr/bin/fsl5.0-qboot_preproc.sh
+/usr/bin/fsl5.0-quasil
+/usr/bin/fsl5.0-randomise
+/usr/bin/fsl5.0-randomise_parallel
+/usr/bin/fsl5.0-remove_ext
+/usr/bin/fsl5.0-renderhighres
+/usr/bin/fsl5.0-rmsdiff
+/usr/bin/fsl5.0-robustfov
+/usr/bin/fsl5.0-run_first
+/usr/bin/fsl5.0-run_first_all
+/usr/bin/fsl5.0-run_mesh_utils
+/usr/bin/fsl5.0-select_dwi_vols
+/usr/bin/fsl5.0-selfintersection
+/usr/bin/fsl5.0-setFEAT
+/usr/bin/fsl5.0-setup_masks
+/usr/bin/fsl5.0-siena
+/usr/bin/fsl5.0-siena_cal
+/usr/bin/fsl5.0-siena_diff
+/usr/bin/fsl5.0-siena_flirt
+/usr/bin/fsl5.0-siena_flow2std
+/usr/bin/fsl5.0-sienax
+/usr/bin/fsl5.0-sigloss
+/usr/bin/fsl5.0-signal2image
+/usr/bin/fsl5.0-sliceanimate
+/usr/bin/fsl5.0-slicer
+/usr/bin/fsl5.0-slices
+/usr/bin/fsl5.0-slices_summary
+/usr/bin/fsl5.0-slicesdir
+/usr/bin/fsl5.0-slicesmask
+/usr/bin/fsl5.0-slicetimer
+/usr/bin/fsl5.0-smoothest
+/usr/bin/fsl5.0-spharm_rm
+/usr/bin/fsl5.0-standard_space_roi
+/usr/bin/fsl5.0-std2imgcoord
+/usr/bin/fsl5.0-surf2surf
+/usr/bin/fsl5.0-surf2volume
+/usr/bin/fsl5.0-surf_proj
+/usr/bin/fsl5.0-surface_fdr
+/usr/bin/fsl5.0-susan
+/usr/bin/fsl5.0-swap_subjectwise
+/usr/bin/fsl5.0-swap_voxelwise
+/usr/bin/fsl5.0-systemnoise
+/usr/bin/fsl5.0-tbss_1_preproc
+/usr/bin/fsl5.0-tbss_2_reg
+/usr/bin/fsl5.0-tbss_3_postreg
+/usr/bin/fsl5.0-tbss_4_prestats
+/usr/bin/fsl5.0-tbss_deproject
+/usr/bin/fsl5.0-tbss_fill
+/usr/bin/fsl5.0-tbss_non_FA
+/usr/bin/fsl5.0-tbss_skeleton
+/usr/bin/fsl5.0-tbss_sym
+/usr/bin/fsl5.0-tbss_x
+/usr/bin/fsl5.0-tcalc
+/usr/bin/fsl5.0-tmpnam
+/usr/bin/fsl5.0-topup
+/usr/bin/fsl5.0-tsplot
+/usr/bin/fsl5.0-ttologp
+/usr/bin/fsl5.0-ttoz
+/usr/bin/fsl5.0-unconfound
+/usr/bin/fsl5.0-updatefeatreg
+/usr/bin/fsl5.0-vecreg
+/usr/bin/fsl5.0-verbena
+/usr/bin/fsl5.0-viena_createpng
+/usr/bin/fsl5.0-viena_quant
+/usr/bin/fsl5.0-whirlgif
+/usr/bin/fsl5.0-wpng
+/usr/bin/fsl5.0-xfibres
+/usr/bin/fsl5.0-zeropad
+/usr/bin/fsl5.0-ztop
+/usr/bin/fslview
+/usr/include/linux/fsl_hypervisor.h
+/usr/lib/fsl
+/usr/lib/fsl/5.0
+/usr/lib/fsl/5.0/AnatomicalAverage
+/usr/lib/fsl/5.0/ApplyXFM
+/usr/lib/fsl/5.0/Asl
+/usr/lib/fsl/5.0/Bet
+/usr/lib/fsl/5.0/ConcatXFM
+/usr/lib/fsl/5.0/Fast
+/usr/lib/fsl/5.0/Fdt
+/usr/lib/fsl/5.0/Feat
+/usr/lib/fsl/5.0/Featquery
+/usr/lib/fsl/5.0/Flirt
+/usr/lib/fsl/5.0/Fsl_prepare_fieldmap
+/usr/lib/fsl/5.0/Glm
+/usr/lib/fsl/5.0/InvertXFM
+/usr/lib/fsl/5.0/Make_flobs
+/usr/lib/fsl/5.0/Melodic
+/usr/lib/fsl/5.0/Nudge
+/usr/lib/fsl/5.0/Pnm
+/usr/lib/fsl/5.0/Possum
+/usr/lib/fsl/5.0/Renderhighres
+/usr/lib/fsl/5.0/Renderstats
+/usr/lib/fsl/5.0/Runtcl
+/usr/lib/fsl/5.0/Susan
+/usr/lib/fsl/5.0/Text2Vest
+/usr/lib/fsl/5.0/Vest2Text
+/usr/lib/fsl/5.0/aff2rigid
+/usr/lib/fsl/5.0/applytopup
+/usr/lib/fsl/5.0/applywarp
+/usr/lib/fsl/5.0/applyxfm4D
+/usr/lib/fsl/5.0/asl_calib
+/usr/lib/fsl/5.0/asl_file
+/usr/lib/fsl/5.0/asl_mfree
+/usr/lib/fsl/5.0/asl_preproc
+/usr/lib/fsl/5.0/asl_reg
+/usr/lib/fsl/5.0/atlasquery
+/usr/lib/fsl/5.0/autoaq
+/usr/lib/fsl/5.0/avscale
+/usr/lib/fsl/5.0/avw2fsl
+/usr/lib/fsl/5.0/b0calc
+/usr/lib/fsl/5.0/basil
+/usr/lib/fsl/5.0/basil_var
+/usr/lib/fsl/5.0/baycest
+/usr/lib/fsl/5.0/bedpost
+/usr/lib/fsl/5.0/bedpostx
+/usr/lib/fsl/5.0/bedpostx_datacheck
+/usr/lib/fsl/5.0/bedpostx_postproc.sh
+/usr/lib/fsl/5.0/bedpostx_preproc.sh
+/usr/lib/fsl/5.0/bedpostx_single_slice.sh
+/usr/lib/fsl/5.0/bet
+/usr/lib/fsl/5.0/bet2
+/usr/lib/fsl/5.0/betsurf
+/usr/lib/fsl/5.0/calc_grad_perc_dev
+/usr/lib/fsl/5.0/ccops
+/usr/lib/fsl/5.0/checkFEAT
+/usr/lib/fsl/5.0/cluster
+/usr/lib/fsl/5.0/cluster2html
+/usr/lib/fsl/5.0/concat_bvars
+/usr/lib/fsl/5.0/connectedcomp
+/usr/lib/fsl/5.0/contrast_mgr
+/usr/lib/fsl/5.0/convert_xfm
+/usr/lib/fsl/5.0/convertwarp
+/usr/lib/fsl/5.0/create_lut
+/usr/lib/fsl/5.0/cutoffcalc
+/usr/lib/fsl/5.0/design_ttest2
+/usr/lib/fsl/5.0/distancemap
+/usr/lib/fsl/5.0/drawmesh
+/usr/lib/fsl/5.0/dtifit
+/usr/lib/fsl/5.0/dtigen
+/usr/lib/fsl/5.0/dual_regression
+/usr/lib/fsl/5.0/easythresh
+/usr/lib/fsl/5.0/eddy
+/usr/lib/fsl/5.0/eddy_combine
+/usr/lib/fsl/5.0/eddy_correct
+/usr/lib/fsl/5.0/epi_reg
+/usr/lib/fsl/5.0/estnoise
+/usr/lib/fsl/5.0/extractfidparams
+/usr/lib/fsl/5.0/extracttxt
+/usr/lib/fsl/5.0/fabber
+/usr/lib/fsl/5.0/fabber_var
+/usr/lib/fsl/5.0/fast
+/usr/lib/fsl/5.0/fdr
+/usr/lib/fsl/5.0/fdt_rotate_bvecs
+/usr/lib/fsl/5.0/feat
+/usr/lib/fsl/5.0/feat_gm_prepare
+/usr/lib/fsl/5.0/feat_model
+/usr/lib/fsl/5.0/featquery
+/usr/lib/fsl/5.0/featregapply
+/usr/lib/fsl/5.0/film_gls
+/usr/lib/fsl/5.0/filmbabe
+/usr/lib/fsl/5.0/filmbabescript
+/usr/lib/fsl/5.0/find_the_biggest
+/usr/lib/fsl/5.0/first
+/usr/lib/fsl/5.0/first3Dview
+/usr/lib/fsl/5.0/first_boundary_corr
+/usr/lib/fsl/5.0/first_flirt
+/usr/lib/fsl/5.0/first_mult_bcorr
+/usr/lib/fsl/5.0/first_roi_slicesdir
+/usr/lib/fsl/5.0/first_utils
+/usr/lib/fsl/5.0/flameo
+/usr/lib/fsl/5.0/flirt
+/usr/lib/fsl/5.0/flirt_average
+/usr/lib/fsl/5.0/fnirt
+/usr/lib/fsl/5.0/fnirtfileutils
+/usr/lib/fsl/5.0/fsl
+/usr/lib/fsl/5.0/fsl2ascii
+/usr/lib/fsl/5.0/fslFixText
+/usr/lib/fsl/5.0/fsl_abspath
+/usr/lib/fsl/5.0/fsl_anat
+/usr/lib/fsl/5.0/fsl_app_wrapper
+/usr/lib/fsl/5.0/fsl_boxplot
+/usr/lib/fsl/5.0/fsl_glm
+/usr/lib/fsl/5.0/fsl_gui
+/usr/lib/fsl/5.0/fsl_histogram
+/usr/lib/fsl/5.0/fsl_motion_outliers
+/usr/lib/fsl/5.0/fsl_mvlm
+/usr/lib/fsl/5.0/fsl_prepare_fieldmap
+/usr/lib/fsl/5.0/fsl_reg
+/usr/lib/fsl/5.0/fsl_regfilt
+/usr/lib/fsl/5.0/fsl_sbca
+/usr/lib/fsl/5.0/fsl_schurprod
+/usr/lib/fsl/5.0/fsl_sub
+/usr/lib/fsl/5.0/fsl_tsplot
+/usr/lib/fsl/5.0/fsladd
+/usr/lib/fsl/5.0/fslanimate
+/usr/lib/fsl/5.0/fslascii2img
+/usr/lib/fsl/5.0/fslcc
+/usr/lib/fsl/5.0/fslchfiletype
+/usr/lib/fsl/5.0/fslchfiletype_exe
+/usr/lib/fsl/5.0/fslchpixdim
+/usr/lib/fsl/5.0/fslcomplex
+/usr/lib/fsl/5.0/fslcorrecthd
+/usr/lib/fsl/5.0/fslcpgeom
+/usr/lib/fsl/5.0/fslcreatehd
+/usr/lib/fsl/5.0/fslecho
+/usr/lib/fsl/5.0/fsledithd
+/usr/lib/fsl/5.0/fslerrorreport
+/usr/lib/fsl/5.0/fslfft
+/usr/lib/fsl/5.0/fslhd
+/usr/lib/fsl/5.0/fslinfo
+/usr/lib/fsl/5.0/fslinterleave
+/usr/lib/fsl/5.0/fslmaths
+/usr/lib/fsl/5.0/fslmeants
+/usr/lib/fsl/5.0/fslmerge
+/usr/lib/fsl/5.0/fslmodhd
+/usr/lib/fsl/5.0/fslnvols
+/usr/lib/fsl/5.0/fslorient
+/usr/lib/fsl/5.0/fslpspec
+/usr/lib/fsl/5.0/fslreorient2std
+/usr/lib/fsl/5.0/fslroi
+/usr/lib/fsl/5.0/fslselectvols
+/usr/lib/fsl/5.0/fslsize
+/usr/lib/fsl/5.0/fslslice
+/usr/lib/fsl/5.0/fslsmoothfill
+/usr/lib/fsl/5.0/fslsplit
+/usr/lib/fsl/5.0/fslstats
+/usr/lib/fsl/5.0/fslsurfacemaths
+/usr/lib/fsl/5.0/fslswapdim
+/usr/lib/fsl/5.0/fslswapdim_exe
+/usr/lib/fsl/5.0/fslval
+/usr/lib/fsl/5.0/fslvbm_1_bet
+/usr/lib/fsl/5.0/fslvbm_2_template
+/usr/lib/fsl/5.0/fslvbm_3_proc
+/usr/lib/fsl/5.0/ftoz
+/usr/lib/fsl/5.0/fugue
+/usr/lib/fsl/5.0/generateConfounds
+/usr/lib/fsl/5.0/generate_b0
+/usr/lib/fsl/5.0/generate_b0calc
+/usr/lib/fsl/5.0/generate_brain
+/usr/lib/fsl/5.0/gps
+/usr/lib/fsl/5.0/halfcosbasis
+/usr/lib/fsl/5.0/hist2prob
+/usr/lib/fsl/5.0/imcp
+/usr/lib/fsl/5.0/img2imgcoord
+/usr/lib/fsl/5.0/img2stdcoord
+/usr/lib/fsl/5.0/imglob
+/usr/lib/fsl/5.0/imln
+/usr/lib/fsl/5.0/immv
+/usr/lib/fsl/5.0/imrm
+/usr/lib/fsl/5.0/imtest
+/usr/lib/fsl/5.0/invfeatreg
+/usr/lib/fsl/5.0/invwarp
+/usr/lib/fsl/5.0/invwarp_exe
+/usr/lib/fsl/5.0/label2surf
+/usr/lib/fsl/5.0/lesion_filling
+/usr/lib/fsl/5.0/libcprob.so
+/usr/lib/fsl/5.0/libfslio.so
+/usr/lib/fsl/5.0/libfslvtkio.so
+/usr/lib/fsl/5.0/libggmix.so
+/usr/lib/fsl/5.0/libmeshclass.so
+/usr/lib/fsl/5.0/libmiscmaths.so
+/usr/lib/fsl/5.0/libmiscpic.so
+/usr/lib/fsl/5.0/libmiscplot.so
+/usr/lib/fsl/5.0/libmm.so
+/usr/lib/fsl/5.0/libnewimage.so
+/usr/lib/fsl/5.0/libprob.so
+/usr/lib/fsl/5.0/libshapeModel.so
+/usr/lib/fsl/5.0/libutils.so
+/usr/lib/fsl/5.0/mainfeatreg
+/usr/lib/fsl/5.0/make_dyadic_vectors
+/usr/lib/fsl/5.0/makerot
+/usr/lib/fsl/5.0/maskdyads
+/usr/lib/fsl/5.0/match_smoothing
+/usr/lib/fsl/5.0/mccutup
+/usr/lib/fsl/5.0/mcflirt
+/usr/lib/fsl/5.0/mean
+/usr/lib/fsl/5.0/medianfilter
+/usr/lib/fsl/5.0/melodic
+/usr/lib/fsl/5.0/midtrans
+/usr/lib/fsl/5.0/mm
+/usr/lib/fsl/5.0/morph_kernel
+/usr/lib/fsl/5.0/mp_diffpow.sh
+/usr/lib/fsl/5.0/mvntool
+/usr/lib/fsl/5.0/new_invwarp
+/usr/lib/fsl/5.0/old_betall
+/usr/lib/fsl/5.0/overlay
+/usr/lib/fsl/5.0/oxford_asl
+/usr/lib/fsl/5.0/pairreg
+/usr/lib/fsl/5.0/perfusion_subtract
+/usr/lib/fsl/5.0/pngappend
+/usr/lib/fsl/5.0/pnm_evs
+/usr/lib/fsl/5.0/pnm_stage1
+/usr/lib/fsl/5.0/pointflirt
+/usr/lib/fsl/5.0/popp
+/usr/lib/fsl/5.0/possum
+/usr/lib/fsl/5.0/possumX
+/usr/lib/fsl/5.0/possumX_postproc.sh
+/usr/lib/fsl/5.0/possum_matrix
+/usr/lib/fsl/5.0/possum_sum
+/usr/lib/fsl/5.0/prelude
+/usr/lib/fsl/5.0/prewhiten
+/usr/lib/fsl/5.0/probtrack
+/usr/lib/fsl/5.0/probtrackx
+/usr/lib/fsl/5.0/probtrackx2
+/usr/lib/fsl/5.0/proj_thresh
+/usr/lib/fsl/5.0/ptoz
+/usr/lib/fsl/5.0/pulse
+/usr/lib/fsl/5.0/pvmfit
+/usr/lib/fsl/5.0/qboot
+/usr/lib/fsl/5.0/qboot_parallel
+/usr/lib/fsl/5.0/qboot_postproc.sh
+/usr/lib/fsl/5.0/qboot_preproc.sh
+/usr/lib/fsl/5.0/quasil
+/usr/lib/fsl/5.0/randomise
+/usr/lib/fsl/5.0/randomise_parallel
+/usr/lib/fsl/5.0/remove_ext
+/usr/lib/fsl/5.0/renderhighres
+/usr/lib/fsl/5.0/rmsdiff
+/usr/lib/fsl/5.0/robustfov
+/usr/lib/fsl/5.0/run_first
+/usr/lib/fsl/5.0/run_first_all
+/usr/lib/fsl/5.0/run_mesh_utils
+/usr/lib/fsl/5.0/select_dwi_vols
+/usr/lib/fsl/5.0/selfintersection
+/usr/lib/fsl/5.0/setFEAT
+/usr/lib/fsl/5.0/setup_masks
+/usr/lib/fsl/5.0/siena
+/usr/lib/fsl/5.0/siena_cal
+/usr/lib/fsl/5.0/siena_diff
+/usr/lib/fsl/5.0/siena_flirt
+/usr/lib/fsl/5.0/siena_flow2std
+/usr/lib/fsl/5.0/sienax
+/usr/lib/fsl/5.0/sigloss
+/usr/lib/fsl/5.0/signal2image
+/usr/lib/fsl/5.0/sliceanimate
+/usr/lib/fsl/5.0/slicer
+/usr/lib/fsl/5.0/slices
+/usr/lib/fsl/5.0/slices_summary
+/usr/lib/fsl/5.0/slicesdir
+/usr/lib/fsl/5.0/slicesmask
+/usr/lib/fsl/5.0/slicetimer
+/usr/lib/fsl/5.0/smoothest
+/usr/lib/fsl/5.0/spharm_rm
+/usr/lib/fsl/5.0/standard_space_roi
+/usr/lib/fsl/5.0/std2imgcoord
+/usr/lib/fsl/5.0/surf2surf
+/usr/lib/fsl/5.0/surf2volume
+/usr/lib/fsl/5.0/surf_proj
+/usr/lib/fsl/5.0/surface_fdr
+/usr/lib/fsl/5.0/susan
+/usr/lib/fsl/5.0/swap_subjectwise
+/usr/lib/fsl/5.0/swap_voxelwise
+/usr/lib/fsl/5.0/systemnoise
+/usr/lib/fsl/5.0/tbss_1_preproc
+/usr/lib/fsl/5.0/tbss_2_reg
+/usr/lib/fsl/5.0/tbss_3_postreg
+/usr/lib/fsl/5.0/tbss_4_prestats
+/usr/lib/fsl/5.0/tbss_deproject
+/usr/lib/fsl/5.0/tbss_fill
+/usr/lib/fsl/5.0/tbss_non_FA
+/usr/lib/fsl/5.0/tbss_skeleton
+/usr/lib/fsl/5.0/tbss_sym
+/usr/lib/fsl/5.0/tbss_x
+/usr/lib/fsl/5.0/tcalc
+/usr/lib/fsl/5.0/tmpnam
+/usr/lib/fsl/5.0/topup
+/usr/lib/fsl/5.0/tsplot
+/usr/lib/fsl/5.0/ttologp
+/usr/lib/fsl/5.0/ttoz
+/usr/lib/fsl/5.0/unconfound
+/usr/lib/fsl/5.0/updatefeatreg
+/usr/lib/fsl/5.0/vecreg
+/usr/lib/fsl/5.0/verbena
+/usr/lib/fsl/5.0/viena_createpng
+/usr/lib/fsl/5.0/viena_quant
+/usr/lib/fsl/5.0/whirlgif
+/usr/lib/fsl/5.0/wpng
+/usr/lib/fsl/5.0/xfibres
+/usr/lib/fsl/5.0/zeropad
+/usr/lib/fsl/5.0/ztop
+/usr/local/fsl
+/usr/local/fsl/bin
+/usr/local/fsl/bin/AnatomicalAverage
+/usr/local/fsl/bin/ApplyXFM
+/usr/local/fsl/bin/Asl
+/usr/local/fsl/bin/Bet
+/usr/local/fsl/bin/ConcatXFM
+/usr/local/fsl/bin/Fast
+/usr/local/fsl/bin/Fdt
+/usr/local/fsl/bin/Feat
+/usr/local/fsl/bin/Featquery
+/usr/local/fsl/bin/Flirt
+/usr/local/fsl/bin/Fsl_prepare_fieldmap
+/usr/local/fsl/bin/Glm
+/usr/local/fsl/bin/InvertXFM
+/usr/local/fsl/bin/Make_flobs
+/usr/local/fsl/bin/Melodic
+/usr/local/fsl/bin/Nudge
+/usr/local/fsl/bin/Pnm
+/usr/local/fsl/bin/Possum
+/usr/local/fsl/bin/Renderhighres
+/usr/local/fsl/bin/Renderstats
+/usr/local/fsl/bin/Runtcl
+/usr/local/fsl/bin/Susan
+/usr/local/fsl/bin/Text2Vest
+/usr/local/fsl/bin/Vest2Text
+/usr/local/fsl/bin/aff2rigid
+/usr/local/fsl/bin/applytopup
+/usr/local/fsl/bin/applywarp
+/usr/local/fsl/bin/applyxfm4D
+/usr/local/fsl/bin/asl_calib
+/usr/local/fsl/bin/asl_file
+/usr/local/fsl/bin/asl_mfree
+/usr/local/fsl/bin/asl_preproc
+/usr/local/fsl/bin/asl_reg
+/usr/local/fsl/bin/atlasquery
+/usr/local/fsl/bin/autoaq
+/usr/local/fsl/bin/avscale
+/usr/local/fsl/bin/avw2fsl
+/usr/local/fsl/bin/b0calc
+/usr/local/fsl/bin/basil
+/usr/local/fsl/bin/basil_var
+/usr/local/fsl/bin/baycest
+/usr/local/fsl/bin/bedpost
+/usr/local/fsl/bin/bedpostx
+/usr/local/fsl/bin/bedpostx_datacheck
+/usr/local/fsl/bin/bedpostx_postproc.sh
+/usr/local/fsl/bin/bedpostx_preproc.sh
+/usr/local/fsl/bin/bedpostx_single_slice.sh
+/usr/local/fsl/bin/bet
+/usr/local/fsl/bin/bet2
+/usr/local/fsl/bin/betsurf
+/usr/local/fsl/bin/calc_grad_perc_dev
+/usr/local/fsl/bin/ccops
+/usr/local/fsl/bin/checkFEAT
+/usr/local/fsl/bin/cluster
+/usr/local/fsl/bin/cluster2html
+/usr/local/fsl/bin/concat_bvars
+/usr/local/fsl/bin/connectedcomp
+/usr/local/fsl/bin/contrast_mgr
+/usr/local/fsl/bin/convert_xfm
+/usr/local/fsl/bin/convertwarp
+/usr/local/fsl/bin/create_lut
+/usr/local/fsl/bin/cutoffcalc
+/usr/local/fsl/bin/design_ttest2
+/usr/local/fsl/bin/distancemap
+/usr/local/fsl/bin/drawmesh
+/usr/local/fsl/bin/dtifit
+/usr/local/fsl/bin/dtigen
+/usr/local/fsl/bin/dual_regression
+/usr/local/fsl/bin/easythresh
+/usr/local/fsl/bin/eddy
+/usr/local/fsl/bin/eddy_combine
+/usr/local/fsl/bin/eddy_correct
+/usr/local/fsl/bin/epi_reg
+/usr/local/fsl/bin/estnoise
+/usr/local/fsl/bin/extractfidparams
+/usr/local/fsl/bin/extracttxt
+/usr/local/fsl/bin/fabber
+/usr/local/fsl/bin/fabber_var
+/usr/local/fsl/bin/fast
+/usr/local/fsl/bin/fdr
+/usr/local/fsl/bin/fdt_rotate_bvecs
+/usr/local/fsl/bin/feat
+/usr/local/fsl/bin/feat_gm_prepare
+/usr/local/fsl/bin/feat_model
+/usr/local/fsl/bin/featquery
+/usr/local/fsl/bin/featregapply
+/usr/local/fsl/bin/film_gls
+/usr/local/fsl/bin/filmbabe
+/usr/local/fsl/bin/filmbabescript
+/usr/local/fsl/bin/find_the_biggest
+/usr/local/fsl/bin/first
+/usr/local/fsl/bin/first3Dview
+/usr/local/fsl/bin/first_boundary_corr
+/usr/local/fsl/bin/first_flirt
+/usr/local/fsl/bin/first_mult_bcorr
+/usr/local/fsl/bin/first_roi_slicesdir
+/usr/local/fsl/bin/first_utils
+/usr/local/fsl/bin/flameo
+/usr/local/fsl/bin/flirt
+/usr/local/fsl/bin/flirt_average
+/usr/local/fsl/bin/fnirt
+/usr/local/fsl/bin/fnirtfileutils
+/usr/local/fsl/bin/fsl
+/usr/local/fsl/bin/fsl2ascii
+/usr/local/fsl/bin/fslFixText
+/usr/local/fsl/bin/fsl_abspath
+/usr/local/fsl/bin/fsl_anat
+/usr/local/fsl/bin/fsl_app_wrapper
+/usr/local/fsl/bin/fsl_boxplot
+/usr/local/fsl/bin/fsl_glm
+/usr/local/fsl/bin/fsl_gui
+/usr/local/fsl/bin/fsl_histogram
+/usr/local/fsl/bin/fsl_motion_outliers
+/usr/local/fsl/bin/fsl_mvlm
+/usr/local/fsl/bin/fsl_prepare_fieldmap
+/usr/local/fsl/bin/fsl_reg
+/usr/local/fsl/bin/fsl_regfilt
+/usr/local/fsl/bin/fsl_sbca
+/usr/local/fsl/bin/fsl_schurprod
+/usr/local/fsl/bin/fsl_sub
+/usr/local/fsl/bin/fsl_tsplot
+/usr/local/fsl/bin/fsladd
+/usr/local/fsl/bin/fslanimate
+/usr/local/fsl/bin/fslascii2img
+/usr/local/fsl/bin/fslcc
+/usr/local/fsl/bin/fslchfiletype
+/usr/local/fsl/bin/fslchfiletype_exe
+/usr/local/fsl/bin/fslchpixdim
+/usr/local/fsl/bin/fslcomplex
+/usr/local/fsl/bin/fslcorrecthd
+/usr/local/fsl/bin/fslcpgeom
+/usr/local/fsl/bin/fslcreatehd
+/usr/local/fsl/bin/fslecho
+/usr/local/fsl/bin/fsledithd
+/usr/local/fsl/bin/fslerrorreport
+/usr/local/fsl/bin/fslfft
+/usr/local/fsl/bin/fslhd
+/usr/local/fsl/bin/fslinfo
+/usr/local/fsl/bin/fslinterleave
+/usr/local/fsl/bin/fslmaths
+/usr/local/fsl/bin/fslmeants
+/usr/local/fsl/bin/fslmerge
+/usr/local/fsl/bin/fslmodhd
+/usr/local/fsl/bin/fslnvols
+/usr/local/fsl/bin/fslorient
+/usr/local/fsl/bin/fslpspec
+/usr/local/fsl/bin/fslreorient2std
+/usr/local/fsl/bin/fslroi
+/usr/local/fsl/bin/fslselectvols
+/usr/local/fsl/bin/fslsize
+/usr/local/fsl/bin/fslslice
+/usr/local/fsl/bin/fslsmoothfill
+/usr/local/fsl/bin/fslsplit
+/usr/local/fsl/bin/fslstats
+/usr/local/fsl/bin/fslsurfacemaths
+/usr/local/fsl/bin/fslswapdim
+/usr/local/fsl/bin/fslswapdim_exe
+/usr/local/fsl/bin/fslval
+/usr/local/fsl/bin/fslvbm_1_bet
+/usr/local/fsl/bin/fslvbm_2_template
+/usr/local/fsl/bin/fslvbm_3_proc
+/usr/local/fsl/bin/ftoz
+/usr/local/fsl/bin/fugue
+/usr/local/fsl/bin/generateConfounds
+/usr/local/fsl/bin/generate_b0
+/usr/local/fsl/bin/generate_b0calc
+/usr/local/fsl/bin/generate_brain
+/usr/local/fsl/bin/gps
+/usr/local/fsl/bin/halfcosbasis
+/usr/local/fsl/bin/hist2prob
+/usr/local/fsl/bin/imcp
+/usr/local/fsl/bin/img2imgcoord
+/usr/local/fsl/bin/img2stdcoord
+/usr/local/fsl/bin/imglob
+/usr/local/fsl/bin/imln
+/usr/local/fsl/bin/immv
+/usr/local/fsl/bin/imrm
+/usr/local/fsl/bin/imtest
+/usr/local/fsl/bin/invfeatreg
+/usr/local/fsl/bin/invwarp
+/usr/local/fsl/bin/invwarp_exe
+/usr/local/fsl/bin/label2surf
+/usr/local/fsl/bin/lesion_filling
+/usr/local/fsl/bin/libcprob.so
+/usr/local/fsl/bin/libfslio.so
+/usr/local/fsl/bin/libfslvtkio.so
+/usr/local/fsl/bin/libggmix.so
+/usr/local/fsl/bin/libmeshclass.so
+/usr/local/fsl/bin/libmiscmaths.so
+/usr/local/fsl/bin/libmiscpic.so
+/usr/local/fsl/bin/libmiscplot.so
+/usr/local/fsl/bin/libmm.so
+/usr/local/fsl/bin/libnewimage.so
+/usr/local/fsl/bin/libprob.so
+/usr/local/fsl/bin/libshapeModel.so
+/usr/local/fsl/bin/libutils.so
+/usr/local/fsl/bin/mainfeatreg
+/usr/local/fsl/bin/make_dyadic_vectors
+/usr/local/fsl/bin/makerot
+/usr/local/fsl/bin/maskdyads
+/usr/local/fsl/bin/match_smoothing
+/usr/local/fsl/bin/mccutup
+/usr/local/fsl/bin/mcflirt
+/usr/local/fsl/bin/mean
+/usr/local/fsl/bin/medianfilter
+/usr/local/fsl/bin/melodic
+/usr/local/fsl/bin/midtrans
+/usr/local/fsl/bin/mm
+/usr/local/fsl/bin/morph_kernel
+/usr/local/fsl/bin/mp_diffpow.sh
+/usr/local/fsl/bin/mvntool
+/usr/local/fsl/bin/new_invwarp
+/usr/local/fsl/bin/old_betall
+/usr/local/fsl/bin/overlay
+/usr/local/fsl/bin/oxford_asl
+/usr/local/fsl/bin/pairreg
+/usr/local/fsl/bin/perfusion_subtract
+/usr/local/fsl/bin/pngappend
+/usr/local/fsl/bin/pnm_evs
+/usr/local/fsl/bin/pnm_stage1
+/usr/local/fsl/bin/pointflirt
+/usr/local/fsl/bin/popp
+/usr/local/fsl/bin/possum
+/usr/local/fsl/bin/possumX
+/usr/local/fsl/bin/possumX_postproc.sh
+/usr/local/fsl/bin/possum_matrix
+/usr/local/fsl/bin/possum_sum
+/usr/local/fsl/bin/prelude
+/usr/local/fsl/bin/prewhiten
+/usr/local/fsl/bin/probtrack
+/usr/local/fsl/bin/probtrackx
+/usr/local/fsl/bin/probtrackx2
+/usr/local/fsl/bin/proj_thresh
+/usr/local/fsl/bin/ptoz
+/usr/local/fsl/bin/pulse
+/usr/local/fsl/bin/pvmfit
+/usr/local/fsl/bin/qboot
+/usr/local/fsl/bin/qboot_parallel
+/usr/local/fsl/bin/qboot_postproc.sh
+/usr/local/fsl/bin/qboot_preproc.sh
+/usr/local/fsl/bin/quasil
+/usr/local/fsl/bin/randomise
+/usr/local/fsl/bin/randomise_parallel
+/usr/local/fsl/bin/remove_ext
+/usr/local/fsl/bin/renderhighres
+/usr/local/fsl/bin/rmsdiff
+/usr/local/fsl/bin/robustfov
+/usr/local/fsl/bin/run_first
+/usr/local/fsl/bin/run_first_all
+/usr/local/fsl/bin/run_mesh_utils
+/usr/local/fsl/bin/select_dwi_vols
+/usr/local/fsl/bin/selfintersection
+/usr/local/fsl/bin/setFEAT
+/usr/local/fsl/bin/setup_masks
+/usr/local/fsl/bin/siena
+/usr/local/fsl/bin/siena_cal
+/usr/local/fsl/bin/siena_diff
+/usr/local/fsl/bin/siena_flirt
+/usr/local/fsl/bin/siena_flow2std
+/usr/local/fsl/bin/sienax
+/usr/local/fsl/bin/sigloss
+/usr/local/fsl/bin/signal2image
+/usr/local/fsl/bin/sliceanimate
+/usr/local/fsl/bin/slicer
+/usr/local/fsl/bin/slices
+/usr/local/fsl/bin/slices_summary
+/usr/local/fsl/bin/slicesdir
+/usr/local/fsl/bin/slicesmask
+/usr/local/fsl/bin/slicetimer
+/usr/local/fsl/bin/smoothest
+/usr/local/fsl/bin/spharm_rm
+/usr/local/fsl/bin/standard_space_roi
+/usr/local/fsl/bin/std2imgcoord
+/usr/local/fsl/bin/surf2surf
+/usr/local/fsl/bin/surf2volume
+/usr/local/fsl/bin/surf_proj
+/usr/local/fsl/bin/surface_fdr
+/usr/local/fsl/bin/susan
+/usr/local/fsl/bin/swap_subjectwise
+/usr/local/fsl/bin/swap_voxelwise
+/usr/local/fsl/bin/systemnoise
+/usr/local/fsl/bin/tbss_1_preproc
+/usr/local/fsl/bin/tbss_2_reg
+/usr/local/fsl/bin/tbss_3_postreg
+/usr/local/fsl/bin/tbss_4_prestats
+/usr/local/fsl/bin/tbss_deproject
+/usr/local/fsl/bin/tbss_fill
+/usr/local/fsl/bin/tbss_non_FA
+/usr/local/fsl/bin/tbss_skeleton
+/usr/local/fsl/bin/tbss_sym
+/usr/local/fsl/bin/tbss_x
+/usr/local/fsl/bin/tcalc
+/usr/local/fsl/bin/tmpnam
+/usr/local/fsl/bin/topup
+/usr/local/fsl/bin/tsplot
+/usr/local/fsl/bin/ttologp
+/usr/local/fsl/bin/ttoz
+/usr/local/fsl/bin/unconfound
+/usr/local/fsl/bin/updatefeatreg
+/usr/local/fsl/bin/vecreg
+/usr/local/fsl/bin/verbena
+/usr/local/fsl/bin/viena_createpng
+/usr/local/fsl/bin/viena_quant
+/usr/local/fsl/bin/whirlgif
+/usr/local/fsl/bin/wpng
+/usr/local/fsl/bin/xfibres
+/usr/local/fsl/bin/zeropad
+/usr/local/fsl/bin/ztop
+/usr/local/fsl/data
+/usr/local/fsl/data/atlases
+/usr/local/fsl/data/atlases/Cerebellum
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIflirt-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum/Cerebellum-MNIfnirt-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/Cerebellum_MNIflirt.xml
+/usr/local/fsl/data/atlases/Cerebellum_MNIfnirt.xml
+/usr/local/fsl/data/atlases/HarvardOxford
+/usr/local/fsl/data/atlases/HarvardOxford-Cortical-Lateralized.xml
+/usr/local/fsl/data/atlases/HarvardOxford-Cortical.xml
+/usr/local/fsl/data/atlases/HarvardOxford-Subcortical.xml
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/HarvardOxford/labels
+/usr/local/fsl/data/atlases/HarvardOxford/relabel
+/usr/local/fsl/data/atlases/JHU
+/usr/local/fsl/data/atlases/JHU-labels.xml
+/usr/local/fsl/data/atlases/JHU-tracts.xml
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-DWI-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-DWI-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-FA-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-FA-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-T2-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-T2-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-labels-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-labels-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/JHU/JHU-ICBM-tracts-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich
+/usr/local/fsl/data/atlases/Juelich.xml
+/usr/local/fsl/data/atlases/Juelich/Juelich-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/Juelich/Juelich-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/MNI
+/usr/local/fsl/data/atlases/MNI.xml
+/usr/local/fsl/data/atlases/MNI/DO
+/usr/local/fsl/data/atlases/MNI/MNI-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/MNI/MNI-prob-2mm.nii.gz
+/usr/local/fsl/data/atlases/MarsParietalParcellation
+/usr/local/fsl/data/atlases/MarsParietalParcellation.xml
+/usr/local/fsl/data/atlases/MarsParietalParcellation/Parietal_thr25_1mm.nii.gz
+/usr/local/fsl/data/atlases/MarsParietalParcellation/Parietal_thr25_2mm.nii.gz
+/usr/local/fsl/data/atlases/MarsParietalParcellation/Parietal_thr75_summaryimage_1mm.nii.gz
+/usr/local/fsl/data/atlases/MarsParietalParcellation/Parietal_thr75_summaryimage_2mm.nii.gz
+/usr/local/fsl/data/atlases/MarsTPJParcellation
+/usr/local/fsl/data/atlases/MarsTPJParcellation.xml
+/usr/local/fsl/data/atlases/MarsTPJParcellation/TPJ_thr25_1mm.nii.gz
+/usr/local/fsl/data/atlases/MarsTPJParcellation/TPJ_thr25_2mm.nii.gz
+/usr/local/fsl/data/atlases/MarsTPJParcellation/TPJ_thr50_summaryimage_1mm.nii.gz
+/usr/local/fsl/data/atlases/MarsTPJParcellation/TPJ_thr50_summaryimage_2mm.nii.gz
+/usr/local/fsl/data/atlases/NeubertVentralFrontalParcellation
+/usr/local/fsl/data/atlases/NeubertVentralFrontalParcellation.xml
+/usr/local/fsl/data/atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr25_1mm.nii.gz
+/usr/local/fsl/data/atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr25_2mm.nii.gz
+/usr/local/fsl/data/atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr75_summaryimage_1mm.nii.gz
+/usr/local/fsl/data/atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr75_summaryimage_2mm.nii.gz
+/usr/local/fsl/data/atlases/STN
+/usr/local/fsl/data/atlases/STN.xml
+/usr/local/fsl/data/atlases/STN/STN-maxprob-thr0-0.5mm.nii.gz
+/usr/local/fsl/data/atlases/STN/STN-maxprob-thr25-0.5mm.nii.gz
+/usr/local/fsl/data/atlases/STN/STN-maxprob-thr50-0.5mm.nii.gz
+/usr/local/fsl/data/atlases/STN/STN-prob-0.5mm.nii.gz
+/usr/local/fsl/data/atlases/SalletDorsalFrontalParcellation
+/usr/local/fsl/data/atlases/SalletDorsalFrontalParcellation.xml
+/usr/local/fsl/data/atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr25_1mm.nii.gz
+/usr/local/fsl/data/atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr25_2mm.nii.gz
+/usr/local/fsl/data/atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr50_summaryimage_1mm.nii.gz
+/usr/local/fsl/data/atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr50_summaryimage_2mm.nii.gz
+/usr/local/fsl/data/atlases/Talairach
+/usr/local/fsl/data/atlases/Talairach.xml
+/usr/local/fsl/data/atlases/Talairach/Talairach-labels-1mm.nii.gz
+/usr/local/fsl/data/atlases/Talairach/Talairach-labels-2mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus
+/usr/local/fsl/data/atlases/Thalamus.xml
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-maxprob-thr0-1mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-maxprob-thr0-2mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-maxprob-thr25-1mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-maxprob-thr25-2mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-maxprob-thr50-1mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-maxprob-thr50-2mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-prob-1mm.nii.gz
+/usr/local/fsl/data/atlases/Thalamus/Thalamus-prob-2mm.nii.gz
+/usr/local/fsl/data/standard
+/usr/local/fsl/data/standard/FMRIB58_FA-skeleton_1mm.nii.gz
+/usr/local/fsl/data/standard/FMRIB58_FA_1mm.nii.gz
+/usr/local/fsl/data/standard/LowerCingulum_1mm.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_0.5mm.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_1mm.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_1mm_Hipp_mask_dil8.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_1mm_brain_mask.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_1mm_brain_mask_dil.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_1mm_first_brain_mask.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_LR-masked.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_VentricleMask.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_b0.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_brain.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_deweight_eyes.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil1.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_edges.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_eye_mask.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_skull.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_strucseg.nii.gz
+/usr/local/fsl/data/standard/MNI152_T1_2mm_strucseg_periph.nii.gz
+/usr/local/fsl/data/standard/MNI152lin_T1_1mm.nii.gz
+/usr/local/fsl/data/standard/MNI152lin_T1_1mm_brain.nii.gz
+/usr/local/fsl/data/standard/MNI152lin_T1_1mm_subbr_mask.nii.gz
+/usr/local/fsl/data/standard/MNI152lin_T1_2mm.nii.gz
+/usr/local/fsl/data/standard/MNI152lin_T1_2mm_brain.nii.gz
+/usr/local/fsl/data/standard/MNI152lin_T1_2mm_brain_mask.nii.gz
+/usr/local/fsl/data/standard/avg152T1.nii.gz
+/usr/local/fsl/data/standard/avg152T1_brain.nii.gz
+/usr/local/fsl/data/standard/tissuepriors
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_brain.hdr
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_brain.img
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_csf.hdr
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_csf.img
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_gray.hdr
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_gray.img
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_white.hdr
+/usr/local/fsl/data/standard/tissuepriors/avg152T1_white.img
+/usr/share/applications/fsl-5.0-core.desktop
+/usr/share/applications/fslview.desktop
+/usr/share/data/fsl-mni152-templates
+/usr/share/data/fsl-mni152-templates/FMRIB58_FA-skeleton_1mm.nii.gz
+/usr/share/data/fsl-mni152-templates/FMRIB58_FA_1mm.nii.gz
+/usr/share/data/fsl-mni152-templates/LowerCingulum_1mm.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_0.5mm.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_1mm.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_1mm_Hipp_mask_dil8.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_1mm_brain.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_1mm_brain_mask.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_1mm_brain_mask_dil.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_1mm_first_brain_mask.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_LR-masked.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_VentricleMask.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_b0.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_brain.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_brain_mask.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_brain_mask_deweight_eyes.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_brain_mask_dil.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_brain_mask_dil1.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_edges.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_eye_mask.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_skull.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_strucseg.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152_T1_2mm_strucseg_periph.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152lin_T1_1mm.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152lin_T1_1mm_brain.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152lin_T1_1mm_subbr_mask.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152lin_T1_2mm.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152lin_T1_2mm_brain.nii.gz
+/usr/share/data/fsl-mni152-templates/MNI152lin_T1_2mm_brain_mask.nii.gz
+/usr/share/data/fsl-mni152-templates/avg152T1.nii.gz
+/usr/share/data/fsl-mni152-templates/avg152T1_brain.nii.gz
+/usr/share/data/fsl-mni152-templates/tissuepriors
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_brain.hdr
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_brain.img
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_csf.hdr
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_csf.img
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_gray.hdr
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_gray.img
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_white.hdr
+/usr/share/data/fsl-mni152-templates/tissuepriors/avg152T1_white.img
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsParietalParcellation
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsParietalParcellation.xml
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsParietalParcellation/Parietal_thr25_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsParietalParcellation/Parietal_thr25_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsParietalParcellation/Parietal_thr75_summaryimage_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsParietalParcellation/Parietal_thr75_summaryimage_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsTPJParcellation
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsTPJParcellation.xml
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsTPJParcellation/TPJ_thr25_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsTPJParcellation/TPJ_thr25_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsTPJParcellation/TPJ_thr50_summaryimage_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/MarsTPJParcellation/TPJ_thr50_summaryimage_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/NeubertVentralFrontalParcellation
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/NeubertVentralFrontalParcellation.xml
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr25_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr25_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr75_summaryimage_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/NeubertVentralFrontalParcellation/VentralFrontal_thr75_summaryimage_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/SalletDorsalFrontalParcellation
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/SalletDorsalFrontalParcellation.xml
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr25_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr25_2mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr50_summaryimage_1mm.nii.gz
+/usr/share/data/fsl-resting-connectivity-parcellation-atlases/SalletDorsalFrontalParcellation/DorsalFrontal_thr50_summaryimage_2mm.nii.gz
+/usr/share/doc/e2fslibs
+/usr/share/doc/e2fslibs/changelog.Debian.gz
+/usr/share/doc/e2fslibs/copyright
+/usr/share/doc/fsl-5.0-complete
+/usr/share/doc/fsl-5.0-complete/changelog.Debian.gz
+/usr/share/doc/fsl-5.0-complete/copyright
+/usr/share/doc/fsl-5.0-core
+/usr/share/doc/fsl-5.0-core/NEWS.Debian.gz
+/usr/share/doc/fsl-5.0-core/README.Debian
+/usr/share/doc/fsl-5.0-core/changelog.Debian.gz
+/usr/share/doc/fsl-5.0-core/copyright
+/usr/share/doc/fsl-5.0-eddy-nonfree
+/usr/share/doc/fsl-5.0-eddy-nonfree/changelog.Debian.gz
+/usr/share/doc/fsl-5.0-eddy-nonfree/copyright
+/usr/share/doc/fsl-atlases
+/usr/share/doc/fsl-atlases/changelog.Debian.gz
+/usr/share/doc/fsl-atlases/copyright
+/usr/share/doc/fsl-bangor-cerebellar-atlas
+/usr/share/doc/fsl-bangor-cerebellar-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-bangor-cerebellar-atlas/copyright
+/usr/share/doc/fsl-complete
+/usr/share/doc/fsl-complete/changelog.Debian.gz
+/usr/share/doc/fsl-complete/copyright
+/usr/share/doc/fsl-core
+/usr/share/doc/fsl-core/NEWS.Debian.gz
+/usr/share/doc/fsl-core/changelog.Debian.gz
+/usr/share/doc/fsl-core/copyright
+/usr/share/doc/fsl-first-data
+/usr/share/doc/fsl-first-data/changelog.Debian.gz
+/usr/share/doc/fsl-first-data/copyright
+/usr/share/doc/fsl-harvard-oxford-atlases
+/usr/share/doc/fsl-harvard-oxford-atlases/changelog.Debian.gz
+/usr/share/doc/fsl-harvard-oxford-atlases/copyright
+/usr/share/doc/fsl-harvard-oxford-cortical-lateralized-atlas
+/usr/share/doc/fsl-harvard-oxford-cortical-lateralized-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-harvard-oxford-cortical-lateralized-atlas/copyright
+/usr/share/doc/fsl-jhu-dti-whitematter-atlas
+/usr/share/doc/fsl-jhu-dti-whitematter-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-jhu-dti-whitematter-atlas/copyright
+/usr/share/doc/fsl-juelich-histological-atlas
+/usr/share/doc/fsl-juelich-histological-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-juelich-histological-atlas/copyright
+/usr/share/doc/fsl-mni-structural-atlas
+/usr/share/doc/fsl-mni-structural-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-mni-structural-atlas/copyright
+/usr/share/doc/fsl-mni152-templates
+/usr/share/doc/fsl-mni152-templates/changelog.Debian.gz
+/usr/share/doc/fsl-mni152-templates/copyright
+/usr/share/doc/fsl-oxford-striatal-atlas
+/usr/share/doc/fsl-oxford-striatal-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-oxford-striatal-atlas/copyright
+/usr/share/doc/fsl-oxford-thalamic-connectivity-atlas
+/usr/share/doc/fsl-oxford-thalamic-connectivity-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-oxford-thalamic-connectivity-atlas/copyright
+/usr/share/doc/fsl-possum-data
+/usr/share/doc/fsl-possum-data/changelog.Debian.gz
+/usr/share/doc/fsl-possum-data/copyright
+/usr/share/doc/fsl-resting-connectivity-parcellation-atlases
+/usr/share/doc/fsl-resting-connectivity-parcellation-atlases/changelog.Debian.gz
+/usr/share/doc/fsl-resting-connectivity-parcellation-atlases/copyright
+/usr/share/doc/fsl-subthalamic-nucleus-atlas
+/usr/share/doc/fsl-subthalamic-nucleus-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-subthalamic-nucleus-atlas/copyright
+/usr/share/doc/fsl-talairach-daemon-atlas
+/usr/share/doc/fsl-talairach-daemon-atlas/changelog.Debian.gz
+/usr/share/doc/fsl-talairach-daemon-atlas/copyright
+/usr/share/doc/fslview
+/usr/share/doc/fslview-doc
+/usr/share/doc/fslview-doc/changelog.Debian.gz
+/usr/share/doc/fslview-doc/copyright
+/usr/share/doc/fslview-doc/html
+/usr/share/doc/fslview-doc/html/3D-box.png
+/usr/share/doc/fslview-doc/html/3D-dialog-advanced.png
+/usr/share/doc/fslview-doc/html/3D-dialog-basic.png
+/usr/share/doc/fslview-doc/html/3D-dialog.html
+/usr/share/doc/fslview-doc/html/3D-introduction.html
+/usr/share/doc/fslview-doc/html/3D-mesh-snapshot.png
+/usr/share/doc/fslview-doc/html/3D-mesh.html
+/usr/share/doc/fslview-doc/html/3D-mesh.png
+/usr/share/doc/fslview-doc/html/3D-screenshot.png
+/usr/share/doc/fslview-doc/html/3D-toolbar.png
+/usr/share/doc/fslview-doc/html/3D-vtkkbd.html
+/usr/share/doc/fslview-doc/html/3D-xyz.png
+/usr/share/doc/fslview-doc/html/3D.html
+/usr/share/doc/fslview-doc/html/3D.png
+/usr/share/doc/fslview-doc/html/atlas-hocort.png
+/usr/share/doc/fslview-doc/html/atlas-hosub.png
+/usr/share/doc/fslview-doc/html/atlas-inspect.html
+/usr/share/doc/fslview-doc/html/atlas-inspect.png
+/usr/share/doc/fslview-doc/html/atlas-jhuwm.png
+/usr/share/doc/fslview-doc/html/atlas-juelich.png
+/usr/share/doc/fslview-doc/html/atlas-mni.png
+/usr/share/doc/fslview-doc/html/atlas-screenshot.png
+/usr/share/doc/fslview-doc/html/atlas-select.html
+/usr/share/doc/fslview-doc/html/atlas-select.png
+/usr/share/doc/fslview-doc/html/atlas-tal.png
+/usr/share/doc/fslview-doc/html/atlas-thalamic.png
+/usr/share/doc/fslview-doc/html/atlas-tool.html
+/usr/share/doc/fslview-doc/html/atlas-tool.png
+/usr/share/doc/fslview-doc/html/atlas.html
+/usr/share/doc/fslview-doc/html/atlashelp.png
+/usr/share/doc/fslview-doc/html/atlastool.png
+/usr/share/doc/fslview-doc/html/atls-tool.html
+/usr/share/doc/fslview-doc/html/autoscroll.png
+/usr/share/doc/fslview-doc/html/bricon.html
+/usr/share/doc/fslview-doc/html/briconreset.png
+/usr/share/doc/fslview-doc/html/briconsliders.png
+/usr/share/doc/fslview-doc/html/briconwidget.png
+/usr/share/doc/fslview-doc/html/cluster-browser.png
+/usr/share/doc/fslview-doc/html/cluster.html
+/usr/share/doc/fslview-doc/html/commandline.html
+/usr/share/doc/fslview-doc/html/compiling.html
+/usr/share/doc/fslview-doc/html/cross.png
+/usr/share/doc/fslview-doc/html/crosshair.png
+/usr/share/doc/fslview-doc/html/cursor.html
+/usr/share/doc/fslview-doc/html/cursorwidget.png
+/usr/share/doc/fslview-doc/html/datamodes.html
+/usr/share/doc/fslview-doc/html/downarrow.png
+/usr/share/doc/fslview-doc/html/dti.html
+/usr/share/doc/fslview-doc/html/erasebutton.png
+/usr/share/doc/fslview-doc/html/eye.png
+/usr/share/doc/fslview-doc/html/filltool.png
+/usr/share/doc/fslview-doc/html/fmri.html
+/usr/share/doc/fslview-doc/html/fsl-bg.jpg
+/usr/share/doc/fslview-doc/html/fsl-logo.png
+/usr/share/doc/fslview-doc/html/fslview-snapshot.png
+/usr/share/doc/fslview-doc/html/fslview.adp
+/usr/share/doc/fslview-doc/html/fslview.css
+/usr/share/doc/fslview-doc/html/fslview_dti.png
+/usr/share/doc/fslview-doc/html/imageinfo.html
+/usr/share/doc/fslview-doc/html/imageinfodialog.png
+/usr/share/doc/fslview-doc/html/imagelist.html
+/usr/share/doc/fslview-doc/html/index.html
+/usr/share/doc/fslview-doc/html/info.png
+/usr/share/doc/fslview-doc/html/layer-tool.png
+/usr/share/doc/fslview-doc/html/macports.html
+/usr/share/doc/fslview-doc/html/mainimage.png
+/usr/share/doc/fslview-doc/html/masking.html
+/usr/share/doc/fslview-doc/html/masking.png
+/usr/share/doc/fslview-doc/html/mode.html
+/usr/share/doc/fslview-doc/html/mode.png
+/usr/share/doc/fslview-doc/html/movie.png
+/usr/share/doc/fslview-doc/html/opening.html
+/usr/share/doc/fslview-doc/html/orthoview.png
+/usr/share/doc/fslview-doc/html/overlaywidget.png
+/usr/share/doc/fslview-doc/html/overlywidget.png
+/usr/share/doc/fslview-doc/html/padlock.png
+/usr/share/doc/fslview-doc/html/pan.png
+/usr/share/doc/fslview-doc/html/penbutton.png
+/usr/share/doc/fslview-doc/html/release.html
+/usr/share/doc/fslview-doc/html/slider.png
+/usr/share/doc/fslview-doc/html/support.html
+/usr/share/doc/fslview-doc/html/thalamic.png
+/usr/share/doc/fslview-doc/html/toolbars.html
+/usr/share/doc/fslview-doc/html/trilobyte.png
+/usr/share/doc/fslview-doc/html/troubleshooting.html
+/usr/share/doc/fslview-doc/html/twoorthos.png
+/usr/share/doc/fslview-doc/html/undobutton.png
+/usr/share/doc/fslview-doc/html/unzoom.png
+/usr/share/doc/fslview-doc/html/uparrow.png
+/usr/share/doc/fslview-doc/html/view-options-cursor.png
+/usr/share/doc/fslview-doc/html/view-options-labels.png
+/usr/share/doc/fslview-doc/html/view-options-misc.png
+/usr/share/doc/fslview-doc/html/view-ortho.png
+/usr/share/doc/fslview-doc/html/viewdir.png
+/usr/share/doc/fslview-doc/html/views.html
+/usr/share/doc/fslview-doc/html/viewtool.html
+/usr/share/doc/fslview-doc/html/viewwidget.png
+/usr/share/doc/fslview-doc/html/zoom.png
+/usr/share/doc/fslview-doc/html/zoomspinbox.png
+/usr/share/doc/fslview/README.Debian
+/usr/share/doc/fslview/TODO.Debian
+/usr/share/doc/fslview/changelog.Debian.gz
+/usr/share/doc/fslview/copyright
+/usr/share/fsl
+/usr/share/fsl/5.0
+/usr/share/fsl/5.0/bin
+/usr/share/fsl/5.0/data
+/usr/share/fsl/5.0/doc
+/usr/share/fsl/5.0/doc/fsl.css
+/usr/share/fsl/5.0/doc/images
+/usr/share/fsl/5.0/doc/images/3.1r.jpg
+/usr/share/fsl/5.0/doc/images/3.jpg
+/usr/share/fsl/5.0/doc/images/flirt-bg.jpg
+/usr/share/fsl/5.0/doc/images/fsl-bg
+/usr/share/fsl/5.0/doc/images/fsl-bg.jpg
+/usr/share/fsl/5.0/doc/images/fsl-logo-big.jpg
+/usr/share/fsl/5.0/doc/images/fsl-logo.gif
+/usr/share/fsl/5.0/doc/images/fsl-logo.jpg
+/usr/share/fsl/5.0/doc/images/fsl-logo.png
+/usr/share/fsl/5.0/doc/images/fsl-macos-snapshot.tiff
+/usr/share/fsl/5.0/doc/images/fslstart.jpg
+/usr/share/fsl/5.0/doc/images/fslstart.png
+/usr/share/fsl/5.0/doc/images/fugue-bg.jpg
+/usr/share/fsl/5.0/doc/images/tick.gif
+/usr/share/fsl/5.0/doc/images/vert2.png
+/usr/share/fsl/5.0/etc
+/usr/share/fsl/5.0/etc/default_flobs.flobs
+/usr/share/fsl/5.0/etc/default_flobs.flobs/eigenvalues.png
+/usr/share/fsl/5.0/etc/default_flobs.flobs/hrfbasisfns.png
+/usr/share/fsl/5.0/etc/default_flobs.flobs/hrfbasisfns.txt
+/usr/share/fsl/5.0/etc/default_flobs.flobs/hrfsamps.png
+/usr/share/fsl/5.0/etc/default_flobs.flobs/hrfsamps.txt
+/usr/share/fsl/5.0/etc/default_flobs.flobs/logfile
+/usr/share/fsl/5.0/etc/default_flobs.flobs/params.txt
+/usr/share/fsl/5.0/etc/default_flobs.flobs/priorcovars.mat
+/usr/share/fsl/5.0/etc/default_flobs.flobs/priormeans.mat
+/usr/share/fsl/5.0/etc/default_flobs.flobs/report.html
+/usr/share/fsl/5.0/etc/flirtsch
+/usr/share/fsl/5.0/etc/flirtsch/FA_2_FMRIB58_1mm.cnf
+/usr/share/fsl/5.0/etc/flirtsch/GM_2_MNI152GM_2mm.cnf
+/usr/share/fsl/5.0/etc/flirtsch/T1_2_MNI152_2mm.cnf
+/usr/share/fsl/5.0/etc/flirtsch/b02b0.cnf
+/usr/share/fsl/5.0/etc/flirtsch/bbr.sch
+/usr/share/fsl/5.0/etc/flirtsch/ident.mat
+/usr/share/fsl/5.0/etc/flirtsch/measurecost1.sch
+/usr/share/fsl/5.0/etc/flirtsch/pairreg1.sch
+/usr/share/fsl/5.0/etc/flirtsch/pairreg2.sch
+/usr/share/fsl/5.0/etc/flirtsch/pairreg3.sch
+/usr/share/fsl/5.0/etc/flirtsch/sch2D_3dof
+/usr/share/fsl/5.0/etc/flirtsch/sch2D_4dof
+/usr/share/fsl/5.0/etc/flirtsch/sch2D_5dof
+/usr/share/fsl/5.0/etc/flirtsch/sch2D_6dof
+/usr/share/fsl/5.0/etc/flirtsch/sch3Dtrans_3dof
+/usr/share/fsl/5.0/etc/flirtsch/simple3D.sch
+/usr/share/fsl/5.0/etc/flirtsch/xyztrans.sch
+/usr/share/fsl/5.0/etc/flirtsch/ytransonly.sch
+/usr/share/fsl/5.0/etc/flirtsch/ztransonly.sch
+/usr/share/fsl/5.0/etc/fslconf
+/usr/share/fsl/5.0/etc/fslconf/feat.tcl
+/usr/share/fsl/5.0/etc/fslconf/fsl-devel.sh
+/usr/share/fsl/5.0/etc/fslconf/fsl.csh
+/usr/share/fsl/5.0/etc/fslconf/fsl.sh
+/usr/share/fsl/5.0/etc/fslversion
+/usr/share/fsl/5.0/etc/js
+/usr/share/fsl/5.0/etc/js/dygraph-canvas.js
+/usr/share/fsl/5.0/etc/js/dygraph.js
+/usr/share/fsl/5.0/etc/js/excanvas.js
+/usr/share/fsl/5.0/etc/js/label-div.html
+/usr/share/fsl/5.0/etc/js/pnm_lower_frame.html
+/usr/share/fsl/5.0/etc/js/pnm_main_frame.html
+/usr/share/fsl/5.0/etc/js/rgbcolor.js
+/usr/share/fsl/5.0/etc/js/strftime-min.js
+/usr/share/fsl/5.0/etc/luts
+/usr/share/fsl/5.0/etc/luts/colourbar.nii.gz
+/usr/share/fsl/5.0/etc/luts/fsrandlut.txt
+/usr/share/fsl/5.0/etc/luts/ramp.gif
+/usr/share/fsl/5.0/etc/luts/ramp2.gif
+/usr/share/fsl/5.0/etc/luts/render1.lut
+/usr/share/fsl/5.0/etc/luts/render1.map
+/usr/share/fsl/5.0/etc/luts/render1t.lut
+/usr/share/fsl/5.0/etc/luts/render1t.map
+/usr/share/fsl/5.0/etc/luts/render2.lut
+/usr/share/fsl/5.0/etc/luts/render2.map
+/usr/share/fsl/5.0/etc/luts/render2t.lut
+/usr/share/fsl/5.0/etc/luts/render2t.map
+/usr/share/fsl/5.0/etc/luts/render3.lut
+/usr/share/fsl/5.0/etc/luts/render3.map
+/usr/share/fsl/5.0/etc/luts/render3t.lut
+/usr/share/fsl/5.0/etc/luts/render3t.map
+/usr/share/fsl/5.0/etc/luts/renderhot.lut
+/usr/share/fsl/5.0/etc/luts/renderhsv.lut
+/usr/share/fsl/5.0/etc/luts/renderjet.lut
+/usr/share/fsl/5.0/etc/luts/rendersea.lut
+/usr/share/fsl/5.0/etc/luts/striatum-con-3sub.lut
+/usr/share/fsl/5.0/etc/luts/striatum-con-7sub.lut
+/usr/share/fsl/5.0/etc/luts/striatum-struct.lut
+/usr/share/fsl/5.0/etc/matlab
+/usr/share/fsl/5.0/etc/matlab/call_fsl.m
+/usr/share/fsl/5.0/etc/matlab/cleanup_read_avw_img_slice.m
+/usr/share/fsl/5.0/etc/matlab/prepare_read_avw_img_slice.m
+/usr/share/fsl/5.0/etc/matlab/read_avw.m
+/usr/share/fsl/5.0/etc/matlab/read_avw_complex.m
+/usr/share/fsl/5.0/etc/matlab/read_avw_hdr.m
+/usr/share/fsl/5.0/etc/matlab/read_avw_img.m
+/usr/share/fsl/5.0/etc/matlab/read_avw_img_slice.m
+/usr/share/fsl/5.0/etc/matlab/read_pulse.m
+/usr/share/fsl/5.0/etc/matlab/save_avw.m
+/usr/share/fsl/5.0/etc/matlab/save_avw_complex.m
+/usr/share/fsl/5.0/etc/matlab/save_avw_hdr.m
+/usr/share/fsl/5.0/etc/matlab/save_avw_img.m
+/usr/share/fsl/5.0/etc/matlab/write_pulse.m
+/usr/share/fsl/5.0/tcl
+/usr/share/fsl/5.0/tcl/BWidget
+/usr/share/fsl/5.0/tcl/BWidget/BWExtras-1.0.0
+/usr/share/fsl/5.0/tcl/BWidget/BWExtras-1.0.0/fileentry.tcl
+/usr/share/fsl/5.0/tcl/BWidget/BWExtras-1.0.0/labelcombobox.tcl
+/usr/share/fsl/5.0/tcl/BWidget/BWExtras-1.0.0/labelspinbox.tcl
+/usr/share/fsl/5.0/tcl/BWidget/arrow.tcl
+/usr/share/fsl/5.0/tcl/BWidget/bitmap.tcl
+/usr/share/fsl/5.0/tcl/BWidget/button.tcl
+/usr/share/fsl/5.0/tcl/BWidget/buttonbox.tcl
+/usr/share/fsl/5.0/tcl/BWidget/color.tcl
+/usr/share/fsl/5.0/tcl/BWidget/combobox.tcl
+/usr/share/fsl/5.0/tcl/BWidget/dialog.tcl
+/usr/share/fsl/5.0/tcl/BWidget/dragsite.tcl
+/usr/share/fsl/5.0/tcl/BWidget/dropsite.tcl
+/usr/share/fsl/5.0/tcl/BWidget/dynhelp.tcl
+/usr/share/fsl/5.0/tcl/BWidget/entry.tcl
+/usr/share/fsl/5.0/tcl/BWidget/font.tcl
+/usr/share/fsl/5.0/tcl/BWidget/images
+/usr/share/fsl/5.0/tcl/BWidget/images/bold.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/copy.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/cut.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/dragfile.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/dragicon.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/error.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/file.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/folder.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/hourglass.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/info.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/italic.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/minus.xbm
+/usr/share/fsl/5.0/tcl/BWidget/images/new.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/opcopy.xbm
+/usr/share/fsl/5.0/tcl/BWidget/images/open.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/openfold.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/oplink.xbm
+/usr/share/fsl/5.0/tcl/BWidget/images/opmove.xbm
+/usr/share/fsl/5.0/tcl/BWidget/images/overstrike.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/palette.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/passwd.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/paste.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/plus.xbm
+/usr/share/fsl/5.0/tcl/BWidget/images/print.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/question.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/redo.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/save.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/target.xbm
+/usr/share/fsl/5.0/tcl/BWidget/images/underline.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/undo.gif
+/usr/share/fsl/5.0/tcl/BWidget/images/warning.gif
+/usr/share/fsl/5.0/tcl/BWidget/init.tcl
+/usr/share/fsl/5.0/tcl/BWidget/label.tcl
+/usr/share/fsl/5.0/tcl/BWidget/labelentry.tcl
+/usr/share/fsl/5.0/tcl/BWidget/labelframe.tcl
+/usr/share/fsl/5.0/tcl/BWidget/lang
+/usr/share/fsl/5.0/tcl/BWidget/lang/de.rc
+/usr/share/fsl/5.0/tcl/BWidget/lang/en.rc
+/usr/share/fsl/5.0/tcl/BWidget/lang/es.rc
+/usr/share/fsl/5.0/tcl/BWidget/lang/fr.rc
+/usr/share/fsl/5.0/tcl/BWidget/listbox.tcl
+/usr/share/fsl/5.0/tcl/BWidget/mainframe.tcl
+/usr/share/fsl/5.0/tcl/BWidget/messagedlg.tcl
+/usr/share/fsl/5.0/tcl/BWidget/notebook.tcl
+/usr/share/fsl/5.0/tcl/BWidget/pagesmgr.tcl
+/usr/share/fsl/5.0/tcl/BWidget/panedw.tcl
+/usr/share/fsl/5.0/tcl/BWidget/panelframe.tcl
+/usr/share/fsl/5.0/tcl/BWidget/passwddlg.tcl
+/usr/share/fsl/5.0/tcl/BWidget/pkgIndex.tcl
+/usr/share/fsl/5.0/tcl/BWidget/progressbar.tcl
+/usr/share/fsl/5.0/tcl/BWidget/progressdlg.tcl
+/usr/share/fsl/5.0/tcl/BWidget/scrollframe.tcl
+/usr/share/fsl/5.0/tcl/BWidget/scrollview.tcl
+/usr/share/fsl/5.0/tcl/BWidget/scrollw.tcl
+/usr/share/fsl/5.0/tcl/BWidget/separator.tcl
+/usr/share/fsl/5.0/tcl/BWidget/spinbox.tcl
+/usr/share/fsl/5.0/tcl/BWidget/statusbar.tcl
+/usr/share/fsl/5.0/tcl/BWidget/titleframe.tcl
+/usr/share/fsl/5.0/tcl/BWidget/tree.tcl
+/usr/share/fsl/5.0/tcl/BWidget/utils.tcl
+/usr/share/fsl/5.0/tcl/BWidget/widget.tcl
+/usr/share/fsl/5.0/tcl/BWidget/wizard.tcl
+/usr/share/fsl/5.0/tcl/BWidget/xpm2image.tcl
+/usr/share/fsl/5.0/tcl/TkWidgets.tcl
+/usr/share/fsl/5.0/tcl/applyxfm.tcl
+/usr/share/fsl/5.0/tcl/arrow.xbm
+/usr/share/fsl/5.0/tcl/asl.tcl
+/usr/share/fsl/5.0/tcl/balloon.tcl
+/usr/share/fsl/5.0/tcl/bet.tcl
+/usr/share/fsl/5.0/tcl/bet_proc.tcl
+/usr/share/fsl/5.0/tcl/collapsible.tcl
+/usr/share/fsl/5.0/tcl/concatxfm.tcl
+/usr/share/fsl/5.0/tcl/display.tcl
+/usr/share/fsl/5.0/tcl/fast.tcl
+/usr/share/fsl/5.0/tcl/fdt.tcl
+/usr/share/fsl/5.0/tcl/feat.tcl
+/usr/share/fsl/5.0/tcl/featlib.tcl
+/usr/share/fsl/5.0/tcl/featquery.tcl
+/usr/share/fsl/5.0/tcl/file.xbm
+/usr/share/fsl/5.0/tcl/filltriangled.xbm
+/usr/share/fsl/5.0/tcl/fix_cygwin_filename.tcl
+/usr/share/fsl/5.0/tcl/flirt.tcl
+/usr/share/fsl/5.0/tcl/flirt_proc.tcl
+/usr/share/fsl/5.0/tcl/fmrib.xbm
+/usr/share/fsl/5.0/tcl/fsl-logo-tiny.ico
+/usr/share/fsl/5.0/tcl/fsl-logo-tiny.ppm
+/usr/share/fsl/5.0/tcl/fsl.tcl
+/usr/share/fsl/5.0/tcl/fsl_exec.tcl
+/usr/share/fsl/5.0/tcl/fsl_file.tcl
+/usr/share/fsl/5.0/tcl/fsl_filelv.tcl
+/usr/share/fsl/5.0/tcl/fsl_prepare_fieldmap.tcl
+/usr/share/fsl/5.0/tcl/fslio.tcl
+/usr/share/fsl/5.0/tcl/fslstart.tcl
+/usr/share/fsl/5.0/tcl/glm.tcl
+/usr/share/fsl/5.0/tcl/halfcoshrfparams.ppm
+/usr/share/fsl/5.0/tcl/invertxfm.tcl
+/usr/share/fsl/5.0/tcl/make_flobs.tcl
+/usr/share/fsl/5.0/tcl/melodic.tcl
+/usr/share/fsl/5.0/tcl/misc_func.tcl
+/usr/share/fsl/5.0/tcl/new_filename.tcl
+/usr/share/fsl/5.0/tcl/nudge.tcl
+/usr/share/fsl/5.0/tcl/pnm.tcl
+/usr/share/fsl/5.0/tcl/possum.tcl
+/usr/share/fsl/5.0/tcl/ppm2gif.tcl
+/usr/share/fsl/5.0/tcl/renderhighres.tcl
+/usr/share/fsl/5.0/tcl/renderstats.tcl
+/usr/share/fsl/5.0/tcl/susan.tcl
+/usr/share/fsl/5.0/tcl/susan_proc.tcl
+/usr/share/fsl/5.0/tcl/tclIndex
+/usr/share/fsl/5.0/tcl/triangled.xbm
+/usr/share/fsl/5.0/tcl/triangler.xbm
+/usr/share/fsl/5.0/tcl/webhelp.tcl
+/usr/share/fsl/data
+/usr/share/fsl/data/atlases
+/usr/share/fsl/data/atlases/Cerebellum
+/usr/share/fsl/data/atlases/Cerebellum_MNIflirt.xml
+/usr/share/fsl/data/atlases/Cerebellum_MNIfnirt.xml
+/usr/share/fsl/data/atlases/HarvardOxford
+/usr/share/fsl/data/atlases/HarvardOxford-Cortical-Lateralized.xml
+/usr/share/fsl/data/atlases/HarvardOxford-Cortical.xml
+/usr/share/fsl/data/atlases/HarvardOxford-Subcortical.xml
+/usr/share/fsl/data/atlases/JHU
+/usr/share/fsl/data/atlases/JHU-labels.xml
+/usr/share/fsl/data/atlases/JHU-tracts.xml
+/usr/share/fsl/data/atlases/Juelich
+/usr/share/fsl/data/atlases/Juelich.xml
+/usr/share/fsl/data/atlases/MNI
+/usr/share/fsl/data/atlases/MNI.xml
+/usr/share/fsl/data/atlases/MarsParietalParcellation
+/usr/share/fsl/data/atlases/MarsParietalParcellation.xml
+/usr/share/fsl/data/atlases/MarsTPJParcellation
+/usr/share/fsl/data/atlases/MarsTPJParcellation.xml
+/usr/share/fsl/data/atlases/NeubertVentralFrontalParcellation
+/usr/share/fsl/data/atlases/NeubertVentralFrontalParcellation.xml
+/usr/share/fsl/data/atlases/STN
+/usr/share/fsl/data/atlases/STN.xml
+/usr/share/fsl/data/atlases/SalletDorsalFrontalParcellation
+/usr/share/fsl/data/atlases/SalletDorsalFrontalParcellation.xml
+/usr/share/fsl/data/atlases/Striatum
+/usr/share/fsl/data/atlases/Striatum-Connectivity-3sub.xml
+/usr/share/fsl/data/atlases/Striatum-Connectivity-7sub.xml
+/usr/share/fsl/data/atlases/Striatum-Structural.xml
+/usr/share/fsl/data/atlases/Talairach
+/usr/share/fsl/data/atlases/Talairach.xml
+/usr/share/fsl/data/atlases/Thalamus
+/usr/share/fsl/data/atlases/Thalamus.xml
+/usr/share/fsl/data/first
+/usr/share/fsl/data/first/models_336_bin
+/usr/share/fsl/data/first/models_336_bin/05mm
+/usr/share/fsl/data/first/models_336_bin/05mm/L_Cereb_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/L_Pall_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/L_Puta_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/L_Thal_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/R_Cereb_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/R_Pall_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/R_Puta_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/05mm/R_Thal_05mm.bmv
+/usr/share/fsl/data/first/models_336_bin/BrStem_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/L_Accu_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/L_Amyg_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/L_Caud_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/L_Hipp_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/L_Late_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/R_Accu_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/R_Amyg_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/R_Caud_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/R_Hipp_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/R_Late_bin.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_puta
+/usr/share/fsl/data/first/models_336_bin/intref_puta/L_Cereb.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_puta/R_Cereb.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal
+/usr/share/fsl/data/first/models_336_bin/intref_thal/L_Amyg.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/L_Caud.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/L_Hipp.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/L_Late.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/R_Amyg.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/R_Caud.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/R_Hipp.bmv
+/usr/share/fsl/data/first/models_336_bin/intref_thal/R_Late.bmv
+/usr/share/fsl/data/possum
+/usr/share/fsl/data/possum/MRpar_1.5T
+/usr/share/fsl/data/possum/MRpar_3T
+/usr/share/fsl/data/possum/activation3D.nii.gz
+/usr/share/fsl/data/possum/activation3Dtimecourse
+/usr/share/fsl/data/possum/b0_ppm.nii.gz
+/usr/share/fsl/data/possum/b0extra.nii.gz
+/usr/share/fsl/data/possum/b0timecourse
+/usr/share/fsl/data/possum/brain.nii.gz
+/usr/share/fsl/data/possum/motionAllLarge_0.12s
+/usr/share/fsl/data/possum/motionAllLarge_60s
+/usr/share/fsl/data/possum/motionInPlaneLarge_12s
+/usr/share/fsl/data/possum/motionRzLarge_0.12s
+/usr/share/fsl/data/possum/motionRzMed_60s
+/usr/share/fsl/data/possum/slcprof
+/usr/share/fsl/data/possum/zeromotion
+/usr/share/fsl/data/standard
+/usr/share/lintian/overrides/fsl-5.0-core
+/usr/share/man/man1/fsl-5.0-core.1.gz
+/usr/share/man/man1/fsl.1.gz
+/usr/share/man/man1/fsl5.0-AnatomicalAverage.1.gz
+/usr/share/man/man1/fsl5.0-ApplyXFM.1.gz
+/usr/share/man/man1/fsl5.0-Asl.1.gz
+/usr/share/man/man1/fsl5.0-Bet.1.gz
+/usr/share/man/man1/fsl5.0-ConcatXFM.1.gz
+/usr/share/man/man1/fsl5.0-Fast.1.gz
+/usr/share/man/man1/fsl5.0-Fdt.1.gz
+/usr/share/man/man1/fsl5.0-Feat.1.gz
+/usr/share/man/man1/fsl5.0-Featquery.1.gz
+/usr/share/man/man1/fsl5.0-Flirt.1.gz
+/usr/share/man/man1/fsl5.0-Fsl_prepare_fieldmap.1.gz
+/usr/share/man/man1/fsl5.0-Glm.1.gz
+/usr/share/man/man1/fsl5.0-InvertXFM.1.gz
+/usr/share/man/man1/fsl5.0-Make_flobs.1.gz
+/usr/share/man/man1/fsl5.0-Melodic.1.gz
+/usr/share/man/man1/fsl5.0-Nudge.1.gz
+/usr/share/man/man1/fsl5.0-Pnm.1.gz
+/usr/share/man/man1/fsl5.0-Possum.1.gz
+/usr/share/man/man1/fsl5.0-Renderhighres.1.gz
+/usr/share/man/man1/fsl5.0-Renderstats.1.gz
+/usr/share/man/man1/fsl5.0-Susan.1.gz
+/usr/share/man/man1/fsl5.0-Text2Vest.1.gz
+/usr/share/man/man1/fsl5.0-Vest2Text.1.gz
+/usr/share/man/man1/fsl5.0-aff2rigid.1.gz
+/usr/share/man/man1/fsl5.0-applytopup.1.gz
+/usr/share/man/man1/fsl5.0-applywarp.1.gz
+/usr/share/man/man1/fsl5.0-applyxfm4D.1.gz
+/usr/share/man/man1/fsl5.0-asl_calib.1.gz
+/usr/share/man/man1/fsl5.0-asl_file.1.gz
+/usr/share/man/man1/fsl5.0-asl_mfree.1.gz
+/usr/share/man/man1/fsl5.0-asl_preproc.1.gz
+/usr/share/man/man1/fsl5.0-asl_reg.1.gz
+/usr/share/man/man1/fsl5.0-autoaq.1.gz
+/usr/share/man/man1/fsl5.0-avscale.1.gz
+/usr/share/man/man1/fsl5.0-avw2fsl.1.gz
+/usr/share/man/man1/fsl5.0-b0calc.1.gz
+/usr/share/man/man1/fsl5.0-basil.1.gz
+/usr/share/man/man1/fsl5.0-basil_var.1.gz
+/usr/share/man/man1/fsl5.0-baycest.1.gz
+/usr/share/man/man1/fsl5.0-bedpost.1.gz
+/usr/share/man/man1/fsl5.0-bedpostx.1.gz
+/usr/share/man/man1/fsl5.0-bedpostx_datacheck.1.gz
+/usr/share/man/man1/fsl5.0-bedpostx_postproc.sh.1.gz
+/usr/share/man/man1/fsl5.0-bedpostx_preproc.sh.1.gz
+/usr/share/man/man1/fsl5.0-bedpostx_single_slice.sh.1.gz
+/usr/share/man/man1/fsl5.0-bet.1.gz
+/usr/share/man/man1/fsl5.0-bet2.1.gz
+/usr/share/man/man1/fsl5.0-betsurf.1.gz
+/usr/share/man/man1/fsl5.0-calc_grad_perc_dev.1.gz
+/usr/share/man/man1/fsl5.0-ccops.1.gz
+/usr/share/man/man1/fsl5.0-checkFEAT.1.gz
+/usr/share/man/man1/fsl5.0-cluster.1.gz
+/usr/share/man/man1/fsl5.0-cluster2html.1.gz
+/usr/share/man/man1/fsl5.0-concat_bvars.1.gz
+/usr/share/man/man1/fsl5.0-connectedcomp.1.gz
+/usr/share/man/man1/fsl5.0-contrast_mgr.1.gz
+/usr/share/man/man1/fsl5.0-convert_xfm.1.gz
+/usr/share/man/man1/fsl5.0-convertwarp.1.gz
+/usr/share/man/man1/fsl5.0-create_lut.1.gz
+/usr/share/man/man1/fsl5.0-cutoffcalc.1.gz
+/usr/share/man/man1/fsl5.0-design_ttest2.1.gz
+/usr/share/man/man1/fsl5.0-distancemap.1.gz
+/usr/share/man/man1/fsl5.0-drawmesh.1.gz
+/usr/share/man/man1/fsl5.0-dtifit.1.gz
+/usr/share/man/man1/fsl5.0-dtigen.1.gz
+/usr/share/man/man1/fsl5.0-dual_regression.1.gz
+/usr/share/man/man1/fsl5.0-easythresh.1.gz
+/usr/share/man/man1/fsl5.0-eddy_combine.1.gz
+/usr/share/man/man1/fsl5.0-eddy_correct.1.gz
+/usr/share/man/man1/fsl5.0-epi_reg.1.gz
+/usr/share/man/man1/fsl5.0-estnoise.1.gz
+/usr/share/man/man1/fsl5.0-extractfidparams.1.gz
+/usr/share/man/man1/fsl5.0-extracttxt.1.gz
+/usr/share/man/man1/fsl5.0-fabber.1.gz
+/usr/share/man/man1/fsl5.0-fabber_var.1.gz
+/usr/share/man/man1/fsl5.0-fast.1.gz
+/usr/share/man/man1/fsl5.0-fdr.1.gz
+/usr/share/man/man1/fsl5.0-fdt_rotate_bvecs.1.gz
+/usr/share/man/man1/fsl5.0-feat.1.gz
+/usr/share/man/man1/fsl5.0-feat_gm_prepare.1.gz
+/usr/share/man/man1/fsl5.0-feat_model.1.gz
+/usr/share/man/man1/fsl5.0-featquery.1.gz
+/usr/share/man/man1/fsl5.0-featregapply.1.gz
+/usr/share/man/man1/fsl5.0-film_gls.1.gz
+/usr/share/man/man1/fsl5.0-filmbabe.1.gz
+/usr/share/man/man1/fsl5.0-filmbabescript.1.gz
+/usr/share/man/man1/fsl5.0-find_the_biggest.1.gz
+/usr/share/man/man1/fsl5.0-first.1.gz
+/usr/share/man/man1/fsl5.0-first3Dview.1.gz
+/usr/share/man/man1/fsl5.0-first_boundary_corr.1.gz
+/usr/share/man/man1/fsl5.0-first_flirt.1.gz
+/usr/share/man/man1/fsl5.0-first_mult_bcorr.1.gz
+/usr/share/man/man1/fsl5.0-first_roi_slicesdir.1.gz
+/usr/share/man/man1/fsl5.0-first_utils.1.gz
+/usr/share/man/man1/fsl5.0-flameo.1.gz
+/usr/share/man/man1/fsl5.0-flirt.1.gz
+/usr/share/man/man1/fsl5.0-flirt_average.1.gz
+/usr/share/man/man1/fsl5.0-fnirt.1.gz
+/usr/share/man/man1/fsl5.0-fnirtfileutils.1.gz
+/usr/share/man/man1/fsl5.0-fsl.1.gz
+/usr/share/man/man1/fsl5.0-fsl2ascii.1.gz
+/usr/share/man/man1/fsl5.0-fslFixText.1.gz
+/usr/share/man/man1/fsl5.0-fsl_abspath.1.gz
+/usr/share/man/man1/fsl5.0-fsl_anat.1.gz
+/usr/share/man/man1/fsl5.0-fsl_boxplot.1.gz
+/usr/share/man/man1/fsl5.0-fsl_glm.1.gz
+/usr/share/man/man1/fsl5.0-fsl_gui.1.gz
+/usr/share/man/man1/fsl5.0-fsl_histogram.1.gz
+/usr/share/man/man1/fsl5.0-fsl_motion_outliers.1.gz
+/usr/share/man/man1/fsl5.0-fsl_mvlm.1.gz
+/usr/share/man/man1/fsl5.0-fsl_prepare_fieldmap.1.gz
+/usr/share/man/man1/fsl5.0-fsl_reg.1.gz
+/usr/share/man/man1/fsl5.0-fsl_regfilt.1.gz
+/usr/share/man/man1/fsl5.0-fsl_sbca.1.gz
+/usr/share/man/man1/fsl5.0-fsl_schurprod.1.gz
+/usr/share/man/man1/fsl5.0-fsl_sub.1.gz
+/usr/share/man/man1/fsl5.0-fsl_tsplot.1.gz
+/usr/share/man/man1/fsl5.0-fsladd.1.gz
+/usr/share/man/man1/fsl5.0-fslanimate.1.gz
+/usr/share/man/man1/fsl5.0-fslascii2img.1.gz
+/usr/share/man/man1/fsl5.0-fslcc.1.gz
+/usr/share/man/man1/fsl5.0-fslchfiletype.1.gz
+/usr/share/man/man1/fsl5.0-fslchfiletype_exe.1.gz
+/usr/share/man/man1/fsl5.0-fslchpixdim.1.gz
+/usr/share/man/man1/fsl5.0-fslcomplex.1.gz
+/usr/share/man/man1/fsl5.0-fslcorrecthd.1.gz
+/usr/share/man/man1/fsl5.0-fslcpgeom.1.gz
+/usr/share/man/man1/fsl5.0-fslcreatehd.1.gz
+/usr/share/man/man1/fsl5.0-fslecho.1.gz
+/usr/share/man/man1/fsl5.0-fsledithd.1.gz
+/usr/share/man/man1/fsl5.0-fslerrorreport.1.gz
+/usr/share/man/man1/fsl5.0-fslfft.1.gz
+/usr/share/man/man1/fsl5.0-fslhd.1.gz
+/usr/share/man/man1/fsl5.0-fslinfo.1.gz
+/usr/share/man/man1/fsl5.0-fslinterleave.1.gz
+/usr/share/man/man1/fsl5.0-fslmaths.1.gz
+/usr/share/man/man1/fsl5.0-fslmeants.1.gz
+/usr/share/man/man1/fsl5.0-fslmerge.1.gz
+/usr/share/man/man1/fsl5.0-fslmodhd.1.gz
+/usr/share/man/man1/fsl5.0-fslnvols.1.gz
+/usr/share/man/man1/fsl5.0-fslorient.1.gz
+/usr/share/man/man1/fsl5.0-fslpspec.1.gz
+/usr/share/man/man1/fsl5.0-fslreorient2std.1.gz
+/usr/share/man/man1/fsl5.0-fslroi.1.gz
+/usr/share/man/man1/fsl5.0-fslselectvols.1.gz
+/usr/share/man/man1/fsl5.0-fslsize.1.gz
+/usr/share/man/man1/fsl5.0-fslslice.1.gz
+/usr/share/man/man1/fsl5.0-fslsmoothfill.1.gz
+/usr/share/man/man1/fsl5.0-fslsplit.1.gz
+/usr/share/man/man1/fsl5.0-fslstats.1.gz
+/usr/share/man/man1/fsl5.0-fslsurfacemaths.1.gz
+/usr/share/man/man1/fsl5.0-fslswapdim.1.gz
+/usr/share/man/man1/fsl5.0-fslswapdim_exe.1.gz
+/usr/share/man/man1/fsl5.0-fslval.1.gz
+/usr/share/man/man1/fsl5.0-fslvbm_1_bet.1.gz
+/usr/share/man/man1/fsl5.0-fslvbm_2_template.1.gz
+/usr/share/man/man1/fsl5.0-fslvbm_3_proc.1.gz
+/usr/share/man/man1/fsl5.0-ftoz.1.gz
+/usr/share/man/man1/fsl5.0-fugue.1.gz
+/usr/share/man/man1/fsl5.0-generateConfounds.1.gz
+/usr/share/man/man1/fsl5.0-generate_b0.1.gz
+/usr/share/man/man1/fsl5.0-generate_b0calc.1.gz
+/usr/share/man/man1/fsl5.0-generate_brain.1.gz
+/usr/share/man/man1/fsl5.0-gps.1.gz
+/usr/share/man/man1/fsl5.0-halfcosbasis.1.gz
+/usr/share/man/man1/fsl5.0-hist2prob.1.gz
+/usr/share/man/man1/fsl5.0-imcp.1.gz
+/usr/share/man/man1/fsl5.0-img2imgcoord.1.gz
+/usr/share/man/man1/fsl5.0-img2stdcoord.1.gz
+/usr/share/man/man1/fsl5.0-imglob.1.gz
+/usr/share/man/man1/fsl5.0-imln.1.gz
+/usr/share/man/man1/fsl5.0-immv.1.gz
+/usr/share/man/man1/fsl5.0-imrm.1.gz
+/usr/share/man/man1/fsl5.0-imtest.1.gz
+/usr/share/man/man1/fsl5.0-invfeatreg.1.gz
+/usr/share/man/man1/fsl5.0-invwarp.1.gz
+/usr/share/man/man1/fsl5.0-invwarp_exe.1.gz
+/usr/share/man/man1/fsl5.0-label2surf.1.gz
+/usr/share/man/man1/fsl5.0-lesion_filling.1.gz
+/usr/share/man/man1/fsl5.0-mainfeatreg.1.gz
+/usr/share/man/man1/fsl5.0-make_dyadic_vectors.1.gz
+/usr/share/man/man1/fsl5.0-makerot.1.gz
+/usr/share/man/man1/fsl5.0-maskdyads.1.gz
+/usr/share/man/man1/fsl5.0-match_smoothing.1.gz
+/usr/share/man/man1/fsl5.0-mccutup.1.gz
+/usr/share/man/man1/fsl5.0-mcflirt.1.gz
+/usr/share/man/man1/fsl5.0-mean.1.gz
+/usr/share/man/man1/fsl5.0-medianfilter.1.gz
+/usr/share/man/man1/fsl5.0-melodic.1.gz
+/usr/share/man/man1/fsl5.0-midtrans.1.gz
+/usr/share/man/man1/fsl5.0-mm.1.gz
+/usr/share/man/man1/fsl5.0-morph_kernel.1.gz
+/usr/share/man/man1/fsl5.0-mp_diffpow.sh.1.gz
+/usr/share/man/man1/fsl5.0-mvntool.1.gz
+/usr/share/man/man1/fsl5.0-new_invwarp.1.gz
+/usr/share/man/man1/fsl5.0-old_betall.1.gz
+/usr/share/man/man1/fsl5.0-overlay.1.gz
+/usr/share/man/man1/fsl5.0-oxford_asl.1.gz
+/usr/share/man/man1/fsl5.0-pairreg.1.gz
+/usr/share/man/man1/fsl5.0-perfusion_subtract.1.gz
+/usr/share/man/man1/fsl5.0-pngappend.1.gz
+/usr/share/man/man1/fsl5.0-pnm_evs.1.gz
+/usr/share/man/man1/fsl5.0-pnm_stage1.1.gz
+/usr/share/man/man1/fsl5.0-pointflirt.1.gz
+/usr/share/man/man1/fsl5.0-popp.1.gz
+/usr/share/man/man1/fsl5.0-possum.1.gz
+/usr/share/man/man1/fsl5.0-possumX.1.gz
+/usr/share/man/man1/fsl5.0-possumX_postproc.sh.1.gz
+/usr/share/man/man1/fsl5.0-possum_matrix.1.gz
+/usr/share/man/man1/fsl5.0-possum_sum.1.gz
+/usr/share/man/man1/fsl5.0-prelude.1.gz
+/usr/share/man/man1/fsl5.0-prewhiten.1.gz
+/usr/share/man/man1/fsl5.0-probtrack.1.gz
+/usr/share/man/man1/fsl5.0-probtrackx.1.gz
+/usr/share/man/man1/fsl5.0-probtrackx2.1.gz
+/usr/share/man/man1/fsl5.0-proj_thresh.1.gz
+/usr/share/man/man1/fsl5.0-ptoz.1.gz
+/usr/share/man/man1/fsl5.0-pulse.1.gz
+/usr/share/man/man1/fsl5.0-pvmfit.1.gz
+/usr/share/man/man1/fsl5.0-qboot.1.gz
+/usr/share/man/man1/fsl5.0-qboot_parallel.1.gz
+/usr/share/man/man1/fsl5.0-qboot_postproc.sh.1.gz
+/usr/share/man/man1/fsl5.0-qboot_preproc.sh.1.gz
+/usr/share/man/man1/fsl5.0-quasil.1.gz
+/usr/share/man/man1/fsl5.0-randomise.1.gz
+/usr/share/man/man1/fsl5.0-randomise_parallel.1.gz
+/usr/share/man/man1/fsl5.0-remove_ext.1.gz
+/usr/share/man/man1/fsl5.0-renderhighres.1.gz
+/usr/share/man/man1/fsl5.0-rmsdiff.1.gz
+/usr/share/man/man1/fsl5.0-robustfov.1.gz
+/usr/share/man/man1/fsl5.0-run_first.1.gz
+/usr/share/man/man1/fsl5.0-run_first_all.1.gz
+/usr/share/man/man1/fsl5.0-run_mesh_utils.1.gz
+/usr/share/man/man1/fsl5.0-select_dwi_vols.1.gz
+/usr/share/man/man1/fsl5.0-selfintersection.1.gz
+/usr/share/man/man1/fsl5.0-setFEAT.1.gz
+/usr/share/man/man1/fsl5.0-setup_masks.1.gz
+/usr/share/man/man1/fsl5.0-siena.1.gz
+/usr/share/man/man1/fsl5.0-siena_cal.1.gz
+/usr/share/man/man1/fsl5.0-siena_diff.1.gz
+/usr/share/man/man1/fsl5.0-siena_flirt.1.gz
+/usr/share/man/man1/fsl5.0-siena_flow2std.1.gz
+/usr/share/man/man1/fsl5.0-sienax.1.gz
+/usr/share/man/man1/fsl5.0-sigloss.1.gz
+/usr/share/man/man1/fsl5.0-signal2image.1.gz
+/usr/share/man/man1/fsl5.0-sliceanimate.1.gz
+/usr/share/man/man1/fsl5.0-slicer.1.gz
+/usr/share/man/man1/fsl5.0-slices.1.gz
+/usr/share/man/man1/fsl5.0-slices_summary.1.gz
+/usr/share/man/man1/fsl5.0-slicesdir.1.gz
+/usr/share/man/man1/fsl5.0-slicesmask.1.gz
+/usr/share/man/man1/fsl5.0-slicetimer.1.gz
+/usr/share/man/man1/fsl5.0-smoothest.1.gz
+/usr/share/man/man1/fsl5.0-spharm_rm.1.gz
+/usr/share/man/man1/fsl5.0-standard_space_roi.1.gz
+/usr/share/man/man1/fsl5.0-std2imgcoord.1.gz
+/usr/share/man/man1/fsl5.0-surf2surf.1.gz
+/usr/share/man/man1/fsl5.0-surf2volume.1.gz
+/usr/share/man/man1/fsl5.0-surf_proj.1.gz
+/usr/share/man/man1/fsl5.0-surface_fdr.1.gz
+/usr/share/man/man1/fsl5.0-susan.1.gz
+/usr/share/man/man1/fsl5.0-swap_subjectwise.1.gz
+/usr/share/man/man1/fsl5.0-swap_voxelwise.1.gz
+/usr/share/man/man1/fsl5.0-systemnoise.1.gz
+/usr/share/man/man1/fsl5.0-tbss_1_preproc.1.gz
+/usr/share/man/man1/fsl5.0-tbss_2_reg.1.gz
+/usr/share/man/man1/fsl5.0-tbss_3_postreg.1.gz
+/usr/share/man/man1/fsl5.0-tbss_4_prestats.1.gz
+/usr/share/man/man1/fsl5.0-tbss_deproject.1.gz
+/usr/share/man/man1/fsl5.0-tbss_fill.1.gz
+/usr/share/man/man1/fsl5.0-tbss_non_FA.1.gz
+/usr/share/man/man1/fsl5.0-tbss_skeleton.1.gz
+/usr/share/man/man1/fsl5.0-tbss_sym.1.gz
+/usr/share/man/man1/fsl5.0-tbss_x.1.gz
+/usr/share/man/man1/fsl5.0-tcalc.1.gz
+/usr/share/man/man1/fsl5.0-tmpnam.1.gz
+/usr/share/man/man1/fsl5.0-topup.1.gz
+/usr/share/man/man1/fsl5.0-tsplot.1.gz
+/usr/share/man/man1/fsl5.0-ttologp.1.gz
+/usr/share/man/man1/fsl5.0-ttoz.1.gz
+/usr/share/man/man1/fsl5.0-unconfound.1.gz
+/usr/share/man/man1/fsl5.0-updatefeatreg.1.gz
+/usr/share/man/man1/fsl5.0-vecreg.1.gz
+/usr/share/man/man1/fsl5.0-verbena.1.gz
+/usr/share/man/man1/fsl5.0-viena_createpng.1.gz
+/usr/share/man/man1/fsl5.0-viena_quant.1.gz
+/usr/share/man/man1/fsl5.0-whirlgif.1.gz
+/usr/share/man/man1/fsl5.0-wpng.1.gz
+/usr/share/man/man1/fsl5.0-xfibres.1.gz
+/usr/share/man/man1/fsl5.0-zeropad.1.gz
+/usr/share/man/man1/fsl5.0-ztop.1.gz
+/usr/share/man/man1/fslview.1.gz
+/usr/share/menu/fsl-5.0-core
+/usr/share/octave/site/m/fsl-5.0
+/usr/share/pixmaps/fsl-5.0.xpm
+/usr/share/pixmaps/fslview.xpm
+/usr/share/texlive/texmf-dist/fonts/afm/public/hfbright/hfsltl10.afm
+/usr/share/texlive/texmf-dist/fonts/afm/public/semaphor/smfsl10.afm
+/usr/share/texlive/texmf-dist/fonts/enc/dvips/semaphor/smfsl10.enc
+/usr/share/texlive/texmf-dist/fonts/opentype/public/semaphor/smfsl10.otf
+/usr/share/texlive/texmf-dist/fonts/source/public/euro-ce/eurobfsl.mf
+/usr/share/texlive/texmf-dist/fonts/source/public/semaphor/metafont/smfsl10.mf
+/usr/share/texlive/texmf-dist/fonts/source/public/semaphor/smfsl10.mp
+/usr/share/texlive/texmf-dist/fonts/tfm/public/euro-ce/eurobfsl.tfm
+/usr/share/texlive/texmf-dist/fonts/tfm/public/semaphor/smfsl10.tfm
+/usr/share/texlive/texmf-dist/fonts/type1/public/hfbright/hfsltl10.pfb
+/usr/share/texlive/texmf-dist/fonts/type1/public/semaphor/smfsl10.pfb
+/usr/share/texlive/texmf-dist/fonts/type1/public/semaphor/smfsl10.pfm
+/var/lib/dpkg/info/e2fslibs:amd64.list
+/var/lib/dpkg/info/e2fslibs:amd64.md5sums
+/var/lib/dpkg/info/e2fslibs:amd64.shlibs
+/var/lib/dpkg/info/e2fslibs:amd64.symbols
+/var/lib/dpkg/info/e2fslibs:amd64.triggers
+/var/lib/dpkg/info/fsl-5.0-complete.list
+/var/lib/dpkg/info/fsl-5.0-complete.md5sums
+/var/lib/dpkg/info/fsl-5.0-core.conffiles
+/var/lib/dpkg/info/fsl-5.0-core.list
+/var/lib/dpkg/info/fsl-5.0-core.md5sums
+/var/lib/dpkg/info/fsl-5.0-core.postinst
+/var/lib/dpkg/info/fsl-5.0-core.postrm
+/var/lib/dpkg/info/fsl-5.0-eddy-nonfree.list
+/var/lib/dpkg/info/fsl-5.0-eddy-nonfree.md5sums
+/var/lib/dpkg/info/fsl-atlases.list
+/var/lib/dpkg/info/fsl-atlases.md5sums
+/var/lib/dpkg/info/fsl-bangor-cerebellar-atlas.list
+/var/lib/dpkg/info/fsl-bangor-cerebellar-atlas.md5sums
+/var/lib/dpkg/info/fsl-complete.list
+/var/lib/dpkg/info/fsl-complete.md5sums
+/var/lib/dpkg/info/fsl-core.list
+/var/lib/dpkg/info/fsl-core.md5sums
+/var/lib/dpkg/info/fsl-core.preinst
+/var/lib/dpkg/info/fsl-first-data.list
+/var/lib/dpkg/info/fsl-first-data.md5sums
+/var/lib/dpkg/info/fsl-harvard-oxford-atlases.list
+/var/lib/dpkg/info/fsl-harvard-oxford-atlases.md5sums
+/var/lib/dpkg/info/fsl-harvard-oxford-cortical-lateralized-atlas.list
+/var/lib/dpkg/info/fsl-harvard-oxford-cortical-lateralized-atlas.md5sums
+/var/lib/dpkg/info/fsl-jhu-dti-whitematter-atlas.list
+/var/lib/dpkg/info/fsl-jhu-dti-whitematter-atlas.md5sums
+/var/lib/dpkg/info/fsl-juelich-histological-atlas.list
+/var/lib/dpkg/info/fsl-juelich-histological-atlas.md5sums
+/var/lib/dpkg/info/fsl-mni-structural-atlas.list
+/var/lib/dpkg/info/fsl-mni-structural-atlas.md5sums
+/var/lib/dpkg/info/fsl-mni152-templates.list
+/var/lib/dpkg/info/fsl-mni152-templates.md5sums
+/var/lib/dpkg/info/fsl-oxford-striatal-atlas.list
+/var/lib/dpkg/info/fsl-oxford-striatal-atlas.md5sums
+/var/lib/dpkg/info/fsl-oxford-thalamic-connectivity-atlas.list
+/var/lib/dpkg/info/fsl-oxford-thalamic-connectivity-atlas.md5sums
+/var/lib/dpkg/info/fsl-possum-data.list
+/var/lib/dpkg/info/fsl-possum-data.md5sums
+/var/lib/dpkg/info/fsl-resting-connectivity-parcellation-atlases.list
+/var/lib/dpkg/info/fsl-resting-connectivity-parcellation-atlases.md5sums
+/var/lib/dpkg/info/fsl-subthalamic-nucleus-atlas.list
+/var/lib/dpkg/info/fsl-subthalamic-nucleus-atlas.md5sums
+/var/lib/dpkg/info/fsl-talairach-daemon-atlas.list
+/var/lib/dpkg/info/fsl-talairach-daemon-atlas.md5sums
+/var/lib/dpkg/info/fslview-doc.list
+/var/lib/dpkg/info/fslview-doc.md5sums
+/var/lib/dpkg/info/fslview.list
+/var/lib/dpkg/info/fslview.md5sums
+root@10d8f9956c6a:/usr# cd /usr/share/fsl/
+root@10d8f9956c6a:/usr/share/fsl# ls -l
+total 8
+drwxr-xr-x 5 root root 4096 May 13 14:10 5.0
+drwxr-xr-x 5 root root 4096 May 13 14:10 data
+root@10d8f9956c6a:/usr/share/fsl# du -sh *
+7.6M	5.0
+1.2G	data
+root@10d8f9956c6a:/usr/share/fsl# cd /usr/share/data/
+root@10d8f9956c6a:/usr/share/data# du -sh fsl*
+56M	fsl-mni152-templates
+2.3M	fsl-resting-connectivity-parcellation-atlases
+root@10d8f9956c6a:/usr/share/data# cd /usr/local/fsl/data
+root@10d8f9956c6a:/usr/local/fsl/data# ls -l
+total 8
+drwxr-xr-x 1 root root 4096 May 13 14:16 atlases
+drwxr-xr-x 1 root root 4096 May 13 14:16 standard
+root@10d8f9956c6a:/usr/local/fsl/data# du -sh *
+56M	atlases
+56M	standard
+root@10d8f9956c6a:/usr/local/fsl/data# cd /usr/lib/fsl
+root@10d8f9956c6a:/usr/lib/fsl# du -sh *
+32M	5.0
+root@10d8f9956c6a:/usr/lib/fsl# cd /usr/local/
+root@10d8f9956c6a:/usr/local# du -sh *
+48K	bin
+4.0K	etc
+144M	fsl
+4.0K	games
+4.0K	include
+94M	lib
+0	man
+4.0K	sbin
+36K	share
+4.0K	src
+root@10d8f9956c6a:/usr/local# pip
+
+Usage:   
+  pip <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.
+  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output.
+  --log <path>                Path to a verbose appending log.
+  --proxy <proxy>             Specify a proxy in the form [user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup.
+  --trusted-host <hostname>   Mark this host as trusted, even though it does not have valid or any HTTPS.
+  --cert <path>               Path to alternate CA bundle.
+  --client-cert <path>        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a new version of pip is available for download. Implied with --no-index.
+root@10d8f9956c6a:/usr/local# pip install neurodocker
+Collecting neurodocker
+  Could not find a version that satisfies the requirement neurodocker (from versions: )
+No matching distribution found for neurodocker
+You are using pip version 8.1.1, however version 20.1.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+root@10d8f9956c6a:/usr/local# pip install --upgrade pip
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/43/84/23ed6a1796480a6f1a2d38f2802901d078266bda38388954d01d3f2e821d/pip-20.1.1-py2.py3-none-any.whl (1.5MB)
+    100% |################################| 1.5MB 1.0MB/s 
+Installing collected packages: pip
+  Found existing installation: pip 8.1.1
+    Not uninstalling pip at /usr/lib/python2.7/dist-packages, outside environment /usr
+Successfully installed pip-20.1.1
+root@10d8f9956c6a:/usr/local# pip install neurodocker
+WARNING: pip is being invoked by an old script wrapper. This will fail in a future version of pip.
+Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the underlying issue.
+To avoid this problem you can invoke Python with '-m pip' instead of running pip directly.
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+ERROR: Could not find a version that satisfies the requirement neurodocker (from versions: none)
+ERROR: No matching distribution found for neurodocker
+root@10d8f9956c6a:/usr/local# python -m pip install neurodocker
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+ERROR: Could not find a version that satisfies the requirement neurodocker (from versions: none)
+ERROR: No matching distribution found for neurodocker
+root@10d8f9956c6a:/usr/local# python3 -m pip install neurodocker
+/usr/bin/python3: No module named pip
+root@10d8f9956c6a:/usr/local# apt-get install python3
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+python3 is already the newest version (3.5.1-3).
+python3 set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+root@10d8f9956c6a:/usr/local# python3
+Python 3.5.2 (default, Apr 16 2020, 17:47:17) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exiot
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'exiot' is not defined
+>>> quit
+Use quit() or Ctrl-D (i.e. EOF) to exit
+>>> quit()
+root@10d8f9956c6a:/usr/local# python3 -m pip install neurodocker
+/usr/bin/python3: No module named pip
+root@10d8f9956c6a:/usr/local# pip3 --version
+bash: pip3: command not found
+root@10d8f9956c6a:/usr/local# apt install python3-pip
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  build-essential python3-wheel
+The following NEW packages will be installed:
+  build-essential python3-pip python3-wheel
+0 upgraded, 3 newly installed, 0 to remove and 4 not upgraded.
+Need to get 162 kB of archives.
+After this operation, 801 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 build-essential amd64 12.1ubuntu2 [4758 B]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 python3-pip all 8.1.1-2ubuntu0.4 [109 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial/universe amd64 python3-wheel all 0.29.0-1 [48.1 kB]
+Fetched 162 kB in 0s (332 kB/s)        
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76, <> line 3.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package build-essential.
+(Reading database ... 108146 files and directories currently installed.)
+Preparing to unpack .../build-essential_12.1ubuntu2_amd64.deb ...
+Unpacking build-essential (12.1ubuntu2) ...
+Selecting previously unselected package python3-pip.
+Preparing to unpack .../python3-pip_8.1.1-2ubuntu0.4_all.deb ...
+Unpacking python3-pip (8.1.1-2ubuntu0.4) ...
+Selecting previously unselected package python3-wheel.
+Preparing to unpack .../python3-wheel_0.29.0-1_all.deb ...
+Unpacking python3-wheel (0.29.0-1) ...
+Setting up build-essential (12.1ubuntu2) ...
+Setting up python3-pip (8.1.1-2ubuntu0.4) ...
+Setting up python3-wheel (0.29.0-1) ...
+root@10d8f9956c6a:/usr/local# python3 -m pip install neurodocker
+Collecting neurodocker
+  Downloading https://files.pythonhosted.org/packages/2f/d7/8b9226ab6d4335d6fb3c8e6f5649690e9f49b8623d05f81efbc87fdb1306/neurodocker-0.7.0-py3-none-any.whl (61kB)
+    100% |################################| 61kB 3.5MB/s 
+Collecting jinja2>=2.0 (from neurodocker)
+  Downloading https://files.pythonhosted.org/packages/30/9e/f663a2aa66a09d838042ae1a2c5659828bb9b41ea3a6efa20a20fd92b121/Jinja2-2.11.2-py2.py3-none-any.whl (125kB)
+    100% |################################| 133kB 7.0MB/s 
+Collecting PyYAML>=3.0 (from neurodocker)
+  Downloading https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c/PyYAML-5.3.1.tar.gz (269kB)
+    100% |################################| 276kB 5.1MB/s 
+Collecting etelemetry>=0.2.0 (from neurodocker)
+  Downloading https://files.pythonhosted.org/packages/50/fe/7b4a4d7bd2756884ba2af5445ac538bff20ca8e6c89e24b253cc51845f1b/etelemetry-0.2.1-py3-none-any.whl
+Collecting MarkupSafe>=0.23 (from jinja2>=2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/6e/57/d40124076756c19ff2269678de7ae25a14ebbb3f6314eb5ce9477f191350/MarkupSafe-1.1.1-cp35-cp35m-manylinux1_x86_64.whl
+Collecting ci-info>=0.2 (from etelemetry>=0.2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/cf/01/664a10490000d7154fa71358af87681696b8116a12d869a267063c470fbc/ci_info-0.2.0-py3-none-any.whl
+Collecting requests (from etelemetry>=0.2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/45/1e/0c169c6a5381e241ba7404532c16a21d86ab872c9bed8bdcd4c423954103/requests-2.24.0-py2.py3-none-any.whl (61kB)
+    100% |################################| 71kB 12.5MB/s 
+Collecting certifi>=2017.4.17 (from requests->etelemetry>=0.2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/5e/c4/6c4fe722df5343c33226f0b4e0bb042e4dc13483228b4718baf286f86d87/certifi-2020.6.20-py2.py3-none-any.whl (156kB)
+    100% |################################| 163kB 7.8MB/s 
+Collecting chardet<4,>=3.0.2 (from requests->etelemetry>=0.2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+    100% |################################| 143kB 9.6MB/s 
+Collecting idna<3,>=2.5 (from requests->etelemetry>=0.2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/a2/38/928ddce2273eaa564f6f50de919327bf3a00f091b5baba8dfa9460f3a8a8/idna-2.10-py2.py3-none-any.whl (58kB)
+    100% |################################| 61kB 10.6MB/s 
+Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 (from requests->etelemetry>=0.2.0->neurodocker)
+  Downloading https://files.pythonhosted.org/packages/e1/e5/df302e8017440f111c11cc41a6b432838672f5a70aa29227bf58149dc72f/urllib3-1.25.9-py2.py3-none-any.whl (126kB)
+    100% |################################| 133kB 9.5MB/s 
+Building wheels for collected packages: PyYAML
+  Running setup.py bdist_wheel for PyYAML ... done
+  Stored in directory: /root/.cache/pip/wheels/a7/c1/ea/cf5bd31012e735dc1dfea3131a2d5eae7978b251083d6247bd
+Successfully built PyYAML
+Installing collected packages: MarkupSafe, jinja2, PyYAML, ci-info, certifi, chardet, idna, urllib3, requests, etelemetry, neurodocker
+Successfully installed MarkupSafe-1.1.1 PyYAML-5.3.1 certifi-2020.6.20 chardet-3.0.4 ci-info-0.2.0 etelemetry-0.2.1 idna-2.10 jinja2-2.11.2 neurodocker-0.7.0 requests-2.24.0 urllib3-1.25.9
+You are using pip version 8.1.1, however version 20.1.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+root@10d8f9956c6a:/usr/local# pwd
+/usr/local
+root@10d8f9956c6a:/usr/local# cd /home/
+root@10d8f9956c6a:/home# ls -l
+total 0
+root@10d8f9956c6a:/home# generate docker \
+>           --pkg-manager apt \
+>           --base ubuntu:xenial \
+>           --ants version=2.3.1 method=binaries \
+>           --fsl version=6.0.3 method=binaries \
+>           --afni version=latest method=binaries
+bash: generate: command not found
+root@10d8f9956c6a:/home# neurodocker generate docker \
+>           --pkg-manager apt \
+>           --base ubuntu:xenial \
+>           --ants version=2.3.1 method=binaries \
+>           --fsl version=6.0.3 method=binaries \
+>           --afni version=latest method=binaries
 # Generated by: Neurodocker version 0.7.0
 # Latest release: Neurodocker version 0.7.0
-# Timestamp: 2020/07/16 15:58:39 UTC
+# Timestamp: 2020/07/16 15:58:20 UTC
 # 
 # Thank you for using Neurodocker. If you discover any issues
 # or ways to improve this software, please submit an issue or
@@ -15,113 +2978,120 @@ USER root
 ARG DEBIAN_FRONTEND="noninteractive"
 
 ENV LANG="en_US.UTF-8" \
-ND_ENTRYPOINT="/neurodocker/startup.sh" \
-LC_ALL="en_US.UTF-8"
+    LC_ALL="en_US.UTF-8" \
+    ND_ENTRYPOINT="/neurodocker/startup.sh"
 RUN export ND_ENTRYPOINT="/neurodocker/startup.sh" \
-&& apt-get update -qq \
-&& apt-get install -y -q --no-install-recommends \
-apt-utils \
-bzip2 \
-ca-certificates \
-curl \
-locales \
-unzip \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/* \
-&& sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
-&& dpkg-reconfigure --frontend=noninteractive locales \
-&& update-locale LANG="en_US.UTF-8" \
-&& chmod 777 /opt && chmod a+s /opt \
-&& mkdir -p /neurodocker \
-&& if [ ! -f "$ND_ENTRYPOINT" ]; then \
-echo '#!/usr/bin/env bash' >> "$ND_ENTRYPOINT" \
-&&   echo 'set -e' >> "$ND_ENTRYPOINT" \
-&&   echo 'export USER="${USER:=`whoami`}"' >> "$ND_ENTRYPOINT" \
-&&   echo 'if [ -n "$1" ]; then "$@"; else /usr/bin/env bash; fi' >> "$ND_ENTRYPOINT"; \
-fi \
-&& chmod -R 777 /neurodocker && chmod a+s /neurodocker
+    && apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           apt-utils \
+           bzip2 \
+           ca-certificates \
+           curl \
+           locales \
+           unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && dpkg-reconfigure --frontend=noninteractive locales \
+    && update-locale LANG="en_US.UTF-8" \
+    && chmod 777 /opt && chmod a+s /opt \
+    && mkdir -p /neurodocker \
+    && if [ ! -f "$ND_ENTRYPOINT" ]; then \
+         echo '#!/usr/bin/env bash' >> "$ND_ENTRYPOINT" \
+    &&   echo 'set -e' >> "$ND_ENTRYPOINT" \
+    &&   echo 'export USER="${USER:=`whoami`}"' >> "$ND_ENTRYPOINT" \
+    &&   echo 'if [ -n "$1" ]; then "$@"; else /usr/bin/env bash; fi' >> "$ND_ENTRYPOINT"; \
+    fi \
+    && chmod -R 777 /neurodocker && chmod a+s /neurodocker
 
 ENTRYPOINT ["/neurodocker/startup.sh"]
 
 ENV ANTSPATH="/opt/ants-2.3.1" \
-PATH="/opt/ants-2.3.1:$PATH"
+    PATH="/opt/ants-2.3.1:$PATH"
 RUN echo "Downloading ANTs ..." \
-&& mkdir -p /opt/ants-2.3.1 \
-&& curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
-| tar -xz -C /opt/ants-2.3.1 --strip-components 1
+    && mkdir -p /opt/ants-2.3.1 \
+    && curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
+    | tar -xz -C /opt/ants-2.3.1 --strip-components 1
 
-ENV FSLMACHINELIST="" \
-FSLGECUDAQ="cuda.q" \
-FSLREMOTECALL="" \
-FSLTCLSH="/opt/fsl-6.0.3/bin/fsltclsh" \
-FSLLOCKDIR="" \
-FSLMULTIFILEQUIT="TRUE" \
-FSLOUTPUTTYPE="NIFTI_GZ" \
-FSLDIR="/opt/fsl-6.0.3" \
-PATH="/opt/fsl-6.0.3/bin:$PATH" \
-FSLWISH="/opt/fsl-6.0.3/bin/fslwish"
+ENV FSLMULTIFILEQUIT="TRUE" \
+    FSLGECUDAQ="cuda.q" \
+    FSLOUTPUTTYPE="NIFTI_GZ" \
+    FSLWISH="/opt/fsl-6.0.3/bin/fslwish" \
+    FSLTCLSH="/opt/fsl-6.0.3/bin/fsltclsh" \
+    FSLDIR="/opt/fsl-6.0.3" \
+    FSLMACHINELIST="" \
+    FSLREMOTECALL="" \
+    PATH="/opt/fsl-6.0.3/bin:$PATH" \
+    FSLLOCKDIR=""
 RUN apt-get update -qq \
-&& apt-get install -y -q --no-install-recommends \
-bc \
-dc \
-file \
-libfontconfig1 \
-libfreetype6 \
-libgl1-mesa-dev \
-libgl1-mesa-dri \
-libglu1-mesa-dev \
-libgomp1 \
-libice6 \
-libxcursor1 \
-libxft2 \
-libxinerama1 \
-libxrandr2 \
-libxrender1 \
-libxt6 \
-sudo \
-wget \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/* \
-&& echo "Downloading FSL ..." \
-| wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py \
-| python3 fslinstaller.py
+    && apt-get install -y -q --no-install-recommends \
+           bc \
+           dc \
+           file \
+           libfontconfig1 \
+           libfreetype6 \
+           libgl1-mesa-dev \
+           libgl1-mesa-dri \
+           libglu1-mesa-dev \
+           libgomp1 \
+           libice6 \
+           libxcursor1 \
+           libxft2 \
+           libxinerama1 \
+           libxrandr2 \
+           libxrender1 \
+           libxt6 \
+           sudo \
+           wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "Downloading FSL ..." \
+    && mkdir -p /opt/fsl-6.0.3 \
+    && curl -fsSL --retry 5 https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.3-centos6_64.tar.gz \
+    | tar -xz -C /opt/fsl-6.0.3 --strip-components 1 \
+    && sed -i '$iecho Some packages in this Docker container are non-free' $ND_ENTRYPOINT \
+    && sed -i '$iecho If you are considering commercial use of this container, please consult the relevant license:' $ND_ENTRYPOINT \
+    && sed -i '$iecho https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence' $ND_ENTRYPOINT \
+    && sed -i '$isource $FSLDIR/etc/fslconf/fsl.sh' $ND_ENTRYPOINT \
+    && echo "Installing FSL conda environment ..." \
+    && bash /opt/fsl-6.0.3/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.3
 
-ENV AFNI_PLUGINPATH="/opt/afni-latest" \
-PATH="/opt/afni-latest:$PATH"
+ENV PATH="/opt/afni-latest:$PATH" \
+    AFNI_PLUGINPATH="/opt/afni-latest"
 RUN apt-get update -qq \
-&& apt-get install -y -q --no-install-recommends \
-ed \
-gsl-bin \
-libglib2.0-0 \
-libglu1-mesa-dev \
-libglw1-mesa \
-libgomp1 \
-libjpeg62 \
-libxm4 \
-netpbm \
-tcsh \
-xfonts-base \
-xvfb \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/* \
-&& curl -sSL --retry 5 -o /tmp/toinstall.deb http://mirrors.kernel.org/debian/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb \
-&& dpkg -i /tmp/toinstall.deb \
-&& rm /tmp/toinstall.deb \
-&& curl -sSL --retry 5 -o /tmp/toinstall.deb http://snapshot.debian.org/archive/debian-security/20160113T213056Z/pool/updates/main/libp/libpng/libpng12-0_1.2.49-1%2Bdeb7u2_amd64.deb \
-&& dpkg -i /tmp/toinstall.deb \
-&& rm /tmp/toinstall.deb \
-&& apt-get install -f \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/* \
-&& gsl2_path="$(find / -name 'libgsl.so.19' || printf '')" \
-&& if [ -n "$gsl2_path" ]; then \
-ln -sfv "$gsl2_path" "$(dirname $gsl2_path)/libgsl.so.0"; \
-fi \
-&& ldconfig \
-&& echo "Downloading AFNI ..." \
-&& mkdir -p /opt/afni-latest \
-&& curl -fsSL --retry 5 https://afni.nimh.nih.gov/pub/dist/tgz/linux_openmp_64.tgz \
-| tar -xz -C /opt/afni-latest --strip-components 1
+    && apt-get install -y -q --no-install-recommends \
+           ed \
+           gsl-bin \
+           libglib2.0-0 \
+           libglu1-mesa-dev \
+           libglw1-mesa \
+           libgomp1 \
+           libjpeg62 \
+           libxm4 \
+           netpbm \
+           tcsh \
+           xfonts-base \
+           xvfb \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://mirrors.kernel.org/debian/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://snapshot.debian.org/archive/debian-security/20160113T213056Z/pool/updates/main/libp/libpng/libpng12-0_1.2.49-1%2Bdeb7u2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && apt-get install -f \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && gsl2_path="$(find / -name 'libgsl.so.19' || printf '')" \
+    && if [ -n "$gsl2_path" ]; then \
+         ln -sfv "$gsl2_path" "$(dirname $gsl2_path)/libgsl.so.0"; \
+    fi \
+    && ldconfig \
+    && echo "Downloading AFNI ..." \
+    && mkdir -p /opt/afni-latest \
+    && curl -fsSL --retry 5 https://afni.nimh.nih.gov/pub/dist/tgz/linux_openmp_64.tgz \
+    | tar -xz -C /opt/afni-latest --strip-components 1
 
 RUN echo '{ \
     \n  "instructions": [ \
@@ -153,3 +3123,534 @@ RUN echo '{ \
     \n  ], \
     \n  "pkg_manager": "apt" \
     \n}' > /neurodocker/neurodocker_specs.json
+root@10d8f9956c6a:/home# ls -l
+total 0
+root@10d8f9956c6a:/home# neurodocker generate docker           --pkg-manager apt           --base ubuntu:xenial           --ants version=2.3.1 method=binaries           --fsl version=6.0.3 method=binaries           --afni version=latest method=binaries > docker 
+root@10d8f9956c6a:/home# ls -l
+total 8
+-rw-r--r-- 1 root root 5516 Jul 16 15:58 docker
+root@10d8f9956c6a:/home# more docker 
+# Generated by: Neurodocker version 0.7.0
+# Latest release: Neurodocker version 0.7.0
+# Timestamp: 2020/07/16 15:58:39 UTC
+# 
+# Thank you for using Neurodocker. If you discover any issues
+# or ways to improve this software, please submit an issue or
+# pull request on our GitHub repository:
+# 
+#     https://github.com/ReproNim/neurodocker
+
+FROM ubuntu:xenial
+
+USER root
+
+ARG DEBIAN_FRONTEND="noninteractive"
+
+ENV LANG="en_US.UTF-8" \
+    ND_ENTRYPOINT="/neurodocker/startup.sh" \
+    LC_ALL="en_US.UTF-8"
+RUN export ND_ENTRYPOINT="/neurodocker/startup.sh" \
+    && apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           apt-utils \
+           bzip2 \
+           ca-certificates \
+           curl \
+           locales \
+           unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && dpkg-reconfigure --frontend=noninteractive locales \
+    && update-locale LANG="en_US.UTF-8" \
+    && chmod 777 /opt && chmod a+s /opt \
+    && mkdir -p /neurodocker \
+    && if [ ! -f "$ND_ENTRYPOINT" ]; then \
+         echo '#!/usr/bin/env bash' >> "$ND_ENTRYPOINT" \
+    &&   echo 'set -e' >> "$ND_ENTRYPOINT" \
+    &&   echo 'export USER="${USER:=`whoami`}"' >> "$ND_ENTRYPOINT" \
+    &&   echo 'if [ -n "$1" ]; then "$@"; else /usr/bin/env bash; fi' >> "$ND_ENTRYPOINT"; \
+    fi \
+    && chmod -R 777 /neurodocker && chmod a+s /neurodocker
+
+ENTRYPOINT ["/neurodocker/startup.sh"]
+
+ENV ANTSPATH="/opt/ants-2.3.1" \
+    PATH="/opt/ants-2.3.1:$PATH"
+RUN echo "Downloading ANTs ..." \
+    && mkdir -p /opt/ants-2.3.1 \
+    && curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
+    | tar -xz -C /opt/ants-2.3.1 --strip-components 1
+
+ENV FSLMACHINELIST="" \
+    FSLGECUDAQ="cuda.q" \
+    FSLREMOTECALL="" \
+    FSLTCLSH="/opt/fsl-6.0.3/bin/fsltclsh" \
+    FSLLOCKDIR="" \
+    FSLMULTIFILEQUIT="TRUE" \
+    FSLOUTPUTTYPE="NIFTI_GZ" \
+    FSLDIR="/opt/fsl-6.0.3" \
+    PATH="/opt/fsl-6.0.3/bin:$PATH" \
+    FSLWISH="/opt/fsl-6.0.3/bin/fslwish"
+RUN apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           bc \
+           dc \
+           file \
+           libfontconfig1 \
+           libfreetype6 \
+           libgl1-mesa-dev \
+           libgl1-mesa-dri \
+           libglu1-mesa-dev \
+           libgomp1 \
+           libice6 \
+           libxcursor1 \
+           libxft2 \
+           libxinerama1 \
+           libxrandr2 \
+           libxrender1 \
+           libxt6 \
+           sudo \
+           wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "Downloading FSL ..." \
+    && mkdir -p /opt/fsl-6.0.3 \
+    && curl -fsSL --retry 5 https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.3-centos6_64.tar.gz \
+    | tar -xz -C /opt/fsl-6.0.3 --strip-components 1 \
+    && sed -i '$iecho Some packages in this Docker container are non-free' $ND_ENTRYPOINT \
+    && sed -i '$iecho If you are considering commercial use of this container, please consult the relevant license:' $ND_ENTRYPOINT \
+    && sed -i '$iecho https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence' $ND_ENTRYPOINT \
+    && sed -i '$isource $FSLDIR/etc/fslconf/fsl.sh' $ND_ENTRYPOINT \
+    && echo "Installing FSL conda environment ..." \
+    && bash /opt/fsl-6.0.3/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.3
+
+ENV AFNI_PLUGINPATH="/opt/afni-latest" \
+    PATH="/opt/afni-latest:$PATH"
+RUN apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           ed \
+           gsl-bin \
+           libglib2.0-0 \
+           libglu1-mesa-dev \
+           libglw1-mesa \
+           libgomp1 \
+           libjpeg62 \
+           libxm4 \
+           netpbm \
+           tcsh \
+           xfonts-base \
+           xvfb \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://mirrors.kernel.org/debian/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://snapshot.debian.org/archive/debian-security/20160113T213056Z/pool/updates/main/libp/libpng/libpng12-0_1.2.49-1%2Bdeb7u2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && apt-get install -f \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && gsl2_path="$(find / -name 'libgsl.so.19' || printf '')" \
+    && if [ -n "$gsl2_path" ]; then \
+         ln -sfv "$gsl2_path" "$(dirname $gsl2_path)/libgsl.so.0"; \
+    fi \
+    && ldconfig \
+    && echo "Downloading AFNI ..." \
+    && mkdir -p /opt/afni-latest \
+    && curl -fsSL --retry 5 https://afni.nimh.nih.gov/pub/dist/tgz/linux_openmp_64.tgz \
+    | tar -xz -C /opt/afni-latest --strip-components 1
+
+RUN echo '{ \
+    \n  "instructions": [ \
+    \n    [ \
+    \n      "base", \
+    \n      "ubuntu:xenial" \
+    \n    ], \
+    \n    [ \
+    \n      "ants", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "2.3.1" \
+    \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "fsl", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "6.0.3" \
+    \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "afni", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "latest" \
+    \n      } \
+    \n    ] \
+    \n  ], \
+    \n  "pkg_manager": "apt" \
+    \n}' > /neurodocker/neurodocker_specs.json
+root@10d8f9956c6a:/home# wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py 
+--2020-07-16 16:03:03--  https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
+Resolving fsl.fmrib.ox.ac.uk (fsl.fmrib.ox.ac.uk)... 129.67.248.65
+Connecting to fsl.fmrib.ox.ac.uk (fsl.fmrib.ox.ac.uk)|129.67.248.65|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 97553 (95K) [application/octet-stream]
+Saving to: 'fslinstaller.py'
+
+fslinstaller.py                                          100%[==================================================================================================================================>]  95.27K   566KB/s    in 0.2s    
+
+2020-07-16 16:03:03 (566 KB/s) - 'fslinstaller.py' saved [97553/97553]
+
+root@10d8f9956c6a:/home# python3 
+Python 3.5.2 (default, Apr 16 2020, 17:47:17) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quit()
+root@10d8f9956c6a:/home# neurodocker generate docker           --pkg-manager apt           --base ubuntu:xenial           --ants version=2.3.1 method=binaries           --fsl version=6.0.3 method=binaries           --afni version=latest method=binaries install_python3=TRUE > docker
+root@10d8f9956c6a:/home# mode docker 
+bash: mode: command not found
+root@10d8f9956c6a:/home# more docker 
+# Generated by: Neurodocker version 0.7.0
+# Latest release: Neurodocker version 0.7.0
+# Timestamp: 2020/07/16 16:29:20 UTC
+# 
+# Thank you for using Neurodocker. If you discover any issues
+# or ways to improve this software, please submit an issue or
+# pull request on our GitHub repository:
+# 
+#     https://github.com/ReproNim/neurodocker
+
+FROM ubuntu:xenial
+
+USER root
+
+ARG DEBIAN_FRONTEND="noninteractive"
+
+ENV LANG="en_US.UTF-8" \
+    ND_ENTRYPOINT="/neurodocker/startup.sh" \
+    LC_ALL="en_US.UTF-8"
+RUN export ND_ENTRYPOINT="/neurodocker/startup.sh" \
+    && apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           apt-utils \
+           bzip2 \
+           ca-certificates \
+           curl \
+           locales \
+           unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && dpkg-reconfigure --frontend=noninteractive locales \
+    && update-locale LANG="en_US.UTF-8" \
+    && chmod 777 /opt && chmod a+s /opt \
+    && mkdir -p /neurodocker \
+    && if [ ! -f "$ND_ENTRYPOINT" ]; then \
+         echo '#!/usr/bin/env bash' >> "$ND_ENTRYPOINT" \
+    &&   echo 'set -e' >> "$ND_ENTRYPOINT" \
+    &&   echo 'export USER="${USER:=`whoami`}"' >> "$ND_ENTRYPOINT" \
+    &&   echo 'if [ -n "$1" ]; then "$@"; else /usr/bin/env bash; fi' >> "$ND_ENTRYPOINT"; \
+    fi \
+    && chmod -R 777 /neurodocker && chmod a+s /neurodocker
+
+ENTRYPOINT ["/neurodocker/startup.sh"]
+
+ENV ANTSPATH="/opt/ants-2.3.1" \
+    PATH="/opt/ants-2.3.1:$PATH"
+RUN echo "Downloading ANTs ..." \
+    && mkdir -p /opt/ants-2.3.1 \
+    && curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
+    | tar -xz -C /opt/ants-2.3.1 --strip-components 1
+
+ENV FSLWISH="/opt/fsl-6.0.3/bin/fslwish" \
+    FSLREMOTECALL="" \
+    FSLLOCKDIR="" \
+    FSLOUTPUTTYPE="NIFTI_GZ" \
+    FSLTCLSH="/opt/fsl-6.0.3/bin/fsltclsh" \
+    PATH="/opt/fsl-6.0.3/bin:$PATH" \
+    FSLMULTIFILEQUIT="TRUE" \
+    FSLDIR="/opt/fsl-6.0.3" \
+    FSLGECUDAQ="cuda.q" \
+    FSLMACHINELIST=""
+RUN apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           bc \
+           dc \
+           file \
+           libfontconfig1 \
+           libfreetype6 \
+           libgl1-mesa-dev \
+           libgl1-mesa-dri \
+           libglu1-mesa-dev \
+           libgomp1 \
+           libice6 \
+           libxcursor1 \
+           libxft2 \
+           libxinerama1 \
+           libxrandr2 \
+           libxrender1 \
+           libxt6 \
+           sudo \
+           wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "Downloading FSL ..." \
+    && mkdir -p /opt/fsl-6.0.3 \
+    && curl -fsSL --retry 5 https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.3-centos6_64.tar.gz \
+    | tar -xz -C /opt/fsl-6.0.3 --strip-components 1 \
+    && sed -i '$iecho Some packages in this Docker container are non-free' $ND_ENTRYPOINT \
+    && sed -i '$iecho If you are considering commercial use of this container, please consult the relevant license:' $ND_ENTRYPOINT \
+    && sed -i '$iecho https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence' $ND_ENTRYPOINT \
+    && sed -i '$isource $FSLDIR/etc/fslconf/fsl.sh' $ND_ENTRYPOINT \
+    && echo "Installing FSL conda environment ..." \
+    && bash /opt/fsl-6.0.3/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.3
+
+ENV AFNI_PLUGINPATH="/opt/afni-latest" \
+    PATH="/opt/afni-latest:$PATH"
+RUN apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           ed \
+           gsl-bin \
+           libglib2.0-0 \
+           libglu1-mesa-dev \
+           libglw1-mesa \
+           libgomp1 \
+           libjpeg62 \
+           libxm4 \
+           netpbm \
+           python3 \
+           tcsh \
+           xfonts-base \
+           xvfb \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://mirrors.kernel.org/debian/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://snapshot.debian.org/archive/debian-security/20160113T213056Z/pool/updates/main/libp/libpng/libpng12-0_1.2.49-1%2Bdeb7u2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && apt-get install -f \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && gsl2_path="$(find / -name 'libgsl.so.19' || printf '')" \
+    && if [ -n "$gsl2_path" ]; then \
+         ln -sfv "$gsl2_path" "$(dirname $gsl2_path)/libgsl.so.0"; \
+    fi \
+    && ldconfig \
+    && echo "Downloading AFNI ..." \
+    && mkdir -p /opt/afni-latest \
+    && curl -fsSL --retry 5 https://afni.nimh.nih.gov/pub/dist/tgz/linux_openmp_64.tgz \
+    | tar -xz -C /opt/afni-latest --strip-components 1
+
+RUN echo '{ \
+    \n  "instructions": [ \
+    \n    [ \
+    \n      "base", \
+    \n      "ubuntu:xenial" \
+    \n    ], \
+    \n    [ \
+    \n      "ants", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "2.3.1" \
+    \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "fsl", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "6.0.3" \
+    \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "afni", \
+    \n      { \
+    \n        "install_python3": "TRUE", \
+    \n        "method": "binaries", \
+    \n        "version": "latest" \
+    \n      } \
+    \n    ] \
+    \n  ], \
+    \n  "pkg_manager": "apt" \
+    \n}' > /neurodocker/neurodocker_specs.json
+root@10d8f9956c6a:/home# more docker neurodocker generate docker           --pkg-manager apt           --base ubuntu:xenial           --ants version=2.3.1 method=binaries             --afni version=latest method=binaries install_python3=TRUE --fsl version=6.0.3 method=binaries > docker
+more: stat of neurodocker failed: No such file or directory
+more: stat of generate failed: No such file or directory
+more: stat of --pkg-manager failed: No such file or directory
+more: stat of apt failed: No such file or directory
+more: stat of --base failed: No such file or directory
+more: stat of ubuntu:xenial failed: No such file or directory
+more: stat of --ants failed: No such file or directory
+more: stat of version=2.3.1 failed: No such file or directory
+more: stat of method=binaries failed: No such file or directory
+more: stat of --afni failed: No such file or directory
+more: stat of version=latest failed: No such file or directory
+more: stat of method=binaries failed: No such file or directory
+more: stat of install_python3=TRUE failed: No such file or directory
+more: stat of --fsl failed: No such file or directory
+more: stat of version=6.0.3 failed: No such file or directory
+more: stat of method=binaries failed: No such file or directory
+root@10d8f9956c6a:/home# neurodocker generate docker --pkg-manager apt --base ubuntu:xenial --ants version=2.3.1 method=binaries --afni version=latest method=binaries install_python3=TRUE --fsl version=6.0.3 method=binaries > docker
+root@10d8f9956c6a:/home# more docker 
+# Generated by: Neurodocker version 0.7.0
+# Latest release: Neurodocker version 0.7.0
+# Timestamp: 2020/07/16 16:31:31 UTC
+# 
+# Thank you for using Neurodocker. If you discover any issues
+# or ways to improve this software, please submit an issue or
+# pull request on our GitHub repository:
+# 
+#     https://github.com/ReproNim/neurodocker
+
+FROM ubuntu:xenial
+
+USER root
+
+ARG DEBIAN_FRONTEND="noninteractive"
+
+ENV ND_ENTRYPOINT="/neurodocker/startup.sh" \
+    LC_ALL="en_US.UTF-8" \
+    LANG="en_US.UTF-8"
+RUN export ND_ENTRYPOINT="/neurodocker/startup.sh" \
+    && apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           apt-utils \
+           bzip2 \
+           ca-certificates \
+           curl \
+           locales \
+           unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && dpkg-reconfigure --frontend=noninteractive locales \
+    && update-locale LANG="en_US.UTF-8" \
+    && chmod 777 /opt && chmod a+s /opt \
+    && mkdir -p /neurodocker \
+    && if [ ! -f "$ND_ENTRYPOINT" ]; then \
+         echo '#!/usr/bin/env bash' >> "$ND_ENTRYPOINT" \
+    &&   echo 'set -e' >> "$ND_ENTRYPOINT" \
+    &&   echo 'export USER="${USER:=`whoami`}"' >> "$ND_ENTRYPOINT" \
+    &&   echo 'if [ -n "$1" ]; then "$@"; else /usr/bin/env bash; fi' >> "$ND_ENTRYPOINT"; \
+    fi \
+    && chmod -R 777 /neurodocker && chmod a+s /neurodocker
+
+ENTRYPOINT ["/neurodocker/startup.sh"]
+
+ENV ANTSPATH="/opt/ants-2.3.1" \
+    PATH="/opt/ants-2.3.1:$PATH"
+RUN echo "Downloading ANTs ..." \
+    && mkdir -p /opt/ants-2.3.1 \
+    && curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
+    | tar -xz -C /opt/ants-2.3.1 --strip-components 1
+
+ENV AFNI_PLUGINPATH="/opt/afni-latest" \
+    PATH="/opt/afni-latest:$PATH"
+RUN apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           ed \
+           gsl-bin \
+           libglib2.0-0 \
+           libglu1-mesa-dev \
+           libglw1-mesa \
+           libgomp1 \
+           libjpeg62 \
+           libxm4 \
+           netpbm \
+           python3 \
+           tcsh \
+           xfonts-base \
+           xvfb \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://mirrors.kernel.org/debian/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && curl -sSL --retry 5 -o /tmp/toinstall.deb http://snapshot.debian.org/archive/debian-security/20160113T213056Z/pool/updates/main/libp/libpng/libpng12-0_1.2.49-1%2Bdeb7u2_amd64.deb \
+    && dpkg -i /tmp/toinstall.deb \
+    && rm /tmp/toinstall.deb \
+    && apt-get install -f \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && gsl2_path="$(find / -name 'libgsl.so.19' || printf '')" \
+    && if [ -n "$gsl2_path" ]; then \
+         ln -sfv "$gsl2_path" "$(dirname $gsl2_path)/libgsl.so.0"; \
+    fi \
+    && ldconfig \
+    && echo "Downloading AFNI ..." \
+    && mkdir -p /opt/afni-latest \
+    && curl -fsSL --retry 5 https://afni.nimh.nih.gov/pub/dist/tgz/linux_openmp_64.tgz \
+    | tar -xz -C /opt/afni-latest --strip-components 1
+
+ENV FSLLOCKDIR="" \
+    PATH="/opt/fsl-6.0.3/bin:$PATH" \
+    FSLREMOTECALL="" \
+    FSLWISH="/opt/fsl-6.0.3/bin/fslwish" \
+    FSLMACHINELIST="" \
+    FSLOUTPUTTYPE="NIFTI_GZ" \
+    FSLTCLSH="/opt/fsl-6.0.3/bin/fsltclsh" \
+    FSLDIR="/opt/fsl-6.0.3" \
+    FSLGECUDAQ="cuda.q" \
+    FSLMULTIFILEQUIT="TRUE"
+RUN apt-get update -qq \
+    && apt-get install -y -q --no-install-recommends \
+           bc \
+           dc \
+           file \
+           libfontconfig1 \
+           libfreetype6 \
+           libgl1-mesa-dev \
+           libgl1-mesa-dri \
+           libglu1-mesa-dev \
+           libgomp1 \
+           libice6 \
+           libxcursor1 \
+           libxft2 \
+           libxinerama1 \
+           libxrandr2 \
+           libxrender1 \
+           libxt6 \
+           sudo \
+           wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "Downloading FSL ..." \
+    | wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py \
+    | python3 fslinstaller.py
+
+RUN echo '{ \
+    \n  "instructions": [ \
+    \n    [ \
+    \n      "base", \
+    \n      "ubuntu:xenial" \
+    \n    ], \
+    \n    [ \
+    \n      "ants", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "2.3.1" \
+    \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "afni", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "latest", \
+    \n        "install_python3": "TRUE" \
+    \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "fsl", \
+    \n      { \
+    \n        "method": "binaries", \
+    \n        "version": "6.0.3" \
+    \n      } \
+    \n    ] \
+    \n  ], \
+    \n  "pkg_manager": "apt" \
+    \n}' > /neurodocker/neurodocker_specs.json
+root@10d8f9956c6a:/home# 
