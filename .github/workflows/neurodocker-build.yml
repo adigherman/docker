@@ -23,6 +23,8 @@ jobs:
       - name: Install neurodocker
         if: success()
         run: |
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           df -h
         shell: bash
         
