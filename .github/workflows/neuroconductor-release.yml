@@ -1,11 +1,10 @@
-name: Build Neuroconductor xenial base image from adigherman/neurodocker:xenial
+name: Build Neuroconductor latest release image from adigherman/neuro-base-xenial
 
 on: [push]
 
 jobs:
   github:
     runs-on: ubuntu-16.04
-    if: "contains(github.event.head_commit.message, 'neuro-base-xenial')"
     steps:
       - uses: actions/checkout@v2
 
@@ -22,14 +21,14 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         shell: bash
 
-      - name: Build neuroconductor xenial image
+      - name: Build neuroconductor release image
         if: success()
         run: |
-          wget https://raw.githubusercontent.com/adigherman/docker/master/neuro-base-xenial/Dockerfile -O Dockerfile 
-          docker build -t adigherman/neuro-base-xenial:latest - < Dockerfile
+          wget https://raw.githubusercontent.com/adigherman/docker/master/neuroconductor-release/Dockerfile -O Dockerfile 
+          docker build -t adigherman/neuroconductor-release:latest - < Dockerfile
         
       - name: Push to docker hub
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push adigherman/neuro-base-xenial:latest
+          args: push adigherman/neuroconductor-release:latest
